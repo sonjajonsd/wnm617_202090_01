@@ -1,0 +1,23 @@
+/* 
+
+Change page as much as possible, not allowed to touch html, only css.
+Does not need to look good.
+Has to be responsive.
+
+*/
+
+/* Option 1
+
+Whatever in theme.css - not allowed to touch anything else inside initilizr folder
+
+*/
+
+/* Option 2
+
+Index main.css, comment out main.css and work from theme.css
+
+*/
+
+nav li:first-child a {
+    background-color: blue;
+}
