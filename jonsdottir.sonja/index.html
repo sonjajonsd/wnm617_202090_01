@@ -3,9 +3,53 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Index</title>
+  <title>Index</title>
+  
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	Sonja Jonsdottir - index file
+  <input type="checkbox" id="menu" class="hidden">
+  <header class="navbar">
+    <div class="container display-flex flex-align-center">
+
+      <div class="flex-none"><h1>Webpage</h1></div>
+
+      <!-- push out flex-none elements -->
+      <div class="flex-stretch"></div>
+
+      <div class="menu-button">
+        <label for="menu" style="display:block;padding:0 0.5em">&equiv;</label>
+      </div>
+
+      <nav class="nav flex-none">
+        <ul class="display-flex">
+          <li><a href="#article1">Link 1</a></li>
+          <li><a href="#article2">Link 2</a></li>
+          <li><a href="#article3">Link 3</a></li>
+          <li><a href="#article4">Link 4</a></li>
+        </ul>
+      </nav>
+    </div>
+	</header>
+
+
+	<div class="container">
+		<article class="article" id="article1">
+      <h2>Article 1</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus, ut porro. Numquam, eum accusamus et cum quibusdam mollitia consequuntur sed deleniti voluptate ipsam aliquam reiciendis obcaecati culpa quas facere, distinctio architecto enim, odio officia. In nulla odio molestiae quibusdam fuga itaque quod provident architecto ratione sint, nostrum blanditiis dolorum distinctio animi quisquam dicta delectus qui unde rem! Ratione, tenetur vel! Magnam, laudantium dignissimos. Ea quod nemo, optio perspiciatis, libero, soluta harum praesentium quas ullam vero eveniet delectus. Modi, eligendi incidunt.</p>
+		</article>
+		<article class="article" id="article2">
+      <h2>Article 2</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus, ut porro. Numquam, eum accusamus et cum quibusdam mollitia consequuntur sed deleniti voluptate ipsam aliquam reiciendis obcaecati culpa quas facere, distinctio architecto enim, odio officia. In nulla odio molestiae quibusdam fuga itaque quod provident architecto ratione sint, nostrum blanditiis dolorum distinctio animi quisquam dicta delectus qui unde rem! Ratione, tenetur vel! Magnam, laudantium dignissimos. Ea quod nemo, optio perspiciatis, libero, soluta harum praesentium quas ullam vero eveniet delectus. Modi, eligendi incidunt.</p>
+    </article>
+		<article class="article" id="article3">
+      <h2>Article 3</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus, ut porro. Numquam, eum accusamus et cum quibusdam mollitia consequuntur sed deleniti voluptate ipsam aliquam reiciendis obcaecati culpa quas facere, distinctio architecto enim, odio officia. In nulla odio molestiae quibusdam fuga itaque quod provident architecto ratione sint, nostrum blanditiis dolorum distinctio animi quisquam dicta delectus qui unde rem! Ratione, tenetur vel! Magnam, laudantium dignissimos. Ea quod nemo, optio perspiciatis, libero, soluta harum praesentium quas ullam vero eveniet delectus. Modi, eligendi incidunt.</p>
+    </article>
+		<article class="article" id="article4">
+      <h2>Article 4</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus, ut porro. Numquam, eum accusamus et cum quibusdam mollitia consequuntur sed deleniti voluptate ipsam aliquam reiciendis obcaecati culpa quas facere, distinctio architecto enim, odio officia. In nulla odio molestiae quibusdam fuga itaque quod provident architecto ratione sint, nostrum blanditiis dolorum distinctio animi quisquam dicta delectus qui unde rem! Ratione, tenetur vel! Magnam, laudantium dignissimos. Ea quod nemo, optio perspiciatis, libero, soluta harum praesentium quas ullam vero eveniet delectus. Modi, eligendi incidunt.</p>
+    </article>
+	</div>
 </body>
 </html>
