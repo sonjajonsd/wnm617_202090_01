@@ -158,6 +158,13 @@ article > footer {
   margin: 6%;
 }
 
+.main aside:hover {
+  /* Image from https://www.fillmurray.com/g/500/500 */
+  background-image: url(../../imgs/fillmurray.jpg);
+  color: transparent;
+  cursor: help;
+}
+
 .footer-container {
   background-color: var(--color-pink);
   border-top: 0;
