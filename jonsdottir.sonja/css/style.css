@@ -10,12 +10,17 @@
 
   --color-neutral-light: #f0f0f1;
   --color-neutral-lighter: #e0e0e5;
-  --color-neutral-medium: #b4b4be;
+  --color-neutral-medium: #9f9fa9;
+  --color-neutral-mediumless: #b4b4be;
   --color-neutral-darker: #83838f;
   --color-neutral-dark: #2e2e3a;
 
-  --color-neutral-white: #fff;
-  --color-neutral-black: #000;
+  --color-main-light: #f0f0f1;
+  --color-main-medium: #9f9fa9;
+  --color-main-dark: #2e2e3a;
+
+  --color-white: #fff;
+  --color-black: #000;
 
   --header-height: 3rem;
 }
@@ -133,4 +138,111 @@ a:hover {
   #menu:checked + .navbar .nav li {
     line-height: calc(var(--header-height)* 0.66)
   }
+}
+
+/* ACCORDION */
+
+.accordion dt {
+  background-color: var(--color-neutral-medium);
+  padding: 0.5em 1em;
+  color: var(--color-white);
+  cursor: pointer;
+  border-radius: 0.5em;
+  position: relative;
+  transition: 0.1s;
+  transition-delay: 0.4s;
+  /* transition, transition delay */
+}
+
+.accordion dt.active {
+  border-radius: 0.5em 0.5em 0 0;
+  transition: 0s;
+  transition-delay: 0s;
+  background-color: var(--color-neutral-darker);
+}
+
+.accordion dt::after {
+  content: "▶";
+  color: inherit;
+  font-size: 0.8em;
+  position: absolute;
+  top: 50%;
+  right: 1em;
+  transform: translateY(-50%) rotate(0deg);
+  transition: all 0.5s;
+}
+
+.accordion dt.active::after {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.accordion dd {
+  margin-left: 0;
+  padding: calc(1em - 2px);
+  border: 2px solid var(--color-neutral-medium);
+  border-top: 0;
+  border-radius: 0 0 0.5em 0.5em;
+
+  display: none;
+}
+
+/* all but the first */
+.accordion dt~dt {
+  margin-top: 0.5em;
+}
+
+/* TABB GROUP */
+
+.tabgroup {}
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-neutral-medium);
+}
+.tab {
+  flex: 1 1 auto;
+  padding: 0.5em 0;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+.tab:hover {
+  flex: 1 1 auto;
+  padding: 0.5em 0;
+  text-align: center;
+  cursor: pointer;
+  background-color: var(--color-neutral-light);
+}
+.tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  transition: all 0.3s;
+  background-color: var(--color-main-medium);
+}
+.tab.active::after {
+  height: 3px;
+}
+
+.contents {
+  height: 40vh;
+  position: relative;
+  overflow: hidden;
+}
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  transition: all 0.3s;
+  opacity: 0;
+  pointer-events: none;
+}
+.content.active {
+  opacity: 1;
+  pointer-events: initial;
 }

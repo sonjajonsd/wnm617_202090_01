@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Jquery Demos</title>
+
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+      $(() => {
+        // ACCORDION -------------------------------
+        $(".accordion dt").on("click", function(e) {
+          if ($(this).hasClass("active")) {
+            $(this)
+              .removeClass("active")
+              .next()
+              .slideUp();
+          } else {
+            $(this)
+              .addClass("active")
+              .siblings("dt")
+              .removeClass("active");
+            $(this)
+              .next()
+              .slideDown()
+              .siblings("dd")
+              .slideUp();
+          }
+        });
+
+        // TAB GROUP -------------------------------
+        $(".tabgroup .tab").on("click", function(e) {
+          let index = $(this).index();
+
+          $(this)
+            .addClass("active")
+            .siblings()
+            .removeClass("active");
+
+          $(this)
+            .closest(".tabgroup")
+            .find(".content")
+            .eq(index)
+            .addClass("active")
+            .siblings()
+            .removeClass("active");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <header class="container">
+      <h1>Remembering jQuery</h1>
+    </header>
+
+    <div class="container">
+      <h2>Accordion</h2>
+
+      <dl class="accordion">
+        <dt>Bear</dt>
+        <dd>Lives in the woods</dd>
+        <dt>Eagle</dt>
+        <dd>Lives in the sky</dd>
+        <dt>Shark</dt>
+        <dd>Lives in the ocean</dd>
+        <dt>Honey Badger</dt>
+        <dd>Don't give a crap</dd>
+      </dl>
+    </div>
+
+    <div class="container">
+      <h2>Tab Group</h2>
+      <div class="tabgroup">
+        <div class="tabs">
+          <div class="tab active">Link 1</div>
+          <div class="tab">Link 2</div>
+          <div class="tab">Link 3</div>
+          <div class="tab">Link 4</div>
+        </div>
+
+        <div class="contents">
+          <div class="content active">
+            <h3>Content 1</h3>
+            <div>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Laboriosam vitae veritatis sint maiores error recusandae eum,
+                corporis vero deserunt nesciunt iure consequuntur veniam sequi!
+                Fugiat, atque reiciendis soluta veniam fuga ipsam neque
+                recusandae earum vel necessitatibus nemo ea molestias, quidem
+                doloremque temporibus quis ad illum voluptatem? Hic iste nihil
+                quo repellat labore explicabo! Minus porro blanditiis
+                consequuntur dolor quod ex ad nesciunt, similique soluta fugit
+                perspiciatis, magnam mollitia reprehenderit accusamus expedita,
+                recusandae nihil! Blanditiis atque quia itaque repellat tempora
+                porro sint exercitationem dolores delectus et est quidem
+                ducimus, velit tempore quibusdam beatae quas animi, possimus
+                labore quae, doloremque aperiam error sunt. Suscipit, tempora
+                nobis nam animi atque iure commodi sit eius, numquam at, rem
+                possimus voluptas eos. Perferendis ex commodi esse, eaque
+                accusantium error nemo quia temporibus! Ea in possimus et
+                aperiam vel obcaecati quibusdam explicabo dolor magnam eius
+                quisquam, quod hic, autem aliquam alias architecto assumenda?
+                Dolores commodi unde ipsa ratione, eveniet vitae sequi harum
+                tempora ea ducimus corporis magnam suscipit dolor enim atque
+                veniam odio, sapiente id. Sequi soluta, omnis expedita eaque
+                iure rerum labore asperiores, cupiditate sapiente, inventore
+                animi quod odit voluptate voluptatum molestiae error provident
+                dolores ab maiores dolor debitis impedit a culpa. At, architecto
+                mollitia?
+              </p>
+            </div>
+          </div>
+          <div class="content">
+            <h3>Content 2</h3>
+            <div>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Laboriosam vitae veritatis sint maiores error recusandae eum,
+                corporis vero deserunt nesciunt iure consequuntur veniam sequi!
+                Fugiat, atque reiciendis soluta veniam fuga ipsam neque
+                recusandae earum vel necessitatibus nemo ea molestias, quidem
+                doloremque temporibus quis ad illum voluptatem? Hic iste nihil
+                quo repellat labore explicabo! Minus porro blanditiis
+                consequuntur dolor quod ex ad nesciunt, similique soluta fugit
+                perspiciatis, magnam mollitia reprehenderit accusamus expedita,
+                recusandae nihil! Blanditiis atque quia itaque repellat tempora
+                porro sint exercitationem dolores delectus et est quidem
+                ducimus, velit tempore quibusdam beatae quas animi, possimus
+                labore quae, doloremque aperiam error sunt. Suscipit, tempora
+                nobis nam animi atque iure commodi sit eius, numquam at, rem
+                possimus voluptas eos. Perferendis ex commodi esse, eaque
+                accusantium error nemo quia temporibus! Ea in possimus et
+                aperiam vel obcaecati quibusdam explicabo dolor magnam eius
+                quisquam, quod hic, autem aliquam alias architecto assumenda?
+                Dolores commodi unde ipsa ratione, eveniet vitae sequi harum
+                tempora ea ducimus corporis magnam suscipit dolor enim atque
+                veniam odio, sapiente id. Sequi soluta, omnis expedita eaque
+                iure rerum labore asperiores, cupiditate sapiente, inventore
+                animi quod odit voluptate voluptatum molestiae error provident
+                dolores ab maiores dolor debitis impedit a culpa. At, architecto
+                mollitia?
+              </p>
+            </div>
+          </div>
+          <div class="content">
+            <h3>Content 3</h3>
+            <div>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Laboriosam vitae veritatis sint maiores error recusandae eum,
+                corporis vero deserunt nesciunt iure consequuntur veniam sequi!
+                Fugiat, atque reiciendis soluta veniam fuga ipsam neque
+                recusandae earum vel necessitatibus nemo ea molestias, quidem
+                doloremque temporibus quis ad illum voluptatem? Hic iste nihil
+                quo repellat labore explicabo! Minus porro blanditiis
+                consequuntur dolor quod ex ad nesciunt, similique soluta fugit
+                perspiciatis, magnam mollitia reprehenderit accusamus expedita,
+                recusandae nihil! Blanditiis atque quia itaque repellat tempora
+                porro sint exercitationem dolores delectus et est quidem
+                ducimus, velit tempore quibusdam beatae quas animi, possimus
+                labore quae, doloremque aperiam error sunt. Suscipit, tempora
+                nobis nam animi atque iure commodi sit eius, numquam at, rem
+                possimus voluptas eos. Perferendis ex commodi esse, eaque
+                accusantium error nemo quia temporibus! Ea in possimus et
+                aperiam vel obcaecati quibusdam explicabo dolor magnam eius
+                quisquam, quod hic, autem aliquam alias architecto assumenda?
+                Dolores commodi unde ipsa ratione, eveniet vitae sequi harum
+                tempora ea ducimus corporis magnam suscipit dolor enim atque
+                veniam odio, sapiente id. Sequi soluta, omnis expedita eaque
+                iure rerum labore asperiores, cupiditate sapiente, inventore
+                animi quod odit voluptate voluptatum molestiae error provident
+                dolores ab maiores dolor debitis impedit a culpa. At, architecto
+                mollitia?
+              </p>
+            </div>
+          </div>
+          <div class="content">
+            <h3>Content 4</h3>
+            <div>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Laboriosam vitae veritatis sint maiores error recusandae eum,
+                corporis vero deserunt nesciunt iure consequuntur veniam sequi!
+                Fugiat, atque reiciendis soluta veniam fuga ipsam neque
+                recusandae earum vel necessitatibus nemo ea molestias, quidem
+                doloremque temporibus quis ad illum voluptatem? Hic iste nihil
+                quo repellat labore explicabo! Minus porro blanditiis
+                consequuntur dolor quod ex ad nesciunt, similique soluta fugit
+                perspiciatis, magnam mollitia reprehenderit accusamus expedita,
+                recusandae nihil! Blanditiis atque quia itaque repellat tempora
+                porro sint exercitationem dolores delectus et est quidem
+                ducimus, velit tempore quibusdam beatae quas animi, possimus
+                labore quae, doloremque aperiam error sunt. Suscipit, tempora
+                nobis nam animi atque iure commodi sit eius, numquam at, rem
+                possimus voluptas eos. Perferendis ex commodi esse, eaque
+                accusantium error nemo quia temporibus! Ea in possimus et
+                aperiam vel obcaecati quibusdam explicabo dolor magnam eius
+                quisquam, quod hic, autem aliquam alias architecto assumenda?
+                Dolores commodi unde ipsa ratione, eveniet vitae sequi harum
+                tempora ea ducimus corporis magnam suscipit dolor enim atque
+                veniam odio, sapiente id. Sequi soluta, omnis expedita eaque
+                iure rerum labore asperiores, cupiditate sapiente, inventore
+                animi quod odit voluptate voluptatum molestiae error provident
+                dolores ab maiores dolor debitis impedit a culpa. At, architecto
+                mollitia?
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    // Notes
+    // Accordion
+    // lexical this, the element that called this function
+    // next, sibling -> jQuery traversal
+    // show, slideDown, slideToggle, slideUp -> jQuery manipulation / effect
+
+    // $(this).next().slideToggle();
+
+    // $(this).next().slideDown()
+    //   .siblings('dd').slideUp();
+  </script>
+</html>
