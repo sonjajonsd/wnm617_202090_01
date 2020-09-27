@@ -5,4 +5,5 @@
 - http://sonjajons.com/aau/wnm617/jonsdottir.sonja
 - http://sonjajons.com/aau/wnm617/jonsdottir.sonja/initializr
 - http://sonjajons.com/aau/wnm617/jonsdottir.sonja/demo/jquery.html
+- http://sonjajons.com/aau/wnm617/jonsdottir.sonja/demo/jqmobile.html
 

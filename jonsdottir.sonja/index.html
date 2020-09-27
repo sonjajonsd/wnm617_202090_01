@@ -1,55 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Index</title>
-  
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Spotted - The Bad Habit Tracker</title>
+
+
+  <link rel="stylesheet" href="lib/css/jquery.mobile.structure-1.4.5.min.css">
+  <link rel="stylesheet" href="css/app.css">
+
+  <script src="lib/js/jquery-2.2.4.min.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Should be loaded last -->
+  <script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
+
 </head>
 <body>
-  <input type="checkbox" id="menu" class="hidden">
-  <header class="navbar">
-    <div class="container display-flex flex-align-center">
+  <!-- Input, button data-role="none" -->
+  <!-- Form data-ajax="false" -->
 
-      <div class="flex-none"><h1>Webpage</h1></div>
-
-      <!-- push out flex-none elements -->
-      <div class="flex-stretch"></div>
-
-      <div class="menu-button">
-        <label for="menu" style="display:block;padding:0 0.5em">&equiv;</label>
-      </div>
-
-      <nav class="nav flex-none">
-        <ul class="display-flex">
-          <li><a href="#article1">Link 1</a></li>
-          <li><a href="#article2">Link 2</a></li>
-          <li><a href="#article3">Link 3</a></li>
-          <li><a href="#article4">Link 4</a></li>
-        </ul>
-      </nav>
+  <!-- Sign in Page -->
+  <section data-role="page" id="signin-page">
+    <div data-role="main">
+      <!-- Pushes our form down to the bottom the screen -->
+      <div class="flex-stretch display-flex flex-align-center flex-justify-center">
+        <!-- svg needs hight and width in here -->
+        <!-- <img src="https://www.fillmurray.com/200/300" alt=""> -->
+      </div> 
+      <form id="signin-form" data-ajax="false" style="padding:1em">
+        <div class="form-control">
+          <label for="signin-username" class="form-label">Username</label>
+          <input id="signin-username" type="text" class="form-input" data-role="none" placeholder="Type your username">
+        </div>
+        <div class="form-control">
+          <label for="signin-password" class="form-label">Password</label>
+          <input id="signin-password" type="password" class="form-input" data-role="none" placeholder="Type your password">
+        </div>
+        <div class="form-control">
+          <a href="#map-page" class="form-button">Sign In</a>
+        </div>
+        <div class="form-control" style="text-align:center;font-size: 0.8em">
+          Don't have an account? <a href="#signup-page">Sign Up</a>
+        </div>
+      </form>
     </div>
-	</header>
+  </section>
+  
+  
 
 
-	<div class="container">
-		<article class="article" id="article1">
-      <h2>Article 1</h2>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus, ut porro. Numquam, eum accusamus et cum quibusdam mollitia consequuntur sed deleniti voluptate ipsam aliquam reiciendis obcaecati culpa quas facere, distinctio architecto enim, odio officia. In nulla odio molestiae quibusdam fuga itaque quod provident architecto ratione sint, nostrum blanditiis dolorum distinctio animi quisquam dicta delectus qui unde rem! Ratione, tenetur vel! Magnam, laudantium dignissimos. Ea quod nemo, optio perspiciatis, libero, soluta harum praesentium quas ullam vero eveniet delectus. Modi, eligendi incidunt.</p>
-		</article>
-		<article class="article" id="article2">
-      <h2>Article 2</h2>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus, ut porro. Numquam, eum accusamus et cum quibusdam mollitia consequuntur sed deleniti voluptate ipsam aliquam reiciendis obcaecati culpa quas facere, distinctio architecto enim, odio officia. In nulla odio molestiae quibusdam fuga itaque quod provident architecto ratione sint, nostrum blanditiis dolorum distinctio animi quisquam dicta delectus qui unde rem! Ratione, tenetur vel! Magnam, laudantium dignissimos. Ea quod nemo, optio perspiciatis, libero, soluta harum praesentium quas ullam vero eveniet delectus. Modi, eligendi incidunt.</p>
-    </article>
-		<article class="article" id="article3">
-      <h2>Article 3</h2>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus, ut porro. Numquam, eum accusamus et cum quibusdam mollitia consequuntur sed deleniti voluptate ipsam aliquam reiciendis obcaecati culpa quas facere, distinctio architecto enim, odio officia. In nulla odio molestiae quibusdam fuga itaque quod provident architecto ratione sint, nostrum blanditiis dolorum distinctio animi quisquam dicta delectus qui unde rem! Ratione, tenetur vel! Magnam, laudantium dignissimos. Ea quod nemo, optio perspiciatis, libero, soluta harum praesentium quas ullam vero eveniet delectus. Modi, eligendi incidunt.</p>
-    </article>
-		<article class="article" id="article4">
-      <h2>Article 4</h2>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus, ut porro. Numquam, eum accusamus et cum quibusdam mollitia consequuntur sed deleniti voluptate ipsam aliquam reiciendis obcaecati culpa quas facere, distinctio architecto enim, odio officia. In nulla odio molestiae quibusdam fuga itaque quod provident architecto ratione sint, nostrum blanditiis dolorum distinctio animi quisquam dicta delectus qui unde rem! Ratione, tenetur vel! Magnam, laudantium dignissimos. Ea quod nemo, optio perspiciatis, libero, soluta harum praesentium quas ullam vero eveniet delectus. Modi, eligendi incidunt.</p>
-    </article>
-	</div>
+  <!-- Sign up Page -->
+  <section data-role="page" id="signup-page">
+    <div data-role="main">
+      <h1>Sign Up</h1>
+
+      <form id="signup-form" data-ajax="false" style="padding:1em">
+          <div class="form-control">
+            <label for="signup-username" class="form-label">Username</label>
+            <input id="signup-username" type="text" class="form-input" data-role="none" placeholder="Type your username">
+          </div>
+          <div class="form-control">
+            <label for="signup-password" class="form-label">Password</label>
+            <input id="signup-password" type="password" class="form-input" data-role="none" placeholder="Type your password">
+          </div>
+          <div class="form-control">
+            <a href="#list-page" class="form-button">Sign Up</a>
+          </div>
+          <div class="form-control" style="text-align:center;font-size: 0.8em">
+            Already have an account? <a href="#signin-page">Sign In</a>
+          </div>
+        </form>
+    </div>
+  </section>
+ 
+
+
+ 
+  <!-- Map page -->
+  <section data-role="page" id="map-page">
+    <div data-role="main">
+      <h1>Map Page</h1>
+    </div>
+    <footer data-role="footer">
+
+    </footer>
+  </section>
+ 
+
+
+ 
+  <!-- List page -->
+  <section data-role="page" id="list-page">
+    <header data-role="header">
+      <h1>Bad Habits</h1>
+      <ul>
+        <!-- <li><a href="#">Back</a></li> -->
+        <li class="flex-stretch"></li>
+        <li><a href="#">+</a></li>
+      </ul>
+    </header>
+    <div data-role="main">
+      <ul>
+        <li><a href="#habit-profile-page">Bad Habit 1</a></li>
+        <li><a href="#habit-profile-page">Bad Habit 2</a></li>
+        <li><a href="#habit-profile-page">Bad Habit 3</a></li>
+        <li><a href="#habit-profile-page">Bad Habit 4</a></li>
+        <li><a href="#habit-profile-page">Bad Habit 5</a></li>
+        <li><a href="#habit-profile-page">Bad Habit 6</a></li>
+        <li><a href="#habit-profile-page">Bad Habit 7</a></li>
+        <li><a href="#habit-profile-page">Bad Habit 8</a></li>
+        <li><a href="#habit-profile-page">Bad Habit 9</a></li>
+        <li><a href="#habit-profile-page">Bad Habit 10</a></li>
+      </ul>
+    </div>
+    <footer data-role="footer">
+      <ul>
+        <li><a href="#map-page">Maps</a></li>
+        <li><a href="#list-page">List</a></li>
+        <li><a href="#user-profile-page">Profile</a></li>
+      </ul>
+    </footer>
+  </section> 
+
+
+ 
+  <!-- User profile page -->
+  <section data-role="page" id="user-profile-page">
+    <div data-role="main">
+      <h1>User Profile</h1>
+    </div>
+    <footer data-role="footer"></footer>
+  </section>
+ 
+ 
+ 
+ 
+  <!-- Bad Habit profile page -->
+  <section data-role="page" id="habit-profile-page">
+    <header data-role="header">
+        <li><a href="#">Back</a></li>
+    </header>
+    <div data-role="main">
+      <h1>Habit Profile</h1>
+    </div>
+    <footer data-role="footer"></footer>
+  </section>
+
+
 </body>
 </html>
