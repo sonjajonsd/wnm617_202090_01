@@ -1,69 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Spotted - The Bad Habit Tracker</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Spotted - The Bad Habit Tracker</title>
 
+    <link rel="stylesheet" href="lib/css/jquery.mobile.structure-1.4.5.min.css"/>
+    <link rel="stylesheet" href="css/app.css" />
 
-  <link rel="stylesheet" href="lib/css/jquery.mobile.structure-1.4.5.min.css">
-  <link rel="stylesheet" href="css/app.css">
+    <script src="lib/js/jquery-2.2.4.min.js"></script>
+    <script src="js/app.js"></script>
 
-  <script src="lib/js/jquery-2.2.4.min.js"></script>
-  <script src="js/app.js"></script>
+    <!-- Should be loaded last -->
+    <script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
+  </head>
+  <body>
+    <!-- Input, button data-role="none" -->
+    <!-- Form data-ajax="false" -->
 
-  <!-- Should be loaded last -->
-  <script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
-
-</head>
-<body>
-  <!-- Input, button data-role="none" -->
-  <!-- Form data-ajax="false" -->
-
-  <!-- Sign in Page -->
-  <section data-role="page" id="signin-page">
-    <div data-role="main">
-      <!-- Pushes our form down to the bottom the screen -->
-      <div class="flex-stretch display-flex flex-align-center flex-justify-center">
-        <!-- svg needs hight and width in here -->
-        <!-- <img src="https://www.fillmurray.com/200/300" alt=""> -->
-      </div> 
-      <form id="signin-form" data-ajax="false" style="padding:1em">
-        <div class="form-control">
-          <label for="signin-username" class="form-label">Username</label>
-          <input id="signin-username" type="text" class="form-input" data-role="none" placeholder="Type your username">
+    <!-- Sign in Page -->
+    <section data-role="page" id="signin-page">
+      <div data-role="main">
+        <!-- Pushes our form down to the bottom the screen -->
+        <div class="signin-header flex-stretch display-flex flex-align-center flex-justify-center">
+          <!-- svg needs hight and width in here -->
+          <img src="imgs/logo-full.png" alt="">
         </div>
-        <div class="form-control">
-          <label for="signin-password" class="form-label">Password</label>
-          <input id="signin-password" type="password" class="form-input" data-role="none" placeholder="Type your password">
-        </div>
-        <div class="form-control">
-          <a href="#map-page" class="form-button">Sign In</a>
-        </div>
-        <div class="form-control" style="text-align:center;font-size: 0.8em">
-          Don't have an account? <a href="#signup-page">Sign Up</a>
-        </div>
-      </form>
-    </div>
-  </section>
-  
-  
+        <form id="signin-form" data-ajax="false" style="padding:1em">
+          <div class="form-control">
+            <label for="signin-username" class="form-label">Username</label>
+            <input
+              id="signin-username"
+              type="text"
+              class="form-input"
+              data-role="none"
+              placeholder="Type your username"
+            />
+          </div>
+          <div class="form-control">
+            <label for="signin-password" class="form-label">Password</label>
+            <input
+              id="signin-password"
+              type="password"
+              class="form-input"
+              data-role="none"
+              placeholder="Type your password"
+            />
+          </div>
+          <div class="form-control">
+            <a href="#map-page" class="form-button">Sign In</a>
+          </div>
+          <div class="form-control" style="text-align:center;font-size: 0.8em">
+            Don't have an account? <a href="#signup-page">Sign Up</a>
+          </div>
+        </form>
+      </div>
+    </section>
 
-
-  <!-- Sign up Page -->
-  <section data-role="page" id="signup-page">
-    <div data-role="main">
-      <h1>Sign Up</h1>
-
-      <form id="signup-form" data-ajax="false" style="padding:1em">
+    <!-- Sign up Page -->
+    <section data-role="page" id="signup-page">
+      <div data-role="main">
+          <div class="signup-header flex-stretch display-flex flex-align-center flex-justify-center">
+          <!-- svg needs hight and width in here -->
+          <img src="imgs/logo-full.png" alt="">
+        </div>
+        <form id="signup-form" data-ajax="false" style="padding:1em">
+          <div class="form-control">
+            <label for="signup-fullname" class="form-label">Full Name</label>
+            <input
+              id="signup-fullname"
+              type="text"
+              class="form-input"
+              data-role="none"
+              placeholder="Type your full name"
+            />
+          </div>
           <div class="form-control">
             <label for="signup-username" class="form-label">Username</label>
-            <input id="signup-username" type="text" class="form-input" data-role="none" placeholder="Type your username">
+            <input
+              id="signup-username"
+              type="text"
+              class="form-input"
+              data-role="none"
+              placeholder="Type your username"
+            />
           </div>
           <div class="form-control">
             <label for="signup-password" class="form-label">Password</label>
-            <input id="signup-password" type="password" class="form-input" data-role="none" placeholder="Type your password">
+            <input
+              id="signup-password"
+              type="password"
+              class="form-input"
+              data-role="none"
+              placeholder="Type your password"
+            />
+          </div>
+          <div class="form-control">
+            <label for="signup-password-confirm" class="form-label">Confirm Password</label>
+            <input
+              id="signup-password-confirm"
+              type="password"
+              class="form-input"
+              data-role="none"
+              placeholder="Re-enter your password"
+            />
           </div>
           <div class="form-control">
             <a href="#list-page" class="form-button">Sign Up</a>
@@ -72,82 +113,389 @@
             Already have an account? <a href="#signin-page">Sign In</a>
           </div>
         </form>
-    </div>
-  </section>
- 
+      </div>
+    </section>
 
+    <!-- Map page -->
+    <section data-role="page" id="map-page">
+      <header data-role="header">
+        <ul>
+          <li>
+            <img class="header-logo" src="imgs/logo.png" alt="Logo" />
+          </li>
+          <li class="flex-stretch"></li>
+          <li><a href="#user-profile-page">[Profile]</a></li>
+        </ul>
+      </header>
+      <footer data-role="footer">
+        <ul>
+          <li><a href="#map-page">Map</a></li>
+          <li><a href="#list-page">List</a></li>
+        </ul>
+      </footer>
+      <div data-role="main">
+        <div class="primary-button-container">
+          <a href="#spotted-page" class="primary-button">Spotted!</a>
+        </div>
+      </div>
+    </section>
 
- 
-  <!-- Map page -->
-  <section data-role="page" id="map-page">
-    <div data-role="main">
-      <h1>Map Page</h1>
-    </div>
-    <footer data-role="footer">
+    <!-- Spotted page -->
+    <section data-role="page" id="spotted-page">
+      <header data-role="header">
+        <ul>
+          <li>
+            <img class="header-logo" src="imgs/logo.png" alt="Logo" />
+          </li>
+          <li class="flex-stretch"></li>
+          <li><a href="#map-page">[Cancel]</a></li>
+        </ul>
+      </header>
+      <div data-role="main">
+        <div class="img-container">
+          <img src="imgs/circle-placeholder.png" alt="Circle" />
+        </div>
+        <div class="flex-stretch content-container">
+          <h1>Spotted!</h1>
+          <form id="spotted-form" data-ajax="false">
+            <div class="form-control">
+              <label for="spotted-habit" class="form-label">
+                What did you see?
+              </label>
+              <div class="relative">
+                <div class="select-div">
+                  <select
+                    name="spotted-habit"
+                    id="spotted-habit"
+                    class="form-select"
+                    data-role="none"
+                  >
+                    <option value="" disabled selected>Select bad habit</option>
+                    <option value="bh1">Bad Habit 1</option>
+                    <option value="bh2">Bad Habit 2</option>
+                    <option value="bh3">Bad Habit 3</option>
+                    <option value="bh4">Bad Habit 4</option>
+                    <option value="bh5">Bad Habit 5</option>
+                    <option value="bh6">Bad Habit 6</option>
+                    <option value="bh7">Bad Habit 7</option>
+                    <option value="bh8">Bad Habit 8</option>
+                    <option value="bh9">Bad Habit 9</option>
+                    <option value="bh10">Bad Habit 10</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-control">
+              <label for="spotted-emotion" class="form-label"
+                >How appalled were you?</label
+              >
+              <input
+                id="spotted-emotion"
+                type="text"
+                class="form-input"
+                data-role="none"
+                placeholder="Do tell.."
+              />
+            </div>
+            <div class="form-control">
+              <a href="#map-page" class="form-button">Report</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
 
-    </footer>
-  </section>
- 
+    <!-- List page -->
+    <section data-role="page" id="list-page">
+      <header data-role="header">
+        <ul>
+          <li>
+            <img class="header-logo" src="imgs/logo.png" alt="Logo" />
+          </li>
+          <li class="flex-stretch"></li>
+          <li><a href="#user-profile-page">[Profile]</a></li>
+        </ul>
+      </header>
+      <footer data-role="footer">
+        <ul>
+          <li><a href="#map-page">Map</a></li>
+          <li><a href="#list-page">List</a></li>
+        </ul>
+      </footer>
+      <div data-role="main">
+        <form id="search-habit-form" data-ajax="false" style="padding:1em">
+          <div class="form-control">
+            <input
+              id="search-input"
+              type="text"
+              class="form-input"
+              data-role="none"
+              placeholder="Search for a habit"
+            />
+          </div>
+        </form>
+        <div class="scroller">
+          <ul class="habit-list">
+            <li><a href="#habit-profile-page">Bad Habit 1</a></li>
+            <li><a href="#habit-profile-page">Bad Habit 2</a></li>
+            <li><a href="#habit-profile-page">Bad Habit 3</a></li>
+            <li><a href="#habit-profile-page">Bad Habit 4</a></li>
+            <li><a href="#habit-profile-page">Bad Habit 5</a></li>
+            <li><a href="#habit-profile-page">Bad Habit 6</a></li>
+            <li><a href="#habit-profile-page">Bad Habit 7</a></li>
+            <div class="primary-button-container">
+              <a href="#add-habit-page" class="primary-button">Add Bad Habit</a>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </section>
 
+    <!-- Add Bad Habit Page -->
+    <section data-role="page" id="add-habit-page">
+      <header data-role="header">
+        <ul>
+          <li>
+            <img class="header-logo" src="imgs/logo.png" alt="Logo" />
+          </li>
+          <li class="flex-stretch"></li>
+          <li><a href="#list-page">[Close]</a></li>
+        </ul>
+      </header>
+      <div data-role="main">
+        <div class="img-container">
+          <img src="imgs/circle-placeholder.png" alt="Circle" />
+        </div>
+        <div class="flex-stretch content-container">
+          <h1>Add Bad Habit</h1>
+          <form id="add-habit-form" data-ajax="false">
+            <div class="form-control">
+              <label for="add-habit-name" class="form-label">
+                Bad Habit Name
+              </label>
+              <input
+                id="add-habit-name"
+                type="text"
+                class="form-input"
+                data-role="none"
+                placeholder="Type the name"
+              />
+            </div>
+            <div class="form-control">
+              <label for="add-habit-meta" class="form-label"> 
+                Why do you dislike it?
+              </label>
+              <input
+                id="add-habit-meta"
+                type="text"
+                class="form-input"
+                data-role="none"
+                placeholder="Type your answer"
+              />
+            </div>
+            <div class="form-control">
+              <a href="#list-page" class="form-button">Create</a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- <footer data-role="footer"></footer> -->
+    </section>
 
- 
-  <!-- List page -->
-  <section data-role="page" id="list-page">
-    <header data-role="header">
-      <h1>Bad Habits</h1>
-      <ul>
-        <!-- <li><a href="#">Back</a></li> -->
-        <li class="flex-stretch"></li>
-        <li><a href="#">+</a></li>
-      </ul>
-    </header>
-    <div data-role="main">
-      <ul>
-        <li><a href="#habit-profile-page">Bad Habit 1</a></li>
-        <li><a href="#habit-profile-page">Bad Habit 2</a></li>
-        <li><a href="#habit-profile-page">Bad Habit 3</a></li>
-        <li><a href="#habit-profile-page">Bad Habit 4</a></li>
-        <li><a href="#habit-profile-page">Bad Habit 5</a></li>
-        <li><a href="#habit-profile-page">Bad Habit 6</a></li>
-        <li><a href="#habit-profile-page">Bad Habit 7</a></li>
-        <li><a href="#habit-profile-page">Bad Habit 8</a></li>
-        <li><a href="#habit-profile-page">Bad Habit 9</a></li>
-        <li><a href="#habit-profile-page">Bad Habit 10</a></li>
-      </ul>
-    </div>
-    <footer data-role="footer">
-      <ul>
-        <li><a href="#map-page">Maps</a></li>
-        <li><a href="#list-page">List</a></li>
-        <li><a href="#user-profile-page">Profile</a></li>
-      </ul>
-    </footer>
-  </section> 
+    <!-- Bad Habit profile page -->
+    <section data-role="page" id="habit-profile-page">
+      <header data-role="header">
+        <ul>
+          <li>
+            <img class="header-logo" src="imgs/logo.png" alt="Logo" />
+          </li>
+          <li class="flex-stretch"></li>
+          <li><a href="#list-page">[Close]</a></li>
+        </ul>
+      </header>
+      <div data-role="main">
+        <div class="img-container">
+          <img src="imgs/circle-placeholder.png" alt="Circle" />
+          <h3>Littering</h3>
+        </div>
+        <div class="flex-stretch content-container">
+          <div class="content-header display-flex">
+            <h1>Bad Habit Profile</h1>
+            <div class="flex-stretch"></div>
+            <div class="edit-button"><a href="#edit-habit-page">Edit</a></div>
+          </div>
+          <dl>
+            <dt>Appalled rating</dt>
+            <dd>4,2</dd>
+            <dt>Counter</dt>
+            <dd>12</dd>
+            <dt>Last Location</dt>
+            <dd>Pine Street</dd>
+            <dt>Common Location</dt>
+            <dd>Market Street, SF</dd>
+          </dl>
+        </div>
+      </div>
+      <!-- <footer data-role="footer"></footer> -->
+    </section>
 
+    <!-- Edit Habit Profile Page -->
+    <section data-role="page" id="edit-habit-page">
+      <header data-role="header">
+        <ul>
+          <li>
+            <img class="header-logo" src="imgs/logo.png" alt="Logo" />
+          </li>
+          <li class="flex-stretch"></li>
+          <li><a href="#" data-rel="back">[Cancel]</a></li>
+        </ul>
+      </header>
+      <div data-role="main">
+        <div class="img-container">
+          <img src="imgs/circle-placeholder.png" alt="Circle" />
+          <h3>Littering</h3>
+        </div>
+        <div class="flex-stretch content-container">
+          <h1>Edit Habit</h1>
+          <form id="edit-habit-form" data-ajax="false">
+            <div class="form-control">
+              <label for="edit-habit-name" class="form-label">
+                Bad Habit Name
+              </label>
+              <input
+                id="edit-habit-name"
+                type="text"
+                class="form-input"
+                data-role="none"
+                placeholder="Type bad habit"
+              />
+            </div>
+            <div class="form-control">
+              <label for="edit-habit-meta" class="form-label"></label>
+                Why do you dislike it?
+              </label>
+              <input
+                id="edit-habit-meta"
+                type="text"
+                class="form-input"
+                data-role="none"
+                placeholder="Type your answer"
+              />
+            </div>
+            <div class="form-control">
+              <a href="#" data-rel="back" class="form-button">Update</a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- <footer data-role="footer"></footer> -->
+    </section>
 
- 
-  <!-- User profile page -->
-  <section data-role="page" id="user-profile-page">
-    <div data-role="main">
-      <h1>User Profile</h1>
-    </div>
-    <footer data-role="footer"></footer>
-  </section>
- 
- 
- 
- 
-  <!-- Bad Habit profile page -->
-  <section data-role="page" id="habit-profile-page">
-    <header data-role="header">
-        <li><a href="#">Back</a></li>
-    </header>
-    <div data-role="main">
-      <h1>Habit Profile</h1>
-    </div>
-    <footer data-role="footer"></footer>
-  </section>
+    <!-- User profile page -->
+    <section data-role="page" id="user-profile-page">
+      <header data-role="header">
+        <ul>
+          <li>
+            <img class="header-logo" src="imgs/logo.png" alt="Logo" />
+          </li>
+          <li class="flex-stretch"></li>
+          <li><a href="#" data-rel="back">[Close]</a></li>
+        </ul>
+      </header>
+      <div data-role="main">
+        <div class="img-container">
+          <img src="imgs/circle-placeholder.png" alt="Circle" />
+          <h3>Jane Doe</h3>
+        </div>
+        <div class="flex-stretch content-container">
+          <div class="content-header display-flex">
+            <h1>User Profile</h1>
+            <div class="flex-stretch"></div>
+            <div class="edit-button"><a href="#edit-user-page">Edit</a></div>
+          </div>
+          <dl>
+            <dt>Current World Status</dt>
+            <dd>Gross</dd>
+            <dt>Bad Habit Incidents</dt>
+            <dd>42</dd>
+            <dt>Most Common</dt>
+            <dd>Littering</dd>
+            <dt>Top Place to Avoid</dt>
+            <dd>Market Street, SF</dd>
+          </dl>
+        </div>
+      </div>
+      <!-- <footer data-role="footer"></footer> -->
+    </section>
 
-
-</body>
+    <!-- Edit User Profile Page -->
+    <section data-role="page" id="edit-user-page">
+      <header data-role="header">
+        <ul>
+          <li><img class="header-logo" src="imgs/logo.png" alt="Logo" /></li>
+          <li class="flex-stretch"></li>
+          <li><a href="#user-profile-page">[Cancel]</a></li>
+        </ul>
+      </header>
+      <div data-role="main">
+        <div class="img-container">
+          <img src="imgs/circle-placeholder.png" alt="Circle" />
+          <h3>Jane Doe</h3>
+        </div>
+        <div class="flex-stretch content-container">
+          <h1>Edit Profile</h1>
+          <form id="edit-user-form" data-ajax="false">
+            <div class="form-control">
+              <label for="edit-user-fullname" class="form-label">Full Name</label>
+              <input
+                id="edit-user-fullname"
+                type="text"
+                class="form-input"
+                data-role="none"
+                placeholder="Type your full name"
+              />
+            </div>
+            <div class="form-control">
+              <label for="edit-username" class="form-label">Username</label>
+              <input
+                id="edit-username"
+                type="text"
+                class="form-input"
+                data-role="none"
+                placeholder="Type name"
+              />
+            </div>
+            <div class="form-control">
+              <label for="edit-user-password" class="form-label"> 
+                Password 
+              </label>
+              <input
+                id="edit-user-password"
+                type="password"
+                class="form-input"
+                data-role="none"
+                placeholder="Type your new password"
+              />
+            </div>
+            <div class="form-control">
+              <label for="edit-user-password-confirm" class="form-label"> 
+                Confirm Password 
+              </label>
+              <input
+                id="edit-user-password-confirm"
+                type="password"
+                class="form-input"
+                data-role="none"
+                placeholder="Re-enter your password"
+              />
+            </div>
+            <div class="form-control">
+              <a href="#user-profile-page" class="form-button">Update</a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- <footer data-role="footer"></footer> -->
+    </section>
+  </body>
 </html>
