@@ -124,7 +124,7 @@
             <img class="header-logo" src="imgs/logo.png" alt="Logo" />
           </li>
           <li class="flex-stretch"></li>
-          <li><a href="#user-profile-page">[Profile]</a></li>
+          <li><a href="#user-profile-page" data-transition="slide">[Profile]</a></li>
         </ul>
       </header>
       <footer data-role="footer">
@@ -135,7 +135,7 @@
       </footer>
       <div data-role="main">
         <div class="primary-button-container">
-          <a href="#spotted-page" class="primary-button">Spotted!</a>
+          <a href="#spotted-page" class="primary-button" data-transition="slideup">Spotted!</a>
         </div>
       </div>
     </section>
@@ -213,7 +213,7 @@
             <img class="header-logo" src="imgs/logo.png" alt="Logo" />
           </li>
           <li class="flex-stretch"></li>
-          <li><a href="#user-profile-page">[Profile]</a></li>
+          <li><a href="#user-profile-page" data-transition="slide">[Profile]</a></li>
         </ul>
       </header>
       <footer data-role="footer">
@@ -236,15 +236,15 @@
         </form>
         <div class="scroller">
           <ul class="habit-list">
-            <li><a href="#habit-profile-page">Bad Habit 1</a></li>
-            <li><a href="#habit-profile-page">Bad Habit 2</a></li>
-            <li><a href="#habit-profile-page">Bad Habit 3</a></li>
-            <li><a href="#habit-profile-page">Bad Habit 4</a></li>
-            <li><a href="#habit-profile-page">Bad Habit 5</a></li>
-            <li><a href="#habit-profile-page">Bad Habit 6</a></li>
-            <li><a href="#habit-profile-page">Bad Habit 7</a></li>
+            <li><a href="#habit-profile-page" data-transition="slide">Bad Habit 1</a></li>
+            <li><a href="#habit-profile-page" data-transition="slide">Bad Habit 2</a></li>
+            <li><a href="#habit-profile-page" data-transition="slide">Bad Habit 3</a></li>
+            <li><a href="#habit-profile-page" data-transition="slide">Bad Habit 4</a></li>
+            <li><a href="#habit-profile-page" data-transition="slide">Bad Habit 5</a></li>
+            <li><a href="#habit-profile-page" data-transition="slide">Bad Habit 6</a></li>
+            <li><a href="#habit-profile-page" data-transition="slide">Bad Habit 7</a></li>
             <div class="primary-button-container">
-              <a href="#add-habit-page" class="primary-button">Add Bad Habit</a>
+              <a href="#add-habit-page" class="primary-button" data-transition="slideup">Add Bad Habit</a>
             </div>
           </ul>
         </div>
@@ -310,7 +310,7 @@
             <img class="header-logo" src="imgs/logo.png" alt="Logo" />
           </li>
           <li class="flex-stretch"></li>
-          <li><a href="#list-page">[Close]</a></li>
+          <li><a href="#list-page" data-transition="slide" data-direction="reverse">[Close]</a></li>
         </ul>
       </header>
       <div data-role="main">
@@ -322,7 +322,7 @@
           <div class="content-header display-flex">
             <h1>Bad Habit Profile</h1>
             <div class="flex-stretch"></div>
-            <div class="edit-button"><a href="#edit-habit-page">Edit</a></div>
+            <div class="edit-button"><a href="#edit-habit-page">[Edit]</a></div>
           </div>
           <dl>
             <dt>Appalled rating</dt>
@@ -399,7 +399,7 @@
             <img class="header-logo" src="imgs/logo.png" alt="Logo" />
           </li>
           <li class="flex-stretch"></li>
-          <li><a href="#" data-rel="back">[Close]</a></li>
+          <li><a href="#" data-rel="back" data-transition="slide" data-direction="reverse">[Close]</a></li>
         </ul>
       </header>
       <div data-role="main">
@@ -411,7 +411,7 @@
           <div class="content-header display-flex">
             <h1>User Profile</h1>
             <div class="flex-stretch"></div>
-            <div class="edit-button"><a href="#edit-user-page">Edit</a></div>
+            <div class="edit-button"><a href="#edit-user-page">[Edit]</a></div>
           </div>
           <dl>
             <dt>Current World Status</dt>
@@ -424,6 +424,9 @@
             <dd>Market Street, SF</dd>
           </dl>
         </div>
+      </div>
+      <div class="form-control" style="text-align:center;font-size: 0.8em">
+        <a href="#signin-page">Logout</a>
       </div>
       <!-- <footer data-role="footer"></footer> -->
     </section>
