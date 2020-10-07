@@ -9,7 +9,12 @@ const checkSigninForm = () => {
   } else {
     sessionStorage.removeItem('userId');
     
-    // HOW TO TELL THEM ?
+    // Trigger failure modal
+    $('#notification-trigger').click();
+
+    // Clear input fields
+    $("#signin-username").val();
+    $("#signin-password").val();
   }
 
   checkUserId();
