@@ -35,7 +35,7 @@
           class="signin-header flex-stretch display-flex flex-align-center flex-justify-center"
         >
           <!-- svg needs hight and width in here -->
-          <img src="imgs/logo-full.png" alt="" />
+          <object data="imgs/logo-full-svg.svg" type="image/svg+xml"></object>
         </div>
         <form id="signin-form" data-ajax="false">
           <div class="input-container">
@@ -105,7 +105,7 @@
           class="signup-header flex-stretch display-flex flex-align-center flex-justify-center"
         >
           <!-- svg needs hight and width in here -->
-          <img src="imgs/logo-full.png" alt="" />
+          <object data="imgs/logo-full-svg.svg" type="image/svg+xml"></object>
         </div>
         <form id="signup-form" data-ajax="false">
           <div class="input-container">
@@ -167,7 +167,7 @@
       <header data-role="header">
         <ul>
           <li>
-            <img class="header-logo" src="imgs/logo.png" alt="Logo" />
+            <object class="header-logo" data="imgs/logo-svg.svg" type="image/svg+xml"></object>
           </li>
           <li>
             <a
@@ -193,81 +193,70 @@
           </div>
         </div> -->
         <div class="primary-button-container">
-          <a href="#spotted-page" class="primary-button" data-transition="slideup">Spotted!</a>
-        </div>
-
-        <div class="modal" id="recent-drawer">
-          <div class="modal-back" data-deactivate="#recent-drawer"></div>
-          <div class="modal-drawer left">
-            <div class="modal-head">Title</div>
-            <div class="modal-body">Links and such</div>
-          </div>
+          <a data-activate="#spotted-drawer" class="primary-button dark">Spotted!</a>
         </div>
       </div>
-    </section>
+        <div class="modal" id="spotted-drawer">
+          <div class="modal-back" data-deactivate="#spotted-drawer"></div>
+            <div class="modal-drawer bottom">
+              <!-- <div class="modal-head">Title</div> -->
+              <div class="floating-img-container">
+                <img src="imgs/mad.png" alt="mad" />
+                <!-- <h3>Spotted!</h3> -->
+              </div>
+              <div class="modal-body">
+                <h1>Spotted!</h1>
+                <form id="spotted-form" class="no-padding" data-ajax="false">
+                  <div class="input-container">
 
-    <!-- Spotted page -->
-    <section data-role="page" id="spotted-page">
-      <header data-role="header">
-        <ul>
-          <li>
-            <img class="header-logo" src="imgs/logo.png" alt="Logo" />
-          </li>
-          <li class="flex-stretch"></li>
-          <li><a href="#map-page">[Cancel]</a></li>
-        </ul>
-      </header>
-      <div data-role="main">
-        <div class="img-container">
-          <img src="imgs/circle-placeholder.png" alt="Circle" />
-        </div>
-        <div class="flex-stretch content-container">
-          <h1>Spotted!</h1>
-          <form id="spotted-form" class="no-padding" data-ajax="false">
-            <div class="form-control">
-              <label for="spotted-habit" class="form-label">
-                What did you see?
-              </label>
-              <div class="relative">
-                <div class="select-div">
-                  <select
-                    name="spotted-habit"
-                    id="spotted-habit"
-                    class="form-select"
-                    data-role="none"
-                  >
-                    <option value="" disabled selected>Select bad habit</option>
-                    <option value="bh1">Bad Habit 1</option>
-                    <option value="bh2">Bad Habit 2</option>
-                    <option value="bh3">Bad Habit 3</option>
-                    <option value="bh4">Bad Habit 4</option>
-                    <option value="bh5">Bad Habit 5</option>
-                    <option value="bh6">Bad Habit 6</option>
-                    <option value="bh7">Bad Habit 7</option>
-                    <option value="bh8">Bad Habit 8</option>
-                    <option value="bh9">Bad Habit 9</option>
-                    <option value="bh10">Bad Habit 10</option>
-                  </select>
-                </div>
+                    <div class="form-control">
+                      <label for="spotted-habit" class="form-label">
+                        What did you see?
+                      </label>
+                      <div class="relative">
+                        <div class="select-div">
+                          <select
+                            name="spotted-habit"
+                            id="spotted-habit"
+                            class="form-select"
+                            data-role="none"
+                          >
+                            <option value="" disabled selected>Select bad habit</option>
+                            <option value="bh1">Bad Habit 1</option>
+                            <option value="bh2">Bad Habit 2</option>
+                            <option value="bh3">Bad Habit 3</option>
+                            <option value="bh4">Bad Habit 4</option>
+                            <option value="bh5">Bad Habit 5</option>
+                            <option value="bh6">Bad Habit 6</option>
+                            <option value="bh7">Bad Habit 7</option>
+                            <option value="bh8">Bad Habit 8</option>
+                            <option value="bh9">Bad Habit 9</option>
+                            <option value="bh10">Bad Habit 10</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-control">
+                      <label for="spotted-emotion" class="form-label"
+                        >How appalled were you?</label
+                      >
+                      <input
+                        id="spotted-emotion"
+                        type="text"
+                        class="form-input"
+                        data-role="none"
+                        placeholder="Do tell.."
+                      />
+                    </div>
+                  </div>
+                  <div class="form-control">
+                    <a href="#map-page" class="form-button">Report</a>
+                  </div>
+                </form>
               </div>
             </div>
-            <div class="form-control">
-              <label for="spotted-emotion" class="form-label"
-                >How appalled were you?</label
-              >
-              <input
-                id="spotted-emotion"
-                type="text"
-                class="form-input"
-                data-role="none"
-                placeholder="Do tell.."
-              />
-            </div>
-            <div class="form-control">
-              <a href="#map-page" class="form-button">Report</a>
-            </div>
-          </form>
-        </div>
+          </div>
+        
       </div>
     </section>
 
@@ -276,7 +265,7 @@
       <header data-role="header">
         <ul>
           <li>
-            <img class="header-logo" src="imgs/logo.png" alt="Logo" />
+            <object class="header-logo" data="imgs/logo-svg.svg" type="image/svg+xml"></object>
           </li>
           <li>
             <a
@@ -400,23 +389,10 @@
               /></a>
             </li>
             <div class="primary-button-container">
-              <!-- <a href="#" data-activate="#list-add-habit" class="primary-button">Add Bad Habit</a> -->
               <a href="#" data-toggle="#add-habit-drawer" class="primary-button"> Add Bad Habit </a>
             </div>
-            <!-- <div class="primary-button-container">
-              <a href="#add-habit-page" class="primary-button" data-transition="slideup">Add Bad Habit</a>
-            </div> -->
           </ul>
         </div>
-        <!-- <div class="floater right bottom">
-            <div class="btn-circle" data-activate="#recent-drawer">
-            <div class="btn-circle" data-toggle="#recent-drawer">
-              &plus;
-            </div>
-          </div> -->
-        <!-- <div class="primary-button-container">
-            <a href="#spotted-page" class="primary-button" data-transition="slideup">Spotted!</a>
-          </div> -->
       </div>
       <div class="modal" id="add-habit-drawer">
         <div class="modal-back" data-deactivate="#add-habit-drawer"></div>
@@ -463,80 +439,6 @@
         </div>
       </div>
 
-      <!-- <div class="modal" id="list-add-habit">
-        <div class="modal-back" data-deactivate="#list-add-habit"></div>
-        <form class="modal-popup" id="list-add-animal-form">
-          <div class="modal-head">
-            <h1>Add Animal</h1>
-          </div>
-          <div class="modal-body">
-            <div class="form-control" data-ajax="false">
-              <label for="list-add-name" class="form-label">Animal Name</label>
-              <input type="text" id="list-add-name" class="form-input" data-role="none">
-              <label for="list-add-Type" class="form-label">Animal Type</label>
-              <input type="text" id="list-add-Type" class="form-input" data-role="none">
-              <label for="list-add-Breed" class="form-label">Animal Breed</label>
-              <input type="text" id="list-add-Breed" class="form-input" data-role="none">
-            </div>
-          </div>
-          <div class="modal-foot">
-            <input type="submit" value="Save" data-role="none" class="form-button">
-          </div>
-        </form>
-      </div> -->
-    </section>
-
-    <!-- Add Bad Habit Page -->
-    <section data-role="page" id="add-habit-page">
-      <header data-role="header">
-        <ul>
-          <li>
-            <img class="header-logo" src="imgs/logo.png" alt="Logo" />
-          </li>
-          <li class="flex-stretch"></li>
-          <li><a href="#list-page">Close</a></li>
-        </ul>
-      </header>
-      <div data-role="main">
-        <div class="img-container">
-          <img src="imgs/circle-placeholder.png" alt="Circle" />
-        </div>
-        <div class="flex-stretch content-container">
-          <h1>Add Bad Habit</h1>
-          <form id="add-habit-form" class="no-padding" data-ajax="false">
-            <div class="input-container">
-              <div class="form-control">
-                <label for="add-habit-name" class="form-label">
-                  Bad Habit Name
-                </label>
-                <input
-                  id="add-habit-name"
-                  type="text"
-                  class="form-input"
-                  data-role="none"
-                  placeholder="Bad Habit Name"
-                />
-              </div>
-              <div class="form-control">
-                <label for="add-habit-meta" class="form-label">
-                  Why do you dislike it?
-                </label>
-                <input
-                  id="add-habit-meta"
-                  type="text"
-                  class="form-input"
-                  data-role="none"
-                  placeholder="Let it all out"
-                />
-              </div>
-            </div>
-            <div class="form-control">
-              <a href="#list-page" class="form-button">Create</a>
-            </div>
-          </form>
-        </div>
-      </div>
-      <!-- <footer data-role="footer"></footer> -->
     </section>
 
     <!-- Bad Habit profile page -->
@@ -544,7 +446,7 @@
       <header data-role="header">
         <ul>
           <li>
-            <img class="header-logo" src="imgs/logo.png" alt="Logo" />
+            <object class="header-logo" data="imgs/logo-svg.svg" type="image/svg+xml"></object>
           </li>
           <li class="flex-stretch"></li>
           <li>
@@ -583,74 +485,18 @@
       <!-- <footer data-role="footer"></footer> -->
     </section>
 
-    <!-- Edit Habit Profile Page -->
-    <section data-role="page" id="edit-habit-page">
-      <header data-role="header">
-        <ul>
-          <li>
-            <img class="header-logo" src="imgs/logo.png" alt="Logo" />
-          </li>
-          <li class="flex-stretch"></li>
-          <li><a href="#" data-rel="back">[Cancel]</a></li>
-        </ul>
-      </header>
-      <div data-role="main">
-        <div class="img-container">
-          <img src="imgs/circle-placeholder.png" alt="Circle" />
-          <h3>Littering</h3>
-        </div>
-        <div class="flex-stretch content-container">
-          <h1>Edit Bad Habit</h1>
-          <form id="edit-habit-form" class="no-padding" data-ajax="false">
-            <div class="input-container">
-              <div class="form-control">
-                <label for="edit-habit-name" class="form-label">
-                  Bad Habit Name
-                </label>
-                <input
-                  id="edit-habit-name"
-                  type="text"
-                  class="form-input"
-                  data-role="none"
-                  placeholder="Type bad habit"
-                />
-              </div>
-              <div class="form-control">
-                <label for="edit-habit-meta" class="form-label">
-                  Why do you dislike it?
-                </label>
-                <input
-                  id="edit-habit-meta"
-                  type="text"
-                  class="form-input"
-                  data-role="none"
-                  placeholder="Type your answer"
-                />
-              </div>
-            </div>
-            <div class="form-control">
-              <a href="#" data-rel="back" class="form-button">Update</a>
-            </div>
-          </form>
-        </div>
-      </div>
-      <!-- <footer data-role="footer"></footer> -->
-    </section>
-
     <!-- User profile page -->
     <section data-role="page" id="user-profile-page">
       <header data-role="header">
         <ul>
           <li>
-            <img class="header-logo" src="imgs/logo.png" alt="Logo" />
+            <object class="header-logo" data="imgs/logo-svg.svg" type="image/svg+xml"></object>
           </li>
-          <li class="flex-stretch"></li>
           <li>
             <a
               href="#"
               data-rel="back"
               data-transition="slide"
-              data-direction="reverse"
               >[Close]</a
             >
           </li>
@@ -663,9 +509,9 @@
         </div>
         <div class="flex-stretch content-container">
           <div class="content-header display-flex">
-            <h1>User Profile</h1>
+            <h1>My Profile</h1>
             <div class="flex-stretch"></div>
-            <div class="edit-button"><a href="#edit-user-page">[Edit]</a></div>
+            <div class="edit-button"><a href="#edit-user-page">[Settings]</a></div>
           </div>
           <dl>
             <dt>Current World Status</dt>
@@ -679,8 +525,8 @@
           </dl>
         </div>
       </div>
-      <div class="form-control" style="text-align:center;font-size: 0.8em">
-        <a href="#" class="js-logout">Logout</a>
+      <div class="form-control center" >
+        <a href="#" class="js-logout emp-link">Logout</a>
       </div>
       <!-- <footer data-role="footer"></footer> -->
     </section>
@@ -689,9 +535,10 @@
     <section data-role="page" id="edit-user-page">
       <header data-role="header">
         <ul>
-          <li><img class="header-logo" src="imgs/logo.png" alt="Logo" /></li>
-          <li class="flex-stretch"></li>
-          <li><a href="#user-profile-page">[Cancel]</a></li>
+          <li>
+            <object class="header-logo" data="imgs/logo-svg.svg" type="image/svg+xml"></object>
+          </li>
+          <li><a href="#" data-rel="back">[Cancel]</a></li>
         </ul>
       </header>
       <div data-role="main">
@@ -704,7 +551,7 @@
           <form id="edit-user-form" class="no-padding" data-ajax="false">
             <div class="input-container">
               <div class="form-control">
-                <label for="edit-user-fullname" class="form-label"></label>
+                <label for="edit-user-fullname" class="form-label">
                   Full Name
                 </label>
                 <input
@@ -737,7 +584,7 @@
                   placeholder="Type your new password"
                 />
               </div>
-              <div class="form-control">
+              <!-- <div class="form-control">
                 <label for="edit-user-password-confirm" class="form-label">
                   Confirm Password
                 </label>
@@ -748,7 +595,7 @@
                   data-role="none"
                   placeholder="Re-enter your password"
                 />
-              </div>
+              </div> -->
             </div>
             <div class="form-control">
               <a href="#user-profile-page" class="form-button">Update</a>
