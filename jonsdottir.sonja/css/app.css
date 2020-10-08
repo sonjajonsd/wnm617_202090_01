@@ -146,7 +146,7 @@ form {
   display: inline-block;
   border-width: 0;
   background-color: var(--color-neutral-light);
-  padding: 0.8em 1.5em;
+  padding: 0.8em 1em;
   border-radius: 1em;
   font: inherit;
   outline: 0;
@@ -206,6 +206,21 @@ dt {
 }
 dd {
   text-align: right;
+}
+
+/* META */
+.stats-item {
+  margin-bottom: 1em;
+}
+.stats-name {
+  font-family: var(--font-serif);
+  font-size: 0.8em;
+  text-transform: uppercase;
+  color: var(--color-sub-medium);
+  margin-bottom: 0.2em;
+}
+.stats-value {
+  font-size: 1.4em;
 }
 
 /* PAGE LAYOUTS */
@@ -406,7 +421,7 @@ dd {
 } */
 
 .img-container {
-  padding: 0 0 2em;
+  padding: 0 0 4vh;
   text-align: center;
 }
 
@@ -418,13 +433,23 @@ dd {
 .content-container {
   background-color: var(--color-white);
   height: 100%;
-  padding: 1em;
+  padding: 2em 1em 0;
   border-radius: 2em 2em 0 0;
   box-shadow: var(--box-shadow);
 }
+.title-container h1 {
+  margin: 0 0 0.2em 0;
+}
+.title-container .meta {
+  font-style: italic;
+  font-weight: 100;
+  color: var(--color-neutral-dark);
+}
 
 .content-header {
-  margin-bottom: 1em;
+  margin-bottom: 2em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid var(--color-main-medium);
 }
 
 .edit-button {
@@ -483,21 +508,18 @@ ul.habit-list {
   padding: 0 1em 2em;
   margin: 0;
 }
-ul.habit-list li {
-  position: relative;
-}
-ul.habit-list li a {
-  color: var(--color-neutral-dark);
-  font-weight: 400;
-  padding: 1em 1.5em;
-  height: 5em;
-  border-radius: 0.5em;
-  position: relative;
-  display: block;
-  margin-bottom: 2em;
+
+.habitlist-item {
+  display: flex;
+  background-color: var(--color-white);
   box-shadow: 0px 8px 16px 6px #dcdcdcd6;
+  border-radius: 0.5em;
+  overflow: hidden;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 2em;
 }
-ul.habit-list li a::before {
+.habitlist-description::before {
   content: "";
   position: absolute;
   background: var(--color-main-dark);
@@ -507,17 +529,23 @@ ul.habit-list li a::before {
   left: -2px;
   border-radius: 0.5em 0 0 0.5em;
 }
-ul.habit-list h3 {
-  margin: 0;
+
+.habitlist-icon img {
+  width: 100px;
+  height: 80px;
+  vertical-align: text-bottom;
+  object-fit: cover;
 }
-ul.habit-list img {
-  position: absolute;
-  right: 0;
-  top: 0;
-  border-radius: 0 0.5em 0.5em 0;
+
+.habitlist-description {
+  padding: 1em 1.5em;
 }
-ul.habit-list p {
-  margin: 0.6em 0;
+.habitlist-description .habit-name {
+  font-family: var(--font-serif);
+  font-size: 1.17em;
+  margin-bottom: 0.4em;
+}
+.habitlist-description .habit-meta {
   font-style: italic;
   font-size: 0.9em;
 }
@@ -611,7 +639,8 @@ a.emp-link {
   flex-direction: column;
 }
 /* For modal-drawer overflow */
-#list-page, #map-page {
+#list-page,
+#map-page {
   flex: 1 1 100%;
   overflow: hidden;
   position: relative;

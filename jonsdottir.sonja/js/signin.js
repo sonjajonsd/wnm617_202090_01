@@ -10,7 +10,7 @@ const checkSigninForm = () => {
     sessionStorage.removeItem('userId');
     
     // Trigger failure modal
-    $('#notification-trigger').click();
+    $('#signin-notification').addClass('active');
 
     // Clear input fields
     $("#signin-username").val();
