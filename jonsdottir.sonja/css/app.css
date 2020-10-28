@@ -136,7 +136,7 @@ form {
 }
 
 .input-container {
-  margin-bottom: 4em;
+  margin-bottom: 2em;
 }
 
 .ui-mobile label.form-label {
@@ -210,11 +210,18 @@ form {
 }
 
 /* PAGE LAYOUTS */
-.signin-header img,
-.signup-header img {
+.signin-header img {
   width: 80vw;
   height: auto;
 }
+.signup-header {
+  flex-direction: column;
+  padding: 0 1em;
+}
+.signup-header h4 {
+  margin: 0;
+  color: var(--color-main-dark);
+} 
 .ui-mobile .ui-page-active {
   display: flex;
   flex-direction: column;
@@ -450,6 +457,9 @@ form {
   font-weight: var(--font-weight-normal);
   text-transform: uppercase;
   font-size: 1em;
+}
+.img-container p {
+  color: var(--color-main-dark);
 }
 
 .img-container .image {
@@ -805,6 +815,20 @@ a.emp-link {
 
 /* MAP PAGE */
 
+#signin-page [data-role="main"] {
+  background-color: var(--color-neutral-light);
+}
+#signin-page .form-input {
+  box-shadow: var(--box-shadow-bottom);
+  background-color: var(--color-white);
+}
+#signup-page [data-role="main"] {
+  background-color: var(--color-neutral-light);
+}
+#signup-page .form-input {
+  box-shadow: var(--box-shadow-bottom);
+  background-color: var(--color-white);
+}
 #map-page [data-role="main"] {
   background-image: url(../imgs/map-image.png);
   background-position: center;

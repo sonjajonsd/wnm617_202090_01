@@ -64,7 +64,7 @@
           </div>
           <div class="form-control" style="text-align:center;font-size: 0.8em">
             Don't have an account?
-            <a href="#signup-page" class="emp-link">Sign Up</a>
+            <a href="#signup-page" data-transition="slide" class="emp-link">Sign Up</a>
           </div>
         </form>
       </div>
@@ -87,8 +87,10 @@
     <!-- Sign up Page -->
     <section data-role="page" id="signup-page">
       <div data-role="main">
-        <div class="signup-header flex-stretch display-flex flex-align-center flex-justify-center">
-          <img src="imgs/logo-full.svg" style="width:calc(100vw - 2em);height:auto;" alt="Logo">
+        <div class="flex-stretch"></div>
+        <div class="signup-header">
+          <h1>Create account</h1>
+          <h4>There's no time like the present to start tracking bad habits!</h4>
         </div>
         <form id="signup-form" data-ajax="false">
           <div class="input-container">
@@ -99,7 +101,7 @@
                 type="text"
                 class="form-input"
                 data-role="none"
-                placeholder="Type your full name"
+                placeholder="Full name"
               />
             </div>
             <div class="form-control">
@@ -109,7 +111,17 @@
                 type="text"
                 class="form-input"
                 data-role="none"
-                placeholder="Type your username"
+                placeholder="Username"
+              />
+            </div>
+            <div class="form-control">
+              <label for="signup-email" class="form-label">Email</label>
+              <input
+                id="signup-email"
+                type="text"
+                class="form-input"
+                data-role="none"
+                placeholder="Email"
               />
             </div>
             <div class="form-control">
@@ -119,7 +131,7 @@
                 type="password"
                 class="form-input"
                 data-role="none"
-                placeholder="Type your password"
+                placeholder="Password"
               />
             </div>
             <div class="form-control">
@@ -131,7 +143,7 @@
                 type="password"
                 class="form-input"
                 data-role="none"
-                placeholder="Re-enter your password"
+                placeholder="Confirm password"
               />
             </div>
           </div>
@@ -139,7 +151,8 @@
             <a href="#list-page" class="form-button">Sign Up</a>
           </div>
           <div class="form-control" style="text-align:center;font-size: 0.8em">
-            Already have an account? <a href="#signin-page" class="emp-link">Sign In</a>
+            Already have an account? 
+            <a href="#signin-page" data-transition="slide" data-direction="reverse" class="emp-link">Sign In</a>
           </div>
         </form>
       </div>
@@ -201,6 +214,18 @@
                       </select>
                     </div>
                   </div>
+                </div>
+                <div class="form-control">
+                  <label for="spotted-address" class="form-label"> 
+                    Location (Address)
+                  </label>
+                  <input
+                    id="spotted-address"
+                    type="text"
+                    class="form-input"
+                    data-role="none"
+                    placeholder="Address"
+                  />
                 </div>
                 <div class="form-control">
                   <label for="spotted-description" class="form-label"> 
@@ -553,6 +578,7 @@
         <div class="img-container">
           <img class="image" src="imgs/profile-picture.jpg" alt="Profile Picture" />
           <h3>Sonja Jonsdottir</h3>
+          <p>Pet peeve: Rude People</p>
         </div>
         <div class="content-container">
           <div class="content-header flex-stretch  display-flex">
@@ -629,7 +655,7 @@
                   class="form-input"
                   data-role="none"
                   value="Sonja Jonsdottir"
-                  placeholder="Type your full name"
+                  placeholder="Full name"
                 />
               </div>
               <div class="form-control">
@@ -640,7 +666,29 @@
                   class="form-input"
                   data-role="none"
                   value="sonjajons"
-                  placeholder="Type name"
+                  placeholder="Username"
+                />
+              </div>
+              <div class="form-control">
+                <label for="edit-email" class="form-label">Email</label>
+                <input
+                  id="edit-email"
+                  type="text"
+                  class="form-input"
+                  data-role="none"
+                  value="sonjajons@gmail.com"
+                  placeholder="Email"
+                />
+              </div>
+              <div class="form-control">
+                <label for="edit-petpeeve" class="form-label">Pet Peeve</label>
+                <input
+                  id="edit-petpeeve"
+                  type="text"
+                  class="form-input"
+                  data-role="none"
+                  value="Rude people"
+                  placeholder="Pet Peeve"
                 />
               </div>
             </div>

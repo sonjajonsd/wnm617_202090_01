@@ -38,6 +38,6 @@ function makeQuery($c, $ps, $p, $makeResults=true) {
 }
 
 echo json_encode(
-  makeQuery(makeConn(), "SELECT * FROM track_users", []),
+  makeQuery(makeConn(), "SELECT * FROM track_locations", []),
   JSON_NUMERIC_CHECK
 );
