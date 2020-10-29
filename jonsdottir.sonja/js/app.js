@@ -12,6 +12,13 @@
  * 
  */
 
+  // query({
+  //   type:'users_all',
+  //   params:[]
+  // }).then(d=>{
+  //   console.log(d)
+  // })
+
  //  Document ready
  $(() => {
 
@@ -21,6 +28,19 @@
   // no semicolon, so they chain onto document
   $(document)
 
+  .on("pagecontainerbeforeshow", function( e, ui ) {
+    console.log('e', e);
+    console.log('ui', ui.toPage[0].id);
+
+    // Page routing
+    switch(ui.toPage[0].id) {
+      case 'list-page': ListPage(); break;
+      case 'map-page': MapPage(); break;
+      case 'user-profile-page': UserProfilePage(); break;
+      case 'habit-profile-page': HabitProfilePage(); break;
+    }
+  })
+
   // FORM SUBMIT
   .on("submit", "#signin-form", function (e) {
     e.preventDefault();
@@ -28,11 +48,16 @@
   })
 
   // ANCHOR CLICKS
-  .on('click', '.js-logout', function (e) {
+  .on('click', '.js-logout', function(e) {
     sessionStorage.removeItem('userId');
     checkUserId();
     $("#signin-username").val('')
     $("#signin-password").val('');
+  })
+
+  .on('click', '.js-habit-jump', function(e) {
+    sessionStorage.habitId = $(this).data('id');
+    $.mobile.navigate('#habit-profile-page');
   })
 
   .on('click', '[data-activate]', function (e) {

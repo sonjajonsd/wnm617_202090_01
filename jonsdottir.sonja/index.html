@@ -14,6 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
 
     <script src="lib/js/jquery-2.2.4.min.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/parts.js"></script>
+    <script src="js/pages.js"></script>
     <script src="js/app.js"></script>
     <script src="js/signin.js"></script>
     <script src="https://kit.fontawesome.com/019c2a78ab.js" crossorigin="anonymous"></script>
@@ -305,99 +308,7 @@
               />
             </div>
           </form>
-          <ul class="habit-list">
-            <li>
-              <a href="#habit-profile-page" class="habitlist-item" >
-                <div class="habitlist-description">
-                  <div class="habit-name">Road Rage</div>
-                  <div class="habit-meta">Don't need that kind of energy</div>
-                </div>
-                <div class="habitlist-icon">
-                  <div class="image">
-                    <i class="fa fa-car-crash"></i>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#habit-profile-page" class="habitlist-item" >
-                <div class="habitlist-description">
-                  <div class="habit-name">Cursing</div>
-                  <div class="habit-meta">Think of the children</div>
-                </div>
-                <div class="habitlist-icon">
-                  <div class="image">
-                    <i class="fas fa-comment-slash"></i>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#habit-profile-page" class="habitlist-item" >
-                <div class="habitlist-description">
-                  <div class="habit-name">Drunk</div>
-                  <div class="habit-meta">Whazt upw with hyou?</div>
-                </div>
-                <div class="habitlist-icon">
-                  <div class="image">
-                    <i class="fas fa-glass-cheers"></i>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#habit-profile-page" class="habitlist-item" >
-                <div class="habitlist-description">
-                  <div class="habit-name">Junk Food</div>
-                  <div class="habit-meta">You know how it is - a moment on the lips, forever on the hips.</div>
-                </div>
-                <div class="habitlist-icon">
-                  <div class="image">
-                    <i class="fas fa-pizza-slice"></i>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#habit-profile-page" class="habitlist-item" >
-                <div class="habitlist-description">
-                  <div class="habit-name">Tardiness</div>
-                  <div class="habit-meta">So rude!</div>
-                </div>
-                <div class="habitlist-icon">
-                  <div class="image">
-                    <i class="fas fa-history"></i>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#habit-profile-page" class="habitlist-item" >
-                <div class="habitlist-description">
-                  <div class="habit-name">Dog Waste</div>
-                  <div class="habit-meta">Please clean up after your dog</div>
-                </div>
-                <div class="habitlist-icon">
-                  <div class="image">
-                    <i class="fas fa-poo"></i>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="#habit-profile-page" class="habitlist-item" >
-                <div class="habitlist-description">
-                  <div class="habit-name">Nose Picking</div>
-                  <div class="habit-meta">So gross</div>
-                </div>
-                <div class="habitlist-icon">
-                  <div class="image">
-                    <i class="fas fa-disease"></i>
-                  </div>
-                </div>
-              </a>
-            </li>
-          </ul>
+          <ul class="habit-list"></ul>
         </div>
         <div class="floater bottom right">
             <a href="#" data-toggle="#add-habit-drawer">
@@ -468,36 +379,16 @@
       <div data-role="main">
         <div class="img-container">
           <div class="image">
-            <i class="fa fa-car-crash"></i>
+            <div class="habit-img"></div>
           </div>
         </div>
         <div class="flex-stretch content-container">
           <div class="content-header display-flex">
-            <div class="title-container">
-                <h1>Road Rage</h1>
-                <div class="meta">Don't need that kind of energy</div>
-            </div>
+            <div class="title-container"></div>
             <div class="flex-stretch"></div>
             <div class="edit-button"><a href="#edit-habit-page"><i class="far fa-edit"></i></a></div>
           </div>
-          <div class="overscroll">
-            <div class="stats-item">
-              <div class="stats-name">Appalled Rating</div>
-              <div class="stats-value">4.2</div>
-            </div>
-            <div class="stats-item">
-              <div class="stats-name">Incident Counter</div>
-              <div class="stats-value">12</div>
-            </div>
-            <div class="stats-item">
-              <div class="stats-name">Last Location</div>
-              <div class="stats-value">Pine Street, SF</div>
-            </div>
-            <div class="stats-item">
-              <div class="stats-name">Common Location</div>
-              <div class="stats-value">Market Street, SF</div>
-            </div>
-          </div>
+          <div class="habit-stats"></div>
         </div>
       </div>
       <!-- <footer data-role="footer"></footer> -->
@@ -576,36 +467,18 @@
       </header>
       <div data-role="main">
         <div class="img-container">
-          <img class="image" src="imgs/profile-picture.jpg" alt="Profile Picture" />
-          <h3>Sonja Jonsdottir</h3>
-          <p>Pet peeve: Rude People</p>
+          <div class="user-img"></div>
+          <div class="user-imgContainer"></div>
         </div>
         <div class="content-container">
           <div class="content-header flex-stretch  display-flex">
-              <div class="title-container">
-                <h1>My Profile</h1>
-                <div class="meta">@sonjajons</div>
-              </div>
+            <div class="user-titleContainer"></div>
             <div class="flex-stretch"></div>
             <div class="edit-button"><a href="#edit-user-page"><i class="fa fa-cog"></i></a></div>
           </div>
           <div class="overscroll">
-            <div class="stats-item">
-              <div class="stats-name">Current World View</div>
-              <div class="stats-value">Gross</div>
-            </div>
-            <div class="stats-item">
-              <div class="stats-name">Bad Habit Encounters</div>
-              <div class="stats-value">42</div>
-            </div>
-            <div class="stats-item">
-              <div class="stats-name">Most Common Bad Habit</div>
-              <div class="stats-value">Dog waste</div>
-            </div>
-            <div class="stats-item">
-              <div class="stats-name">Top Place to Avoid</div>
-              <div class="stats-value">Market Street, SF</div>
-            </div>
+            <div class="user-stats"></div>
+            <div class="user-stats-encounters"></div>
           </div>
         </div>
       </div>

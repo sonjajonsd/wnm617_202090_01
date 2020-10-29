@@ -587,8 +587,8 @@ form {
   overflow: hidden;
 }
 .ui-header {
-  height: 6em;
-  line-height: 6em;
+  height: 5em;
+  line-height: 5em;
 }
 .ui-footer {
   box-shadow: var(--box-shadow-bottom);
