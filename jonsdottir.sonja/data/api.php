@@ -83,10 +83,22 @@ function makeStatement($data) {
 
     case "user_total_encounters":
       return makeQuery($c,"SELECT COUNT(*) FROM `track_habits` WHERE `user_id`=?",$p);
+    
+    // case "most_common_habit_by_user":
+    //   return makeQuery($c,"SELECT `name`, COUNT(*) AS magnitude FROM `track_habits` WHERE `user_id`=? GROUP BY `name` ORDER BY magnitude DESC LIMIT 1",$p);
       
+    case "join_user_habit":
+    return makeQuery($c,"SELECT * FROM `track_users` AS users JOIN `track_habits` AS habits ON users.id = habits.user_id WHERE `user_id`=?",$p);
+    
     case "most_recent_habits":
-      // API CALL that returns the most recent locations of each of this users habits
-      return makeQuery($c,"SELECT * FROM `track_locations` WHERE `user_id`=?",$p);
+    // API CALL that returns the most recent locations of each of this users habits
+    return makeQuery($c, "SELECT * FROM `track_habits` AS habits JOIN `track_locations` AS locs ON habits.id = locs.habit_id WHERE `user_id`=?", $p);
+
+    case "join_user_habit_locations":
+      return makeQuery($c, "SELECT * FROM `track_habits` AS habits JOIN `track_locations` AS locs ON habits.id = locs.habit_id WHERE `user_id`=?", $p);
+    
+    case "most_common_habit_by_user":
+      return makeQuery($c, "SELECT `name`, COUNT(*) AS magnitude FROM `track_habits` AS habits JOIN `track_locations` AS locs ON habits.id = locs.habit_id WHERE `user_id`=?  GROUP BY `name` ORDER BY magnitude DESC LIMIT 1", $p);
 
 
     default:

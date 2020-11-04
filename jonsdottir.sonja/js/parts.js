@@ -55,6 +55,9 @@ const makeUserStatsEncounter = templater(o => `
     </div>
 `);
 
+const makeUserInitials = templater(o => `
+  <li><a href="#user-profile-page" class="profile-btn"> ${o.initials} </a></li>
+`)
 
 const makeHabitImg = templater(o => `
   <i class="${o.icon}"></i>
