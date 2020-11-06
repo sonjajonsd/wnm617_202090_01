@@ -82,11 +82,44 @@ function makeStatement($data) {
       return makeQuery($c,"SELECT * FROM `track_users` WHERE `username`=? AND `password`=md5(?)",$p);
 
     case "user_total_encounters":
-      return makeQuery($c,"SELECT COUNT(*) FROM `track_habits` WHERE `user_id`=?",$p);
+      return makeQuery($c, "SELECT count(l.id) as encounters
+        FROM `track_habits` h
+        RIGHT JOIN `track_locations` l
+        ON h.id = l.habit_id
+        WHERE h.user_id=?
+        ", $p);
     
-    // case "most_common_habit_by_user":
-    //   return makeQuery($c,"SELECT `name`, COUNT(*) AS magnitude FROM `track_habits` WHERE `user_id`=? GROUP BY `name` ORDER BY magnitude DESC LIMIT 1",$p);
-      
+    case "most_common_habit_by_user":
+      return makeQuery($c, "SELECT h.name, count(l.id) as encounters
+        FROM `track_habits` h
+        RIGHT JOIN `track_locations` l
+        ON h.id = l.habit_id
+        WHERE h.user_id=?
+        GROUP BY l.habit_id
+        ORDER BY encounters DESC
+        LIMIT 1
+        ", $p);
+    
+    case "total_appalled_by_user":
+      return makeQuery($c, "SELECT l.appalled_rating, count(l.id) as encounters
+        FROM `track_habits` h
+        RIGHT JOIN `track_locations` l
+        ON h.id = l.habit_id
+        WHERE h.user_id=?
+        GROUP BY l.habit_id
+        ORDER BY encounters DESC
+        ", $p);
+    
+    case "last_encounter_by_user":
+      return makeQuery($c, "SELECT h.name, l.date_create
+        FROM `track_habits` h
+        RIGHT JOIN `track_locations` l
+        ON h.id = l.habit_id
+        WHERE h.user_id=?
+        ORDER BY l.date_create DESC
+        LIMIT 1
+        ", $p);
+
     case "join_user_habit":
     return makeQuery($c,"SELECT * FROM `track_users` AS users JOIN `track_habits` AS habits ON users.id = habits.user_id WHERE `user_id`=?",$p);
     
@@ -99,7 +132,18 @@ function makeStatement($data) {
     
     case "most_common_habit_by_user":
       return makeQuery($c, "SELECT `name`, COUNT(*) AS magnitude FROM `track_habits` AS habits JOIN `track_locations` AS locs ON habits.id = locs.habit_id WHERE `user_id`=?  GROUP BY `name` ORDER BY magnitude DESC LIMIT 1", $p);
-
+      
+    case "recent_locations":
+      return makeQuery($c, "SELECT * 
+        FROM `track_habits` h
+        RIGHT JOIN (
+          SELECT * FROM `track_locations`
+          ORDER BY `date_create` DESC
+        ) l
+        ON h.id = l.habit_id
+        WHERE h.user_id=?
+        GROUP BY l.habit_id
+        ", $p);
 
     default:
       return ["error"=>"No Matched Type"];

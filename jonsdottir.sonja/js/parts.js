@@ -14,6 +14,12 @@ const makeHabitList = templater(o => `<li>
     </div>
   </li>`);
 
+const makeEmptyList = () => `<li>
+  <li>
+    You're not trackin any bat habits.. yet!
+    Try clicking the big red plus to add a new bad habit to track.
+  </li>`;
+
 const makeUserImg = templater(o => `
 <img class="image" src="${o.img}" alt="Profile Picture" />
 `);
@@ -29,31 +35,25 @@ const makeUserTitleContainer = templater(o => `
   </div>
 `);
 
-const makeUserStats = templater(o => `
+const makeUserStats = (o) => {
+  return `
     <div class="stats-item">
       <div class="stats-name">Current World View</div>
-      <div class="stats-value">Gross</div>
+      <div class="stats-value">${o.appalledAvg}</div>
     </div>
     <div class="stats-item">
       <div class="stats-name">Bad Habit Encounters</div>
-      <div class="stats-value">42</div>
+      <div class="stats-value">${o.encounters}</div>
     </div>
     <div class="stats-item">
       <div class="stats-name">Most Common Bad Habit</div>
-      <div class="stats-value">Dog waste</div>
+      <div class="stats-value">${o.mostCommon}</div>
     </div>
     <div class="stats-item">
-      <div class="stats-name">Top Place to Avoid</div>
-      <div class="stats-value">Market Street, SF</div>
+      <div class="stats-name">Last incident report</div>
+      <div class="stats-value">${o.latest}</div>
     </div>
-`);
-
-const makeUserStatsEncounter = templater(o => `
-    <div class="stats-item">
-      <div class="stats-name">Bad Habit Encounters</div>
-      <div class="stats-value">${o}</div>
-    </div>
-`);
+`;}
 
 const makeUserInitials = templater(o => `
   <li><a href="#user-profile-page" class="profile-btn"> ${o.initials} </a></li>
