@@ -77,12 +77,11 @@ const HabitProfilePage = async () => {
   $("#habit-profile-page .title-container").html(makeHabitTitleContainer(d.result));
 
   let last = await query({type:'last_encounter_by_habit', params: [sessionStorage.habitId]});
-  console.log('lassst', last);
-  let lastMarker = { lat: last.lat, lng: last.lng};
+  // console.log('lassst', last);
   let count = await query({type:'habit_total_encounters', params: [sessionStorage.habitId]});
-  console.log('habit_total_encounters', count);
+  // console.log('habit_total_encounters', count);
   let rating = await query({type:'locations_by_habit_id', params: [sessionStorage.habitId]});
-  console.log('rating', rating);
+  // console.log('rating', rating);
   
   let total = 0;
   let cntr = rating.result.length;
