@@ -69,22 +69,20 @@ const makeHabitTitleContainer = templater(o => `
 `);
 
 const makeHabitStats = templater(o => `
-  <div class="overscroll">
-    <div class="stats-item">
-      <div class="stats-name">Appalled Rating</div>
-      <div class="stats-value">${o.appalled_result}</div>
-    </div>
-    <div class="stats-item">
-      <div class="stats-name">Incident Counter</div>
-      <div class="stats-value">${o.incident_count}</div>
-    </div>
-    <div class="stats-item">
-      <div class="stats-name">Last Location</div>
-      <div class="stats-value">Pine Street, SF</div>
-    </div>
-    <div class="stats-item">
-      <div class="stats-name">Common Location</div>
-      <div class="stats-value">Market Street, SF</div>
-    </div>
+  <div class="stats-item">
+    <div class="stats-name">Average Appalled Rating</div>
+    <div class="stats-value">${o.avgAppalled}</div>
+  </div>
+  <div class="stats-item">
+    <div class="stats-name">Incident Counter</div>
+    <div class="stats-value">${o.count}</div>
+  </div>
+  <div class="stats-item">
+    <div class="stats-name">Latest Report</div>
+    <div class="stats-value">${o.last}</div>
+  </div>
+  <div class="stats-item">
+    <div class="stats-name">Description</div>
+    <div class="stats-value">${o.description}</div>
   </div>
 `);

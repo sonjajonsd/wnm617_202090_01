@@ -427,11 +427,11 @@ form {
   background-color: var(--color-sub-dark);
   overflow: initial;
 }
+
 #edit-habit-page .ui-header::after,
 #edit-user-page .ui-header::after,
 #edit-password-page .ui-header::after,
-#user-profile-page .ui-header::after,
-#habit-profile-page .ui-header::after {
+#user-profile-page .ui-header::after{
   content: '';
   height: 25vmax;
   width: 105%;
@@ -444,8 +444,37 @@ form {
   box-shadow: var(--box-shadow-dark);
 }
 
-.img-container {
+.fixed-img-container {
+  position: absolute;
   padding: 0 0 4vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  top: 22vh;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+.fixed-img-container .image {
+  height: 16vh;
+  width: 16vh;
+  border-radius: 100%;
+  border: 8px solid var(--color-white);
+  background-color: var(--color-main-dark);
+
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fixed-img-container .image i {
+  font-size: 4em;
+  color: var(--color-white);
+}
+
+.img-container {
+  padding: 4vh 0 4vh;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -587,8 +616,7 @@ form {
   overflow: hidden;
 }
 .ui-header {
-  height: 5em;
-  line-height: 5em;
+  height: 4em;
 }
 .ui-footer {
   box-shadow: var(--box-shadow-bottom);
@@ -821,6 +849,13 @@ a.emp-link {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.map-container {
+  height: 30vh;
+  overflow: hidden;
+  margin-bottom: 4.5em;
+  position: relative;
 }
 
 /* MAP PAGE */

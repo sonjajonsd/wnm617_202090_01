@@ -75,6 +75,38 @@ const HabitProfilePage = async () => {
   let d = await query({type:'habit_by_id', params: [sessionStorage.habitId]});
   $("#habit-profile-page .habit-img").html(makeHabitImg(d.result));
   $("#habit-profile-page .title-container").html(makeHabitTitleContainer(d.result));
-  $("#habit-profile-page .habit-stats").html(makeHabitStats(d.result));
+
+  let last = await query({type:'last_encounter_by_habit', params: [sessionStorage.habitId]});
+  console.log('lassst', last);
+  let lastMarker = { lat: last.lat, lng: last.lng};
+  let count = await query({type:'habit_total_encounters', params: [sessionStorage.habitId]});
+  console.log('habit_total_encounters', count);
+  let rating = await query({type:'locations_by_habit_id', params: [sessionStorage.habitId]});
+  console.log('rating', rating);
+  
+  let total = 0;
+  let cntr = rating.result.length;
+
+  rating.result.forEach(r => {
+    total += r.appalled_rating;
+  });
+
+  const appalledAvg = count ? total / cntr : 0;
+
+  const stats = {
+    last: last.result[0].date_create,
+    count: count.result[0].encounters,
+    description: last.result[0].description,
+    avgAppalled: APPALLED_MEANING[Math.round(appalledAvg)]
+  };
+  $("#habit-profile-page .habit-stats").html(makeHabitStats(stats));
+
+  let valid_habits = rating.result.reduce((r,o)=>{
+    // o.icon = o.img;
+    if(o.lat && o.lng) r.push(o);
+    return r;
+  },[])
+
+  let map_el = await makeMap("#habit-profile-page .map", last.result[0]);
+  makeMarkers(map_el, valid_habits);
 }
-       

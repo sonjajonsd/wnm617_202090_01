@@ -120,6 +120,24 @@ function makeStatement($data) {
         LIMIT 1
         ", $p);
 
+    case "last_encounter_by_habit":
+      return makeQuery($c, "SELECT h.name, l.date_create, l.description, l.lng, l.lat
+        FROM `track_habits` h
+        RIGHT JOIN `track_locations` l
+        ON h.id = l.habit_id
+        WHERE h.id=?
+        ORDER BY l.date_create DESC
+        LIMIT 1
+        ", $p);
+
+    case "habit_total_encounters":
+      return makeQuery($c, "SELECT count(l.id) as encounters
+        FROM `track_habits` h
+        RIGHT JOIN `track_locations` l
+        ON h.id = l.habit_id
+        WHERE h.id=?
+        ", $p);
+        
     case "join_user_habit":
     return makeQuery($c,"SELECT * FROM `track_users` AS users JOIN `track_habits` AS habits ON users.id = habits.user_id WHERE `user_id`=?",$p);
     
