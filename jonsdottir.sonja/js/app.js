@@ -37,7 +37,12 @@
       case 'list-page': ListPage(); break;
       case 'map-page': MapPage(); break;
       case 'user-profile-page': UserProfilePage(); break;
+      case 'edit-user-page': EditUserPage(); break;
       case 'habit-profile-page': HabitProfilePage(); break;
+      case 'edit-habit-page': EditHabitPage(); break;
+      case 'signin-page': SignInPage(); break;
+      case 'signup-page': SignUpPage(); break;
+      case 'signup-details-page': SignUpDetailsPage(); break;
     }
   })
 

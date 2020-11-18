@@ -26,7 +26,7 @@ const checkSigninForm = async () => {
 }
 
 const checkUserId = () => {
-  let p = ['#signin-page', '#signup-page', ''];
+  let p = ['#signin-page', '#signup-page', '#signup-details-page',''];
 
   if (sessionStorage.userId === undefined) {
     if (!p.some(pId => window.location.hash === pId)) {

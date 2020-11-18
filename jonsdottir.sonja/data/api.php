@@ -62,7 +62,7 @@ function makeStatement($data) {
       break;
 
     case 'user_by_id':
-      return makeQuery($c, "SELECT * FROM `track_users` WHERE `id`=?", $p);
+      return makeQuery($c, "SELECT id,name, username,email,date_create,img,pet_peeve  FROM `track_users` WHERE `id`=?", $p);
       break;
     case 'habit_by_id':
       return makeQuery($c, "SELECT * FROM `track_habits` WHERE `id`=?", $p);

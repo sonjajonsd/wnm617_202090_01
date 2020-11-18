@@ -36,31 +36,12 @@
     <section data-role="page" id="signin-page">
       <div data-role="main">
         <div class="signin-header flex-stretch display-flex flex-align-center flex-justify-center">
-          <img src="imgs/logo-full.svg" style="width:calc(100vw - 2em);height:auto;" alt="Logo">
+          <img src="imgs/logo-full.svg" style="width:calc(100vw - 2em);height:auto;z-index:1;" alt="Logo">
+          <div class="pattern"></div>
         </div>
         <form id="signin-form" data-ajax="false">
           <div class="input-container">
-            <div class="form-control">
-              <label for="signin-username" class="form-label">Username</label>
-              <input
-                id="signin-username"
-                type="text"
-                class="form-input"
-                data-role="none"
-                placeholder="Username"
-              />
-            </div>
-            <div class="form-control">
-              <label for="signin-password" class="form-label">Password</label>
-              <input
-                id="signin-password"
-                type="password"
-                class="form-input"
-                data-role="none"
-                placeholder="Password"
-              />
-            </div>
-          </div>
+            <div class="form-content"></div>
           <div class="form-control">
             <input
               type="submit"
@@ -69,7 +50,7 @@
               data-role="none"
             />
           </div>
-          <div class="form-control" style="text-align:center;font-size: 0.8em">
+          <div class="form-control text-center sm-font">
             Don't have an account?
             <a href="#signup-page" data-transition="slide" class="emp-link">Sign Up</a>
           </div>
@@ -94,72 +75,49 @@
     <!-- Sign up Page -->
     <section data-role="page" id="signup-page">
       <div data-role="main">
-        <div class="flex-stretch"></div>
+        <div class="flex-stretch">
+            <div class="pattern grayscale"></div>
+        </div>
         <div class="signup-header">
           <h1>Create account</h1>
           <h4>There's no time like the present to start tracking bad habits!</h4>
         </div>
         <form id="signup-form" data-ajax="false">
           <div class="input-container">
-            <div class="form-control">
-              <label for="signup-fullname" class="form-label">Full Name</label>
-              <input
-                id="signup-fullname"
-                type="text"
-                class="form-input"
-                data-role="none"
-                placeholder="Full name"
-              />
-            </div>
-            <div class="form-control">
-              <label for="signup-username" class="form-label">Username</label>
-              <input
-                id="signup-username"
-                type="text"
-                class="form-input"
-                data-role="none"
-                placeholder="Username"
-              />
-            </div>
-            <div class="form-control">
-              <label for="signup-email" class="form-label">Email</label>
-              <input
-                id="signup-email"
-                type="text"
-                class="form-input"
-                data-role="none"
-                placeholder="Email"
-              />
-            </div>
-            <div class="form-control">
-              <label for="signup-password" class="form-label">Password</label>
-              <input
-                id="signup-password"
-                type="password"
-                class="form-input"
-                data-role="none"
-                placeholder="Password"
-              />
-            </div>
-            <div class="form-control">
-              <label for="signup-password-confirm" class="form-label"> 
-                Confirm Password 
-              </label>
-              <input
-                id="signup-password-confirm"
-                type="password"
-                class="form-input"
-                data-role="none"
-                placeholder="Confirm password"
-              />
-            </div>
+            <div class="form-content"></div>
           </div>
           <div class="form-control">
-            <a href="#list-page" class="form-button">Sign Up</a>
+            <!-- <a href="#signup-details-page" class="form-button" data-role="none">Sign Up</a> -->
+            <button type="submit" class="form-button" data-role="none">Sign Up</button>
           </div>
-          <div class="form-control" style="text-align:center;font-size: 0.8em">
+          <div class="form-control text-center sm-font">
             Already have an account? 
             <a href="#signin-page" data-transition="slide" data-direction="reverse" class="emp-link">Sign In</a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- SIGNUP DETAILS -->
+    <section data-role="page" id="signup-details-page">
+      <div data-role="main">
+        <div class="flex-stretch">
+            <div class="pattern grayscale"></div>
+        </div>
+        <div class="signup-header">
+          <h1>Create account</h1>
+          <h4>Please fill in the form below</h4>
+        </div>
+        <form id="signup-details-form" data-ajax="false">
+          <div class="input-container">
+            <!-- IMAGE FORM -->
+            <div class="form-content"></div>
+          </div>
+          <div class="form-control">
+            <button type="submit" class="form-button" data-role="none">Confirm</button>
+          </div>
+          <div class="form-control text-center sm-font">
+            <a href="#signin-page" data-transition="slide" data-direction="reverse" class="emp-link">Skip</a>
           </div>
         </form>
       </div>
@@ -181,15 +139,6 @@
       </footer>
       <div data-role="main">
         <div class="map"></div>
-        <!-- <a href="#" class="location-button" data-activate="#location-info">
-          <i class="fas fa-map-marker-alt"></i>
-        </a>
-        <a href="" class="location-button" data-activate="#location-info">
-          <i class="fas fa-map-marker-alt"></i>
-        </a>
-        <a href="" class="location-button" data-activate="#location-info">
-          <i class="fas fa-map-marker-alt"></i>
-        </a> -->
         <div class="primary-button-container">
           <a data-activate="#spotted-drawer" class="primary-button dark">Spotted!</a>
         </div>
@@ -270,11 +219,7 @@
       <div class="modal" id="location-info">
           <div class="modal-back" data-deactivate="#location-info"></div>
           <div class="modal-popup">
-            <div class="modal-body location">
-              <h1>Road Rage</h1>
-              <p class="location-addr"><i class="fas fa-map-marker-alt"></i> 1225 Market Street</p>
-              <p class="location-desc">The driver shouted at the dog walker walking cross the street. So much wrath, so much cursing, should track cursing as well.</p>
-            </div>
+            <div class="modal-body location"></div>
             <div class="modal-foot">
               <a href="#" data-deactivate="#location-info">Ok</a>
             </div>
@@ -383,18 +328,18 @@
         <div class="map-container">
           <div class="map"></div>
         </div>
-        <div class="fixed-img-container">
+        <div class="fixed-img-container flex-none">
           <div class="image">
             <div class="habit-img"></div>
           </div>
         </div>
-        <div class="flex-stretch content-container">
-          <div class="content-header display-flex">
-            <div class="title-container"></div>
-            <div class="flex-stretch"></div>
-            <div class="edit-button"><a href="#edit-habit-page"><i class="far fa-edit"></i></a></div>
-          </div>
-          <div class="overscroll">
+        <div class="habit-content-header display-flex">
+          <div class="title-container"></div>
+          <div class="flex-stretch"></div>
+          <div class="edit-button"><a href="#edit-habit-page"><i class="far fa-edit"></i></a></div>
+        </div>
+        <div class="flex-stretch content-container no-overflow">
+          <div class="overscroll top-padding">
             <div class="habit-stats"></div>
           </div>
         </div>
@@ -425,30 +370,6 @@
             <h1>Edit Bad Habit</h1>
             <form id="edit-habit-form" class="no-padding" data-ajax="false">
               <div class="input-container">
-                <div class="form-control">
-                  <label for="edit-habit-name" class="form-label">
-                    Habit Name
-                  </label>
-                  <input
-                    id="edit-habit-fullname"
-                    type="text"
-                    class="form-input"
-                    data-role="none"
-                    value="Road Rage"
-                    placeholder="What shall it be.."
-                  />
-                </div>
-                <div class="form-control">
-                  <label for="edit-habit-meta" class="form-label">Why do you dislike it?</label>
-                  <input
-                    id="edit-habit-meta"
-                    type="text"
-                    class="form-input"
-                    data-role="none"
-                    value="Don't need that kind of energy"
-                    placeholder="Do tell.."
-                  />
-                </div>
               </div>
               <div class="form-control">
                 <a href="#" data-rel="back" class="form-button">Update</a>
@@ -524,52 +445,6 @@
           </div>
           <form id="edit-user-form" class="no-padding" data-ajax="false">
             <div class="input-container">
-              <div class="form-control">
-                <label for="edit-user-fullname" class="form-label">
-                  Full Name
-                </label>
-                <input
-                  id="edit-user-fullname"
-                  type="text"
-                  class="form-input"
-                  data-role="none"
-                  value="Sonja Jonsdottir"
-                  placeholder="Full name"
-                />
-              </div>
-              <div class="form-control">
-                <label for="edit-username" class="form-label">Username</label>
-                <input
-                  id="edit-username"
-                  type="text"
-                  class="form-input"
-                  data-role="none"
-                  value="sonjajons"
-                  placeholder="Username"
-                />
-              </div>
-              <div class="form-control">
-                <label for="edit-email" class="form-label">Email</label>
-                <input
-                  id="edit-email"
-                  type="text"
-                  class="form-input"
-                  data-role="none"
-                  value="sonjajons@gmail.com"
-                  placeholder="Email"
-                />
-              </div>
-              <div class="form-control">
-                <label for="edit-petpeeve" class="form-label">Pet Peeve</label>
-                <input
-                  id="edit-petpeeve"
-                  type="text"
-                  class="form-input"
-                  data-role="none"
-                  value="Rude people"
-                  placeholder="Pet Peeve"
-                />
-              </div>
             </div>
             <div class="form-control">
               <a href="#" class="form-button">Update</a>

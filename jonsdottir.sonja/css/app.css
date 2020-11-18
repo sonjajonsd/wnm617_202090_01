@@ -76,6 +76,9 @@ a:hover {
   width: 100%;
   overflow: auto;
 }
+.no-overflow {
+  overflow: hidden;
+}
 
 .hidden {
   display: none;
@@ -121,6 +124,42 @@ a:hover {
 
 .no-padding {
   padding: 0;
+}
+
+.top-padding {
+  padding-top: 1em;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.sm-font {
+  font-size: 0.8em;
+}
+
+.lg-font {
+  font-size: 1.2em;
+}
+
+.grayscale {
+  filter: grayscale(1);
+}
+
+/* PATTERN */
+
+.pattern {
+  background-image: url(../imgs/sp-pattern.png);
+  background-size: 100px auto;
+  position: absolute;
+  top: 0;
+  height: 490px;
+  width: 100%;
+  opacity: 0.1;
+  box-shadow: 0 0 350px 100px var(--color-neutral-light) inset;
+}
+#signin-form, #signup-form, #signup-details-form {
+  z-index: 1;
 }
 
 /* FORMS */
@@ -195,7 +234,7 @@ form {
 
 /* META */
 .stats-item {
-  margin-bottom: 1.5em;
+  margin-bottom: 1.2em;
 }
 .stats-name {
   font-family: var(--font-serif);
@@ -205,7 +244,7 @@ form {
   margin-bottom: 0.2em;
 }
 .stats-value {
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: var(--font-weight-normal);
 }
 
@@ -344,6 +383,9 @@ form {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
+.modal-body.location h1 {
+  margin: 0.5em 0 1em;
+}
 .modal-body.location {
   text-align: left;
 }
@@ -446,18 +488,17 @@ form {
 
 .fixed-img-container {
   position: absolute;
-  padding: 0 0 4vh;
   text-align: center;
   display: flex;
   flex-direction: column;
-  top: 22vh;
+  top: 23vh;
   right: 0;
   left: 0;
   margin: auto;
 }
 .fixed-img-container .image {
-  height: 16vh;
-  width: 16vh;
+  height: 14vh;
+  width: 14vh;
   border-radius: 100%;
   border: 8px solid var(--color-white);
   background-color: var(--color-main-dark);
@@ -469,7 +510,7 @@ form {
 }
 
 .fixed-img-container .image i {
-  font-size: 4em;
+  font-size: 3.5em;
   color: var(--color-white);
 }
 
@@ -536,6 +577,12 @@ form {
   border-bottom: 1px solid var(--color-main-medium);
 }
 
+.habit-content-header {
+  padding: 0 0 1em;
+  margin: 3em 1em 0;
+  border-bottom: 1px solid var(--color-main-medium);
+}
+
 
 /* ICON BUTTONS */
 .edit-button i {
@@ -546,23 +593,6 @@ form {
 .back-button i {
   font-size: 1.4em;
   color: var(--color-main-dark);
-}
-.location-button {
-  font-size: 1.8em;
-  color: var(--color-main-dark);
-  position: absolute;
-}
-.location-button:nth-of-type(1) {
-  top: 6.5em;
-  left: 2em;
-}
-.location-button:nth-of-type(2) {
-  top: 9em;
-  right: 2em;
-}
-.location-button:nth-of-type(3) {
-  top: 2em;
-  left: 8em;
 }
 
 /* EMOTION STYLES */
@@ -795,6 +825,10 @@ a.emp-link {
   display: flex;
   flex-direction: column;
 }
+#signup-details-page [data-role="main"] {
+  display: flex;
+  flex-direction: column;
+}
 #edit-user-page [data-role="main"] {
   display: flex;
   flex-direction: column;
@@ -804,6 +838,10 @@ a.emp-link {
   flex-direction: column;
 }
 #edit-password-page [data-role="main"] {
+  display: flex;
+  flex-direction: column;
+}
+#habit-profile-page [data-role="main"] {
   display: flex;
   flex-direction: column;
 }
@@ -854,8 +892,8 @@ a.emp-link {
 .map-container {
   height: 30vh;
   overflow: hidden;
-  margin-bottom: 4.5em;
   position: relative;
+  flex: none;
 }
 
 /* MAP PAGE */

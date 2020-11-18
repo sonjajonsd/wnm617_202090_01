@@ -82,7 +82,145 @@ const makeHabitStats = templater(o => `
     <div class="stats-value">${o.last}</div>
   </div>
   <div class="stats-item">
-    <div class="stats-name">Description</div>
+    <div class="stats-name">Incident Report</div>
     <div class="stats-value">${o.description}</div>
   </div>
 `);
+
+const makeHabitPopup = o => `
+  <div>
+    <h1>${o.name}</h1>
+    <p class="location-addr"><i class="fas fa-map-marker-alt"></i>${o.address}</p>
+    <p class="location-desc">${o.description}</p>
+  </div>
+`;
+  // <div class="form-button js-habit-jump" data-id="${o.habit_id}" style="width:100%">Go to habit page</div>
+
+
+const FormControl = ({displayName, name, namespace, type, value, placeholder}) => {
+  return `
+  <div class="form-control">
+    <label for="edit-habit-name" class="form-label">
+      ${displayName}
+    </label>
+    <input
+      id="${namespace}-${name}"
+      type="${type}"
+      class="form-input"
+      data-role="none"
+      value="${value}"
+      placeholder="${placeholder}" />
+  </div>
+  `;
+}
+
+const makeHabitUpdateForm = o => `
+  ${FormControl({
+    displayName: 'Habit Name',
+    name: 'name',
+    namespace: 'edit-habit',
+    type: 'text',
+    placeholder: 'What shall it be..',
+    value: o.name
+  })}
+  ${FormControl({
+    displayName: 'Why do you dislike it?',
+    name: 'meta',
+    namespace: 'edit-habit',
+    type: 'text',
+    placeholder: 'Do tell..',
+    value: o.description
+  })}
+`
+
+const makeUserUpdateForm = o => `
+  ${FormControl({
+    displayName: 'Full Name',
+    name: 'fullname',
+    namespace: 'edit-user',
+    type: 'text',
+    placeholder: 'Full Name',
+    value: o.name
+  })}
+  ${FormControl({
+    displayName: 'Username',
+    name: 'username',
+    namespace: 'edit-user',
+    type: 'text',
+    placeholder: 'Username',
+    value: o.username
+  })}
+  ${FormControl({
+    displayName: 'Pet Peeve',
+    name: 'petpeeve',
+    namespace: 'edit-user',
+    type: 'text',
+    placeholder: 'Pet Peeve',
+    value: o.pet_peeve
+  })}
+`
+
+const makeSignInForm = () => `
+  ${FormControl({
+    displayName: 'Username',
+    name: 'username',
+    namespace: 'signin',
+    type: 'text',
+    placeholder: 'Username',
+    value: ''
+  })}
+  ${FormControl({
+    displayName: 'Password',
+    name: 'password',
+    namespace: 'signin',
+    type: 'password',
+    placeholder: 'Password',
+    value: ''
+  })}
+`
+
+const makeSignUpForm = () => `
+  ${FormControl({
+    displayName: 'Username',
+    name: 'username',
+    namespace: 'signup',
+    type: 'text',
+    placeholder: 'Username',
+    value: ''
+  })}
+  ${FormControl({
+    displayName: 'Password',
+    name: 'password',
+    namespace: 'signup',
+    type: 'password',
+    placeholder: 'Password',
+    value: ''
+  })}
+  ${FormControl({
+    displayName: 'Confirm Password ',
+    name: 'password',
+    namespace: 'signup',
+    type: 'password',
+    placeholder: 'Confirm Password ',
+    value: ''
+  })}
+`
+
+const makeSignUpDetailsForm = () => `
+  ${FormControl({
+    displayName: 'Full Name',
+    name: 'fullname',
+    namespace: 'signup-details',
+    type: 'text',
+    placeholder: 'Full Name',
+    value: ''
+  })}
+  ${FormControl({
+    displayName: 'Pet Peeve',
+    name: 'petpeeve',
+    namespace: 'signup-details',
+    type: 'text',
+    placeholder: 'Pet Peeve',
+    value: ''
+  })}
+`

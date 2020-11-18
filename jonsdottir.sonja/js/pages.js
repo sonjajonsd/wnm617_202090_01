@@ -18,6 +18,7 @@ const ListPage = async () => {
 
 const MapPage = async () => {
   let userData = await query({type:'user_by_id', params: [sessionStorage.userId]});
+  // console.log(userData);
   userData.result[0].initials = userData.result[0].name.split(' ').map(i => i.charAt(0)).join('');
   $("#map-page .user-initials").html(makeUserInitials(userData.result));
 
@@ -32,6 +33,18 @@ const MapPage = async () => {
 
   let map_el = await makeMap("#map-page .map");
   makeMarkers(map_el, valid_habits);
+
+  map_el.data("markers").forEach((o,i,a)=>{
+    o.addListener("click", function() {
+      // map_el.data("infoWindow")
+      //   .open(map_el.data("map"),o);
+      // map_el.data("infoWindow")
+      //   .setContent(makeHabitPopup(valid_habits[i]));
+      $("#location-info").addClass("active");
+         $("#location-info .modal-body.location")
+            .html(makeHabitPopup(valid_habits[i]))
+    })
+  });
 }
 
 const UserProfilePage = async () => {
@@ -108,4 +121,28 @@ const HabitProfilePage = async () => {
 
   let map_el = await makeMap("#habit-profile-page .map", last.result[0]);
   makeMarkers(map_el, valid_habits);
+}
+
+const EditHabitPage = async () => {
+  let d = await query({type:'habit_by_id', params: [sessionStorage.habitId]});
+  console.log('Data', d);
+  $("#edit-habit-page .input-container").html(makeHabitUpdateForm(d.result[0]));
+}
+
+const EditUserPage = async () => {
+  let d = await query({type:'user_by_id', params: [sessionStorage.userId]});
+  console.log('Data', d);
+  $("#edit-user-page .input-container").html(makeUserUpdateForm(d.result[0]));
+}
+
+const SignInPage = async () => {
+  $("#signin-page .form-content").html(makeSignInForm());
+}
+
+const SignUpPage = async () => {
+  $("#signup-page .form-content").html(makeSignUpForm());
+}
+
+const SignUpDetailsPage = async () => {
+  $("#signup-details-page .form-content").html(makeSignUpDetailsForm());
 }
