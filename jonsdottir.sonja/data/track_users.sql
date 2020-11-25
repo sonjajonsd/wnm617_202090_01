@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS `track_users` (
 `email` VARCHAR(MAX) NULL,
 `password` VARCHAR(MAX) NULL,
 `img` VARCHAR(MAX) NULL,
-`petPeeve` VARCHAR(MAX) NULL,
+`pet_peeve` VARCHAR(MAX) NULL,
 `date_create` VARCHAR(MAX) NULL
 );
 

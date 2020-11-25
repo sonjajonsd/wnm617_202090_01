@@ -25,17 +25,21 @@
   --box-shadow-inset-top: inset 0 8px 16px -8px rgba(0, 0, 0, 0.25);
   --box-shadow-subtle: 0px 8px 16px 6px #dcdcdcd6;
 
-  --color-main-light: #f28177;
-  --color-main-medium: #c44e4e;
-  --color-main-dark: #e54c4c;
+  --color-main-light: #ff8880;
+  /* --color-main-light: #f28177; */
+  --color-main-medium: #e60f00;
+  /* --color-main-medium: #c44e4e; */
+  --color-main-dark: #ff574a;
+  /* --color-main-dark: #e54c4c; */
 
   --color-neutral-light: #f2f2f2;
   --color-neutral-medium: #cccccc;
   --color-neutral-dark: #333333;
 
-  --color-sub-light: #ecf2f8;
+  --color-sub-light: #e3f1f2;
   --color-sub-medium: #939ca6;
-  --color-sub-dark: #304057;
+  --color-sub-dark: #00324a;
+  /* --color-sub-dark: #304057; */
 }
 
 body {
@@ -461,6 +465,7 @@ form {
 }
 
 /* SUB PAGES */
+#location-add-page [data-role="header"],
 #edit-habit-page [data-role="header"],
 #edit-user-page [data-role="header"],
 #edit-password-page [data-role="header"],
@@ -551,7 +556,7 @@ form {
   color: var(--color-white);
 }
 
-.edit-container {
+.form-container {
   padding: 0 1em;
 }
 
@@ -563,6 +568,7 @@ form {
 }
 .title-container h1 {
   margin: 0 0 0.2em 0;
+  text-transform: capitalize;
 }
 .title-container .meta {
   font-style: italic;
@@ -579,7 +585,7 @@ form {
 
 .habit-content-header {
   padding: 0 0 1em;
-  margin: 3em 1em 0;
+  margin: 3.5em 1em 0;
   border-bottom: 1px solid var(--color-main-medium);
 }
 
@@ -605,16 +611,17 @@ form {
   margin-top: 0.5em;
 }
 
-.emotion-container i.active {
+.ui-mobile label {
+  margin: 0;
+  padding: 0;
+}
+
+.emotion-input:checked + .emotion-input {
   color: var(--color-main-dark);
 }
 
-.emotion-container .text {
-  visibility: hidden;
-}
-
-.emotion-container .text.active {
-  visibility: visible;
+input[type="radio"] {
+  display: none;
 }
 
 /* PROFILE */
@@ -627,6 +634,7 @@ form {
   background-color: var(--color-sub-dark);
   color: white;
   border-radius: 50%;
+  text-transform: uppercase;
 }
 
 /* stretches main between header and footer */
@@ -887,6 +895,13 @@ a.emp-link {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.spotted-map-container {
+  height: 38vh;
+  overflow: hidden;
+  position: relative;
+  flex: none;
 }
 
 .map-container {

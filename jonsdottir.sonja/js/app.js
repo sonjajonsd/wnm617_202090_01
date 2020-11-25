@@ -43,6 +43,7 @@
       case 'signin-page': SignInPage(); break;
       case 'signup-page': SignUpPage(); break;
       case 'signup-details-page': SignUpDetailsPage(); break;
+      case 'location-add-page': LocationAddPage(); break;
     }
   })
 
@@ -51,6 +52,41 @@
     e.preventDefault();
     checkSigninForm();
   })
+  
+  .on("submit", "#signup-form", function (e) {
+    e.preventDefault();
+    checkSignupForm();
+  })
+
+  .on("submit", "#edit-user-form", function (e) {
+    e.preventDefault();
+    checkUserEditForm();
+  })
+  
+  .on("submit", "#add-habit-form", function (e) {
+    e.preventDefault();
+    checkHabitAddForm();
+  })
+
+  .on("submit", "#edit-habit-form", function (e) {
+    e.preventDefault();
+    checkHabitEditForm();
+  })
+
+  .on("submit", "#signup-details-form", function (e) {
+    e.preventDefault();
+    checkSignupDetailsForm();
+  })
+  
+  .on("submit", "#spotted-form", function (e) {
+    e.preventDefault();
+    checkLocationAddForm();
+  })
+  
+  
+  // FORM SUBMIT CLICK
+
+
 
   // ANCHOR CLICKS
   .on('click', '.js-logout', function(e) {

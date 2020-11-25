@@ -1,5 +1,6 @@
 
 const APPALLED_MEANING = ["Not sure..","All good","Okay","Mehh","Not good","Gross"];
+const HABIT_FEELING = ["far fa-question-circle","far fa-smile","far fa-meh","far fa-meh-blank","far fa-frown-open","far fa-tired"];
 
 const ListPage = async () => {
   let d = await query({type:'habit_by_user_id', params: [sessionStorage.userId]});
@@ -12,14 +13,14 @@ const ListPage = async () => {
   
   let userData = await query({type:'user_by_id', params: [sessionStorage.userId]});
   // https://stackoverflow.com/questions/8279859/get-first-letter-of-each-word-in-a-string-in-javascript
-  userData.result[0].initials = userData.result[0].name.split(' ').map(i => i.charAt(0)).join('');
+  userData.result[0].initials = userData.result[0].name ? userData.result[0].name.split(' ').map(i => i.charAt(0)).join('') : userData.result[0].username[0];
   $("#list-page .user-initials").html(makeUserInitials(userData.result));
 }
 
 const MapPage = async () => {
   let userData = await query({type:'user_by_id', params: [sessionStorage.userId]});
   // console.log(userData);
-  userData.result[0].initials = userData.result[0].name.split(' ').map(i => i.charAt(0)).join('');
+  userData.result[0].initials = userData.result[0].name ? userData.result[0].name.split(' ').map(i => i.charAt(0)).join('') : userData.result[0].username[0];
   $("#map-page .user-initials").html(makeUserInitials(userData.result));
 
   let recent = await query({type:'recent_locations', params: [sessionStorage.userId]});
@@ -55,14 +56,12 @@ const UserProfilePage = async () => {
   $("#user-profile-page .user-titleContainer").html(makeUserTitleContainer(d.result));
   
   let common = await query({type:'most_common_habit_by_user', params: [sessionStorage.userId]});
-  // console.log("COMMON", common);
 
   let count = await query({type:'user_total_encounters', params: [sessionStorage.userId]});
-  // console.log('COUNT-------', count);
+
   const totalEncounters = count.result[0].encounters
   
   let latestEncounter = await query({type:'last_encounter_by_user', params: [sessionStorage.userId]});
-  // console.log("LATEST", latestEncounter);
 
   let appalled = await query({type:'total_appalled_by_user', params: [sessionStorage.userId]});
   let total = 0;
@@ -86,15 +85,12 @@ const UserProfilePage = async () => {
 
 const HabitProfilePage = async () => {
   let d = await query({type:'habit_by_id', params: [sessionStorage.habitId]});
-  $("#habit-profile-page .habit-img").html(makeHabitImg(d.result));
+  
   $("#habit-profile-page .title-container").html(makeHabitTitleContainer(d.result));
 
   let last = await query({type:'last_encounter_by_habit', params: [sessionStorage.habitId]});
-  // console.log('lassst', last);
   let count = await query({type:'habit_total_encounters', params: [sessionStorage.habitId]});
-  // console.log('habit_total_encounters', count);
   let rating = await query({type:'locations_by_habit_id', params: [sessionStorage.habitId]});
-  // console.log('rating', rating);
   
   let total = 0;
   let cntr = rating.result.length;
@@ -103,14 +99,18 @@ const HabitProfilePage = async () => {
     total += r.appalled_rating;
   });
 
-  const appalledAvg = count ? total / cntr : 0;
+  const appalledAvg = cntr ? total / cntr : 0;
 
   const stats = {
-    last: last.result[0].date_create,
-    count: count.result[0].encounters,
-    description: last.result[0].description,
+    last: last.result[0] ? last.result[0].date_create : "No reports available",
+    description: last.result[0] ? last.result[0].description : "N/A",
+    count: count.result[0] ? count.result[0].encounters : "N/A",
     avgAppalled: APPALLED_MEANING[Math.round(appalledAvg)]
   };
+  let icon = {
+    feeling: HABIT_FEELING[Math.round(appalledAvg)]
+  }
+  $("#habit-profile-page .habit-img").html(makeHabitImg(icon));
   $("#habit-profile-page .habit-stats").html(makeHabitStats(stats));
 
   let valid_habits = rating.result.reduce((r,o)=>{
@@ -145,4 +145,30 @@ const SignUpPage = async () => {
 
 const SignUpDetailsPage = async () => {
   $("#signup-details-page .form-content").html(makeSignUpDetailsForm());
+}
+
+const LocationAddPage = async() => {
+  let map_el = await makeMap("#location-add-page .map");
+  makeMarkers(map_el, []);
+
+  let map = map_el.data('map');
+  map.addListener("click", (e) => {
+    let posFromClick = {lat: e.latLng.lat(), lng: e.latLng.lng()};
+    let posFromCenter = {lat: map.getCenter().lat(), lng: map.getCenter().lng()};
+    console.log(posFromCenter, posFromClick);
+    $("#location-add-lat").val(posFromClick.lat);
+    $("#location-add-lng").val(posFromClick.lng);
+
+    makeMarkers(map_el, [posFromClick], false);
+  })
+
+  let d = await query({type:'habit_by_user_id', params: [sessionStorage.userId]});
+
+  // dule - https://stackoverflow.com/questions/740195/adding-options-to-a-select-using-jquery
+  d.result.forEach((d) => {
+    $("#location-add-page #spotted-habit").append($('<option>', {
+      value: d.id,
+      text: d.name
+    }));
+  });
 }

@@ -20,6 +20,7 @@
     <script src="js/parts.js"></script>
     <script src="js/pages.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/forms.js"></script>
     <script src="js/signin.js"></script>
     <script src="https://kit.fontawesome.com/019c2a78ab.js" crossorigin="anonymous"></script>
 
@@ -87,8 +88,7 @@
             <div class="form-content"></div>
           </div>
           <div class="form-control">
-            <!-- <a href="#signup-details-page" class="form-button" data-role="none">Sign Up</a> -->
-            <button type="submit" class="form-button" data-role="none">Sign Up</button>
+            <input type="submit" class="form-button" value="Sign Up" data-role="none" />
           </div>
           <div class="form-control text-center sm-font">
             Already have an account? 
@@ -114,10 +114,10 @@
             <div class="form-content"></div>
           </div>
           <div class="form-control">
-            <button type="submit" class="form-button" data-role="none">Confirm</button>
+            <input type="submit" class="form-button" class="js-signup-edit" value="Confirm" data-role="none" />
           </div>
           <div class="form-control text-center sm-font">
-            <a href="#signin-page" data-transition="slide" data-direction="reverse" class="emp-link">Skip</a>
+            <a href="#list-page" class="emp-link">Skip</a>
           </div>
         </form>
       </div>
@@ -140,80 +140,7 @@
       <div data-role="main">
         <div class="map"></div>
         <div class="primary-button-container">
-          <a data-activate="#spotted-drawer" class="primary-button dark">Spotted!</a>
-        </div>
-      </div>
-      <div class="modal" id="spotted-drawer">
-        <div class="modal-back" data-deactivate="#spotted-drawer"></div>
-        <div class="modal-drawer bottom">
-          <div class="floating-img-container">
-            <img src="imgs/mad.png" alt="mad" />
-          </div>
-          <div class="modal-body">
-            <h1>Spotted!</h1>
-            <form id="spotted-form" class="no-padding" data-ajax="false">
-              <div class="input-container">
-                <div class="form-control">
-                  <label for="spotted-habit" class="form-label">
-                    What did you see?
-                  </label>
-                  <div class="relative">
-                    <div class="select-div">
-                      <select name="spotted-habit" id="spotted-habit" class="form-select" data-role="none">
-                        <option value="" disabled selected>Select bad habit</option>
-                        <option value="bh1">Road Rage</option>
-                        <option value="bh2">Cursing</option>
-                        <option value="bh3">Drunk</option>
-                        <option value="bh4">Junk Food</option>
-                        <option value="bh5">Tardiness</option>
-                        <option value="bh6">Dog Waste</option>
-                        <option value="bh7">Nose Picking</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-control">
-                  <label for="spotted-address" class="form-label"> 
-                    Location (Address)
-                  </label>
-                  <input
-                    id="spotted-address"
-                    type="text"
-                    class="form-input"
-                    data-role="none"
-                    placeholder="Address"
-                  />
-                </div>
-                <div class="form-control">
-                  <label for="spotted-description" class="form-label"> 
-                    What happened?
-                  </label>
-                  <input
-                    id="spotted-description"
-                    type="text"
-                    class="form-input"
-                    data-role="none"
-                    placeholder="Do tell.."
-                  />
-                </div>
-                <div class="form-control">
-                  <label for="spotted-emotion" class="form-label"> 
-                    How appalled were you? 
-                  </label>
-                  <div class="emotion-container">
-                    <i class="far fa-smile"></i>
-                    <i class="far fa-meh"></i>
-                    <i class="far fa-meh-blank"></i>
-                    <i class="far fa-frown-open"></i>
-                    <i class="far fa-tired"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="form-control">
-                <a href="#map-page" data-deactivate="#spotted-drawer" class="form-button">Report</a>
-              </div>
-            </form>
-          </div>
+          <a href="#location-add-page" class="primary-button dark">Spotted!</a>
         </div>
       </div>
       <div class="modal" id="location-info">
@@ -289,11 +216,11 @@
                   />
                 </div>
                 <div class="form-control">
-                  <label for="add-habit-meta" class="form-label">
+                  <label for="add-habit-description" class="form-label">
                     Why do you dislike it?
                   </label>
                   <input
-                    id="add-habit-meta"
+                    id="add-habit-description"
                     type="text"
                     class="form-input"
                     data-role="none"
@@ -302,7 +229,7 @@
                 </div>
               </div>
               <div class="form-control">
-                <a href="#list-page" class="form-button" data-deactivate="#add-habit-drawer">Create</a>
+                <input type="submit" class="form-button" value="Create" data-deactivate="#add-habit-drawer" data-role="none" />
               </div>
             </form>
           </div>
@@ -366,13 +293,16 @@
             <i class="fas fa-camera"></i>
           </div>
         </div>
-        <div class="edit-container">
+        <div class="form-container">
             <h1>Edit Bad Habit</h1>
             <form id="edit-habit-form" class="no-padding" data-ajax="false">
               <div class="input-container">
               </div>
               <div class="form-control">
-                <a href="#" data-rel="back" class="form-button">Update</a>
+                <input type="submit" class="form-button" value="Update" data-role="none" />
+              </div>
+              <div class="form-control text-center sm-font">
+                <a href="#" data-rel="back" class="emp-link">Cancel</a>
               </div>
             </form>
           </div>
@@ -432,26 +362,24 @@
             <i class="fas fa-camera"></i>
           </div>
         </div>
-        <div class="edit-container">
-            <div class="display-flex">
-                <div class="title-container">
-                  <h1>Edit Profile</h1>
-                </div>
-                <div class="flex-stretch"></div>
-                <div class="edit-button"><a href="#edit-password-page"><i class="fas fa-user-lock"></i></a></div>
-              </div>
-          <div class="title-container">
-
+        <div class="form-container">
+          <div class="display-flex">
+            <div class="title-container">
+              <h1>Edit Profile</h1>
+            </div>
+            <div class="flex-stretch"></div>
+            <div class="edit-button"><a href="#edit-password-page"><i class="fas fa-user-lock"></i></a></div>
           </div>
+          <div class="title-container"></div>
           <form id="edit-user-form" class="no-padding" data-ajax="false">
             <div class="input-container">
             </div>
             <div class="form-control">
-              <a href="#" class="form-button">Update</a>
+              <input type="submit" class="form-button" value="Update" data-role="none" />
             </div>
             <div class="form-control center" >
-                <a href="#" class="js-logout emp-link">Logout</a>
-              </div>
+              <a href="#" class="js-logout emp-link">Logout</a>
+            </div>
           </form>
         </div>
       </div>
@@ -477,7 +405,7 @@
             <i class="fas fa-user-lock"></i>
           </div>
         </div>
-        <div class="edit-container">
+        <div class="form-container">
           <h1>Edit Password</h1>
           <form id="edit-password-form" class="no-padding" data-ajax="false">
             <div class="input-container">
@@ -521,5 +449,84 @@
         </div>
       </div>
     </section>
+
+    <!-- ADD LOCATION PAGE -->
+    <section data-role="page" id="location-add-page">
+        <header data-role="header">
+          <ul>
+            <li>
+              <a href="#" class="back-button" data-rel="back"><i class="fas fa-chevron-left"></i></a>
+            <li>
+              <h3 class="nav-page-title">Choose Location</h3>
+            </li>
+            <li>
+              <i class="no-visibility fas fa-chevron-left"></i>
+            </li>
+          </ul>
+        </header>
+        <div data-role="main">
+          <input type="hidden" id="location-add-lat" />
+          <input type="hidden" id="location-add-lng" />
+          <div class="spotted-map-container">
+            <div class="map"></div>
+          </div>
+          <div class="form-container flex-stretch no-overflow">
+            <div class="overscroll">
+              <h1>Spotted!</h1>
+              <form id="spotted-form" class="no-padding" data-ajax="false">
+                <div class="input-container">
+                  <div class="form-control">
+                    <label for="spotted-habit" class="form-label">
+                      What did you see?
+                    </label>
+                    <div class="relative">
+                      <div class="select-div">
+                        <select name="spotted-habit" id="spotted-habit" class="form-select" data-role="none">
+                          <option value="" disabled selected>Select bad habit</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-control">
+                    <label for="spotted-description" class="form-label"> 
+                      What happened?
+                    </label>
+                    <input
+                      id="spotted-description"
+                      type="text"
+                      class="form-input"
+                      data-role="none"
+                      placeholder="Do tell.."
+                    />
+                  </div>
+                  <div class="form-control">
+                    <label for="spotted-emotion" class="form-label"> 
+                      How appalled were you? 
+                    </label>
+                    <div class="emotion-container">
+                      <input data-role="none" class="emotion-input" type="radio" id="smile" name="spotted-emotion" value="1">
+                      <label for="smile" class="emotion-input"><i class="far fa-smile"></i></label>
+                      <input data-role="none" class="emotion-input" type="radio" id="meh" name="spotted-emotion" value="2">
+                      <label for="meh" class="emotion-input"><i class="far fa-meh"></i></label>
+                      <input data-role="none" class="emotion-input" type="radio" id="blank" name="spotted-emotion" value="3">
+                      <label for="blank" class="emotion-input"><i class="far fa-meh-blank"></i></label>
+                      <input data-role="none" class="emotion-input" type="radio" id="frown-open" name="spotted-emotion" value="4">
+                      <label for="frown-open" class="emotion-input"><i class="far fa-frown-open"></i></label>
+                      <input data-role="none" class="emotion-input" type="radio" id="tired" name="spotted-emotion" value="5">
+                      <label for="tired" class="emotion-input"><i class="far fa-tired"></i></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-control">
+                  <input type="submit" class="form-button" value="Report" data-role="none" />
+                </div>
+                <div class="form-control text-center sm-font">
+                  <a href="#" data-rel="back" class="emp-link">Cancel</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+     </section>
   </body>
 </html>

@@ -163,6 +163,73 @@ function makeStatement($data) {
         GROUP BY l.habit_id
         ", $p);
 
+
+      // CRUD
+      case "insert_user":
+        // Check for duplicate users
+        $r = makeQuery($c,"SELECT * FROM `track_users` WHERE `username`=?",[$p[0]]);
+        if(count($r['result'])) return ["error"=>"Username exists"];
+
+        // Create new user
+        $r = makeQuery($c,"INSERT INTO
+          `track_users`
+          (`username`,`password`,`name`,`email`,`pet_peeve`,`img`,`date_create`)
+          VALUES
+          (?, md5(?), '', '', '', 'https://via.placeholder.com/400?text=USER', NOW())
+          ",$p);
+        return ["id"=>$c->lastInsertId()];
+
+      case "insert_habit":
+        $r = makeQuery($c,"INSERT INTO
+           `track_habits`
+           (`user_id`,`name`, `description`,`incident_count`,`appalled_rating`,`appalled_result`,`icon`,`img`,`date_create`)
+           VALUES
+           (?, ?, ?, '', '', '', 'fas fa-bullhorn', '', NOW())
+           ",$p);
+          return ["id"=>$c->lastInsertId()];
+      
+      case "insert_location":
+        $r = makeQuery($c,"INSERT INTO
+          `track_locations`
+          (`habit_id`,`lat`, `lng`,`appalled_rating`,`description`,`address`,`date_create`)
+          VALUES
+          (?, ?, ?, ?, ?, '', NOW())
+          ",$p);
+        return ["id"=>$c->lastInsertId()];
+
+        // UPDATE
+
+        case "update_signup":
+         $r = makeQuery($c,"UPDATE
+            `track_users`
+            SET
+            `name` = ?,
+            `pet_peeve` = ?
+            WHERE `id` = ?
+            ",$p,false);
+         return ["result"=>"success"];
+
+        case "update_user":
+         $r = makeQuery($c,"UPDATE
+            `track_users`
+            SET
+            `username` = ?,
+            `name` = ?,
+            `pet_peeve` = ?
+            WHERE `id` = ?
+            ",$p,false);
+         return ["result"=>"success"];
+        
+        case "update_habit":
+         $r = makeQuery($c,"UPDATE
+            `track_habits`
+            SET
+            `name` = ?,
+            `description` = ?
+            WHERE `id` = ?
+            ",$p,false);
+         return ["result"=>"success"];
+
     default:
       return ["error"=>"No Matched Type"];
   }

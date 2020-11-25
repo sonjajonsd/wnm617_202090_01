@@ -16,7 +16,7 @@ const makeHabitList = templater(o => `<li>
 
 const makeEmptyList = () => `<li>
   <li>
-    You're not trackin any bat habits.. yet!
+    You're not trackin any bad habits yet!
     Try clicking the big red plus to add a new bad habit to track.
   </li>`;
 
@@ -30,8 +30,8 @@ const makeUserImgContainer = templater(o => `
 
 const makeUserTitleContainer = templater(o => `
   <div class="title-container">
-    <h1>${o.name}</h1>
-    <div class="meta">Pet peeve: ${o.pet_peeve}</div>
+    <h1>${o.name ? o.name : o.username}</h1>
+    ${o.pet_peeve ? `<div class="meta">Pet peeve: ${o.pet_peeve}</div>` : ``}
   </div>
 `);
 
@@ -59,16 +59,19 @@ const makeUserInitials = templater(o => `
   <li><a href="#user-profile-page" class="profile-btn"> ${o.initials} </a></li>
 `)
 
-const makeHabitImg = templater(o => `
-  <i class="${o.icon}"></i>
-`);
+const makeHabitImg = o => `
+  <i class="${o.feeling}"></i>
+`;
+// const makeHabitImg = templater(o => `
+//   <i class="${o.icon}"></i>
+// `);
 
 const makeHabitTitleContainer = templater(o => `
   <h1>${o.name}</h1>
   <div class="meta">${o.description}</div>
 `);
 
-const makeHabitStats = templater(o => `
+const makeHabitStats = (o) =>  `
   <div class="stats-item">
     <div class="stats-name">Average Appalled Rating</div>
     <div class="stats-value">${o.avgAppalled}</div>
@@ -85,17 +88,20 @@ const makeHabitStats = templater(o => `
     <div class="stats-name">Incident Report</div>
     <div class="stats-value">${o.description}</div>
   </div>
-`);
+`;
 
 const makeHabitPopup = o => `
   <div>
     <h1>${o.name}</h1>
-    <p class="location-addr"><i class="fas fa-map-marker-alt"></i>${o.address}</p>
+    <p class="location-addr"><i class="fas fa-map-marker-alt"></i>${o.date_create}</p>
     <p class="location-desc">${o.description}</p>
   </div>
 `;
   // <div class="form-button js-habit-jump" data-id="${o.habit_id}" style="width:100%">Go to habit page</div>
 
+const makeHabitSelections = o => `
+  <option value="${o.id}">${o.name}</option>
+  `;
 
 const FormControl = ({displayName, name, namespace, type, value, placeholder}) => {
   return `
@@ -125,7 +131,7 @@ const makeHabitUpdateForm = o => `
   })}
   ${FormControl({
     displayName: 'Why do you dislike it?',
-    name: 'meta',
+    name: 'description',
     namespace: 'edit-habit',
     type: 'text',
     placeholder: 'Do tell..',
@@ -198,7 +204,7 @@ const makeSignUpForm = () => `
   })}
   ${FormControl({
     displayName: 'Confirm Password ',
-    name: 'password',
+    name: 'passwordConfirm',
     namespace: 'signup',
     type: 'password',
     placeholder: 'Confirm Password ',
