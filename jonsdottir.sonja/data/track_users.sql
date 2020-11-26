@@ -2,7 +2,6 @@ CREATE TABLE IF NOT EXISTS `track_users` (
 `id` INT NULL,
 `name` VARCHAR(MAX) NULL,
 `username` VARCHAR(MAX) NULL,
-`email` VARCHAR(MAX) NULL,
 `password` VARCHAR(MAX) NULL,
 `img` VARCHAR(MAX) NULL,
 `pet_peeve` VARCHAR(MAX) NULL,
@@ -10,13 +9,13 @@ CREATE TABLE IF NOT EXISTS `track_users` (
 );
 
 INSERT INTO track_users VALUES
-(1,'Greene Vance','user1','user1@gmail.com',md5('pass'),'https:via.placeholder.com/400/835/fff/?text=user1','Tardiness','2020-03-07 07:11:07'),
-(2,'Colon Wilcox','user2','user2@gmail.com',md5('pass'),'https:via.placeholder.com/400/776/fff/?text=user2','Tardiness','2020-06-24 06:19:04'),
-(3,'Zamora Kerr','user3','user3@gmail.com',md5('pass'),'https:via.placeholder.com/400/734/fff/?text=user3','Cursing!','2020-04-19 11:24:08'),
-(4,'Cain Mcdaniel','user4','user4@gmail.com',md5('pass'),'https:via.placeholder.com/400/774/fff/?text=user4','People that litter','2020-06-15 03:58:50'),
-(5,'Leola Rose','user5','user5@gmail.com',md5('pass'),'https:via.placeholder.com/400/798/fff/?text=user5','Cursing!','2020-06-04 09:35:57'),
-(6,'Crawford Beck','user6','user6@gmail.com',md5('pass'),'https:via.placeholder.com/400/891/fff/?text=user6','Rude people','2020-03-16 01:21:13'),
-(7,'Josie Finley','user7','user7@gmail.com',md5('pass'),'https:via.placeholder.com/400/778/fff/?text=user7','People that litter','2020-05-04 04:16:04'),
-(8,'Bates Sharp','user8','user8@gmail.com',md5('pass'),'https:via.placeholder.com/400/870/fff/?text=user8','Cursing!','2020-02-29 04:26:18'),
-(9,'Rhonda Drake','user9','user9@gmail.com',md5('pass'),'https:via.placeholder.com/400/906/fff/?text=user9','People that litter','2020-07-24 10:51:54'),
-(10,'Janell Schroeder','user10','user10@gmail.com',md5('pass'),'https:via.placeholder.com/400/744/fff/?text=user10','People that litter','2020-05-30 05:48:21');
+(1,'Beatriz Goff','user1',md5('pass'),'https:via.placeholder.com/400/824/fff/?text=user1','Rude people','2020-09-12 09:20:57'),
+(2,'Melinda Monroe','user2',md5('pass'),'https:via.placeholder.com/400/912/fff/?text=user2','Rude people','2020-04-02 02:32:07'),
+(3,'Victoria Fitzpatrick','user3',md5('pass'),'https:via.placeholder.com/400/872/fff/?text=user3','Cursing!','2020-10-23 02:08:15'),
+(4,'Joanna Reid','user4',md5('pass'),'https:via.placeholder.com/400/788/fff/?text=user4','Rude people','2020-02-21 01:36:36'),
+(5,'Rosales Schultz','user5',md5('pass'),'https:via.placeholder.com/400/913/fff/?text=user5','Tardiness','2020-04-30 08:32:17'),
+(6,'Hays Delacruz','user6',md5('pass'),'https:via.placeholder.com/400/744/fff/?text=user6','Cursing!','2020-11-09 03:14:14'),
+(7,'Gould Tate','user7',md5('pass'),'https:via.placeholder.com/400/931/fff/?text=user7','Rude people','2020-10-24 12:37:29'),
+(8,'Hampton Cruz','user8',md5('pass'),'https:via.placeholder.com/400/769/fff/?text=user8','Littering','2020-07-01 11:03:20'),
+(9,'Gena Norton','user9',md5('pass'),'https:via.placeholder.com/400/710/fff/?text=user9','Littering','2020-10-17 08:28:28'),
+(10,'Wilcox Barton','user10',md5('pass'),'https:via.placeholder.com/400/867/fff/?text=user10','Littering','2020-02-19 04:36:58');

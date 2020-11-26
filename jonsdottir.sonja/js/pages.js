@@ -19,7 +19,7 @@ const ListPage = async () => {
 
 const MapPage = async () => {
   let userData = await query({type:'user_by_id', params: [sessionStorage.userId]});
-  // console.log(userData);
+  console.log(userData);
   userData.result[0].initials = userData.result[0].name ? userData.result[0].name.split(' ').map(i => i.charAt(0)).join('') : userData.result[0].username[0];
   $("#map-page .user-initials").html(makeUserInitials(userData.result));
 

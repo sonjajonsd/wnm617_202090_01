@@ -62,7 +62,7 @@ function makeStatement($data) {
       break;
 
     case 'user_by_id':
-      return makeQuery($c, "SELECT id,name, username,email,date_create,img,pet_peeve  FROM `track_users` WHERE `id`=?", $p);
+      return makeQuery($c, "SELECT id,name, username,date_create,img,pet_peeve  FROM `track_users` WHERE `id`=?", $p);
       break;
     case 'habit_by_id':
       return makeQuery($c, "SELECT * FROM `track_habits` WHERE `id`=?", $p);
@@ -173,27 +173,27 @@ function makeStatement($data) {
         // Create new user
         $r = makeQuery($c,"INSERT INTO
           `track_users`
-          (`username`,`password`,`name`,`email`,`pet_peeve`,`img`,`date_create`)
+          (`username`,`password`,`name`,`pet_peeve`,`img`,`date_create`)
           VALUES
-          (?, md5(?), '', '', '', 'https://via.placeholder.com/400?text=USER', NOW())
+          (?, md5(?), '', '', 'https://via.placeholder.com/400?text=USER', NOW())
           ",$p);
         return ["id"=>$c->lastInsertId()];
 
       case "insert_habit":
         $r = makeQuery($c,"INSERT INTO
            `track_habits`
-           (`user_id`,`name`, `description`,`incident_count`,`appalled_rating`,`appalled_result`,`icon`,`img`,`date_create`)
+           (`user_id`,`name`, `description`,`icon`,`img`,`date_create`)
            VALUES
-           (?, ?, ?, '', '', '', 'fas fa-bullhorn', '', NOW())
+           (?, ?, ?, 'fas fa-bullhorn', '', NOW())
            ",$p);
           return ["id"=>$c->lastInsertId()];
       
       case "insert_location":
         $r = makeQuery($c,"INSERT INTO
           `track_locations`
-          (`habit_id`,`lat`, `lng`,`appalled_rating`,`description`,`address`,`date_create`)
+          (`habit_id`,`lat`, `lng`,`appalled_rating`,`description`,`date_create`)
           VALUES
-          (?, ?, ?, ?, ?, '', NOW())
+          (?, ?, ?, ?, ?, NOW())
           ",$p);
         return ["id"=>$c->lastInsertId()];
 
