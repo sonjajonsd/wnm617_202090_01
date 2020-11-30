@@ -15,7 +15,7 @@ const checkSigninForm = async () => {
     sessionStorage.removeItem('userId');
     
     // Trigger failure modal
-    $('#signin-notification').addClass('active');
+    $('#signin-error').addClass('active');
 
     // Clear input fields
     $("#signin-username").val();

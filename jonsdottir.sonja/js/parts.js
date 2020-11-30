@@ -103,6 +103,12 @@ const makeHabitSelections = o => `
   <option value="${o.id}">${o.name}</option>
   `;
 
+  const makeSpottedButton = o => `
+  <div class="primary-button-container">
+    <a href="#location-add-page" class="primary-button dark">Spotted!</a>
+  </div>
+  `;
+
 const FormControl = ({displayName, name, namespace, type, value, placeholder}) => {
   return `
   <div class="form-control">

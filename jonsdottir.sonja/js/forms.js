@@ -1,16 +1,20 @@
 const checkSignupForm = () => {
   let username = $("#signup-username").val();
-  console.log('so', username);
+  if(!username) {
+    $('#signup-username-missing').addClass('active');
+    throw "Username missing";
+  }
   let password = $("#signup-password").val();
-  console.log('pw', password);
   let passwordConfirm = $("#signup-passwordConfirm").val();
 
   if(password !== passwordConfirm) {
+    $('#signup-password-mismatch').addClass('active');
     throw "Passwords don't match";
   } else {
     query({type:'insert_user', params:[username,password]})
     .then(d => {
       if (d.error) {
+        $('#signup-username-exists').addClass('active');
         throw d.error;
       }
 

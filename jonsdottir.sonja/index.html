@@ -58,8 +58,8 @@
         </form>
       </div>
 
-      <div class="modal" id="signin-notification">
-        <div class="modal-back" data-deactivate="#signin-notification"></div>
+      <div class="modal" id="signin-error">
+        <div class="modal-back" data-deactivate="#signin-error"></div>
         <div class="modal-popup">
           <div class="modal-body">
             <h1>Login Failed</h1>
@@ -67,7 +67,7 @@
             <p>Please try again.</p>
           </div>
           <div class="modal-foot">
-            <a href="#" data-deactivate="#signin-notification">Ok</a>
+            <a href="#" data-deactivate="#signin-error">Ok</a>
           </div>
         </div>
       </div>
@@ -96,6 +96,45 @@
           </div>
         </form>
       </div>
+      <div class="modal" id="signup-username-missing">
+        <div class="modal-back" data-deactivate="#signup-username-missing"></div>
+        <div class="modal-popup">
+          <div class="modal-body">
+            <h1>Signup Failed</h1>
+            <p>Username cannot be empty.</p>
+          </div>
+          <div class="modal-foot">
+            <a href="#" data-deactivate="#signup-username-missing">Ok</a>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="signup-username-exists">
+        <div class="modal-back" data-deactivate="#signup-username-exists"></div>
+        <div class="modal-popup">
+          <div class="modal-body">
+            <h1>Signup Failed</h1>
+            <p>That username is already taken.</p>
+            <p>Please try pick a different one.</p>
+          </div>
+          <div class="modal-foot">
+            <a href="#" data-deactivate="#signup-username-exists">Ok</a>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="signup-password-mismatch">
+        <div class="modal-back" data-deactivate="#signup-password-mismatch"></div>
+        <div class="modal-popup">
+          <div class="modal-body">
+            <h1>Signup Failed</h1>
+            <p>Passwords do not match.</p>
+            <p>Please try again.</p>
+          </div>
+          <div class="modal-foot">
+            <a href="#" data-deactivate="#signup-password-mismatch">Ok</a>
+          </div>
+        </div>
+      </div>
+      
     </section>
 
     <!-- SIGNUP DETAILS -->
@@ -139,9 +178,7 @@
       </footer>
       <div data-role="main">
         <div class="map"></div>
-        <div class="primary-button-container">
-          <a href="#location-add-page" class="primary-button dark">Spotted!</a>
-        </div>
+        <div class="spotted-button"></div>
       </div>
       <div class="modal" id="location-info">
           <div class="modal-back" data-deactivate="#location-info"></div>

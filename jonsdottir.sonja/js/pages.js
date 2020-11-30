@@ -30,7 +30,7 @@ const MapPage = async () => {
     // o.icon = o.img;
     if(o.lat && o.lng) r.push(o);
     return r;
-  },[])
+  },[]);
 
   let map_el = await makeMap("#map-page .map");
   makeMarkers(map_el, valid_habits);
@@ -46,6 +46,13 @@ const MapPage = async () => {
             .html(makeHabitPopup(valid_habits[i]))
     })
   });
+
+  let habits = await query({type:'habit_by_user_id', params: [sessionStorage.userId]});
+  if (habits.result.length) {
+    $("#map-page .spotted-button").html(makeSpottedButton());
+  } else {
+    $("#map-page .spotted-button").html();
+  }
 }
 
 const UserProfilePage = async () => {
