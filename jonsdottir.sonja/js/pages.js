@@ -5,11 +5,12 @@ const HABIT_FEELING = ["far fa-question-circle","far fa-smile","far fa-meh","far
 const ListPage = async () => {
   let d = await query({type:'habit_by_user_id', params: [sessionStorage.userId]});
   console.log("LIST", d);
-  if(d.result.length) {
-    $("#list-page .habit-list").html(makeHabitList(d.result));
-  } else {
-    $("#list-page .habit-list").html(makeEmptyList());
-  }
+  drawHabitList(d.result);
+  // if(d.result.length) {
+  //   $("#list-page .habit-list").html(makeHabitList(d.result));
+  // } else {
+  //   $("#list-page .habit-list").html(makeEmptyList());
+  // }
   
   let userData = await query({type:'user_by_id', params: [sessionStorage.userId]});
   // https://stackoverflow.com/questions/8279859/get-first-letter-of-each-word-in-a-string-in-javascript
@@ -178,4 +179,17 @@ const LocationAddPage = async() => {
       text: d.name
     }));
   });
+}
+
+const UserUploadPage = async() => {
+  query({
+     type:'user_by_id',
+     params:[sessionStorage.userId]
+  }).then(d=>{
+     makeUploaderImage({
+        namespace:'user-upload',
+        folder:'',
+        name:d.result[0].img
+     })
+  })
 }

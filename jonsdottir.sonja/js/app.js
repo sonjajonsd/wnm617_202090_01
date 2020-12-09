@@ -29,8 +29,8 @@
   $(document)
 
   .on("pagecontainerbeforeshow", function( e, ui ) {
-    console.log('e', e);
-    console.log('ui', ui.toPage[0].id);
+    // console.log('e', e);
+    // console.log('ui', ui.toPage[0].id);
 
     // Page routing
     switch(ui.toPage[0].id) {
@@ -38,6 +38,7 @@
       case 'map-page': MapPage(); break;
       case 'user-profile-page': UserProfilePage(); break;
       case 'edit-user-page': EditUserPage(); break;
+      case "user-upload-page": UserUploadPage(); break;
       case 'habit-profile-page': HabitProfilePage(); break;
       case 'edit-habit-page': EditHabitPage(); break;
       case 'signin-page': SignInPage(); break;
@@ -82,9 +83,29 @@
     e.preventDefault();
     checkLocationAddForm();
   })
+
+  .on("submit", "#search-habit-form", function (e) {
+    e.preventDefault();
+    checkSearchForm();
+  })
   
   
   // FORM SUBMIT CLICK
+  .on("click",'.js-user-upload',function(e){
+    checkUserUploadForm();
+  })
+
+  .on("change",".image-uploader input",function(){
+    checkUpload(this.files[0])
+    .then(d=>{
+       console.log(d)
+       makeUploaderImage({
+          namespace:'user-upload',
+          folder:'uploads/',
+          name:d.result
+       })
+    })
+ })
 
 
 

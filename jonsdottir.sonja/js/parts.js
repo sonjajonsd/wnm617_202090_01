@@ -14,7 +14,7 @@ const makeHabitList = templater(o => `<li>
     </div>
   </li>`);
 
-const makeEmptyList = () => `<li>
+const makeEmptyList = () => `
   <li>
     You're not trackin any bad habits yet!
     Try clicking the big red plus to add a new bad habit to track.
@@ -236,3 +236,16 @@ const makeSignUpDetailsForm = () => `
     value: ''
   })}
 `
+
+const drawHabitList = (a,empty_phrase="You're not trackin any bad habits yet! Try clicking the big red plus to add a new bad habit to track.") => {
+  $("#list-page .habit-list").html(
+    a.length ? makeHabitList(a) : empty_phrase
+ )
+}
+
+const makeUploaderImage = ({namespace,folder,name}) => {
+  console.log(namespace,folder,name)
+  $(`#${namespace}-image`).val(folder+name);
+  $(`#${namespace}-page .image-uploader`)
+     .css({'background-image':`url(${folder+name}`})
+}

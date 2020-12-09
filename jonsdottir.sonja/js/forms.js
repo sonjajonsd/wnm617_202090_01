@@ -106,3 +106,36 @@ const checkLocationAddForm = () => {
       $.mobile.navigate('#map-page');
     })
 }
+
+const checkSearchForm = async() => {
+  let s = $("#search-input").val();
+
+  let r = await query({type:"search_habits", params:[s, sessionStorage.userId]});
+  console.log("Result", r);
+  drawHabitList(r.result, "Search produced no results.");
+}
+
+const checkUpload = file => {
+  let fd = new FormData();
+  fd.append("image",file);
+
+  return fetch('data/api.php',{
+     method:'POST',
+     body:fd
+  }).then(d=>d.json());
+}
+
+const checkUserUploadForm = () => {
+  let upload = $("#user-upload-image").val()
+  if(upload=="") return;
+
+  query({
+     type:'update_user_image',
+     params:[upload,sessionStorage.userId]
+  }).then(d=>{
+     if(d.error) {
+        throw d.error;
+     }
+     window.history.back();
+  })
+}
