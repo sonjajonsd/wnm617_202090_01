@@ -61,8 +61,11 @@ const checkUserEditForm = () => {
 const checkHabitAddForm = () => {
   let name = $("#add-habit-name").val();
   let description = $("#add-habit-description").val();
+  let color = $("input[name='habit-color']:checked").val();
 
-  query({type:'insert_habit', params:[sessionStorage.userId, name, description]})
+  let img = `https://via.placeholder.com/400/bbb/fff/?text=${name}`
+
+  query({type:'insert_habit', params:[sessionStorage.userId, name, description, color, img]})
     .then(d => {
       if (d.error) {
         throw d.error;
@@ -93,8 +96,18 @@ const checkLocationAddForm = () => {
   let lng = $("#location-add-lng").val();
   let habit = $("#spotted-habit").val();
   let desc = $("#spotted-description").val();
+
   // https://www.tutorialrepublic.com/faq/how-to-get-the-value-of-selected-radio-button-using-jquery.php
   let rating = $("input[name='spotted-emotion']:checked").val();
+
+  if(!lat && !lng) {
+    $('#location-marker-error').addClass('active');
+    throw "Marker missing";
+  }
+  if(!habit) {
+    $('#location-habit-error').addClass('active');
+    throw "No habit selected";
+  }
 
   query({type:'insert_location', params:[habit, lat, lng, rating, desc]})
     .then(d => {

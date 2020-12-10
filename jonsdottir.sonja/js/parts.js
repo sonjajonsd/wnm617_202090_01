@@ -2,17 +2,34 @@
 const makeHabitList = templater(o => `<li>
   <li>
     <div class="habitlist-item js-habit-jump" data-id="${o.id}">
-      <div class="habitlist-description">
+      <div class="habitlist-description ${o.color}">
         <div class="habit-name">${o.name}</div>
         <div class="habit-meta">${o.description}</div>
       </div>
       <div class="habitlist-icon">
-        <div class="image">
-          <i class="${o.icon}"></i>
+        <div class="image ${o.color}">
+        ${o.img ?  `<img src="${o.img}" alt="Habit Image" />` : `<img class="fallback" src="imgs/glass.png" alt="Broken glass" />`}
         </div>
       </div>
     </div>
   </li>`);
+
+  // ${o.img ?  `<img src="${o.img}" alt="Habit Image" />` : `<i class="fas fa-bullhorn"></i>`}
+  // ${o.img ?  `<img src="https://placeimg.com/400/400/any" alt="Habit Image" />` : `<img class="fallback" src="imgs/glass.png" alt="Broken glass" />`}
+// const makeHabitList = templater(o => `<li>
+//   <li>
+//     <div class="habitlist-item js-habit-jump" data-id="${o.id}">
+//       <div class="habitlist-description">
+//         <div class="habit-name">${o.name}</div>
+//         <div class="habit-meta">${o.description}</div>
+//       </div>
+//       <div class="habitlist-icon">
+//         <div class="image">
+//           <i class="${o.icon}"></i>
+//         </div>
+//       </div>
+//     </div>
+//   </li>`);
 
 const makeEmptyList = () => `
   <li>
@@ -60,8 +77,13 @@ const makeUserInitials = templater(o => `
 `)
 
 const makeHabitImg = o => `
-  <i class="${o.feeling}"></i>
+  <div class="image">
+    <img src="${o.img}" alt="Habit Image" />
+  </div>
 `;
+// const makeHabitImg = o => `
+//   <i class="${o.feeling}"></i>
+// `;
 // const makeHabitImg = templater(o => `
 //   <i class="${o.icon}"></i>
 // `);

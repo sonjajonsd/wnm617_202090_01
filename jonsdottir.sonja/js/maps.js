@@ -1,3 +1,22 @@
+const COLOR_VARIABLES = {
+    "red": '#FF574A',
+    "blue": '#579cb2',
+    "green": '#A1CCA5',
+    "yellow": '#FFC271',
+}
+// const COLOR_VARIABLES = {
+//     "red": '#fe5f55',
+//     "blue": '#777da7',
+//     "green": '#94c9a9',
+//     "yellow": '#E8AA14',
+// }
+// const COLOR_VARIABLES = {
+//     "red": '#ff574a',
+//     "blue": '#407cf9',
+//     "green": '#8ec73f',
+//     "yellow": '#ffc73a',
+// }
+
 const makeMap = async(target, center={lat:37.786505,lng:-122.399374}) => {
   await checkData(()=>window.google);
 
@@ -38,10 +57,7 @@ const makeMap = async(target, center={lat:37.786505,lng:-122.399374}) => {
 // https://stackoverflow.com/questions/24413766/how-to-use-svg-markers-in-google-maps-api-v3
 const template = `<?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196 320.91"><defs><style>.cls-1{fill:#ff574a;stroke:#fff;stroke-miterlimit:10;stroke-width:12px;}.cls-2{fill:#00324a;}</style></defs><path class="cls-1" d="M280.83,146.76c0,47.86-78.2,191.81-93.44,219.4a2.91,2.91,0,0,1-5.11,0C167,338.57,88.83,194.62,88.83,146.76a96,96,0,1,1,192,0Z" transform="translate(-86.83 -48.76)"/><circle class="cls-2" cx="98" cy="101.24" r="50"/></svg>`;
-
-// var svg = template.replace('{{ color }}', '#800');
-
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196 320.91"><defs><style>.cls-1{fill:{{ color }};stroke:#fff;stroke-miterlimit:10;stroke-width:12px;}.cls-2{fill:#00324a;}</style></defs><path class="cls-1" d="M280.83,146.76c0,47.86-78.2,191.81-93.44,219.4a2.91,2.91,0,0,1-5.11,0C167,338.57,88.83,194.62,88.83,146.76a96,96,0,1,1,192,0Z" transform="translate(-86.83 -48.76)"/><circle class="cls-2" cx="98" cy="101.24" r="50"/></svg>`;
 
 const makeMarkers = (map_el, map_locs,setBounds=true) => {
   let map = map_el.data("map");
@@ -51,12 +67,13 @@ const makeMarkers = (map_el, map_locs,setBounds=true) => {
 
   markers = [];
 
+  
   map_locs.forEach(o =>{
     let m = new google.maps.Marker({
       position:o,
       map:map,
       icon:{
-        url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(template),
+        url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(template.replace('{{ color }}', COLOR_VARIABLES[o.color || 'red'])),
         scaledSize: {
            width:50,
            height:50  

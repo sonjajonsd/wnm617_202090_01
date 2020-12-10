@@ -91,6 +91,15 @@ function makeStatement($data) {
     case 'locations_by_habit_id':
       return makeQuery($c, "SELECT * FROM `track_locations` WHERE `habit_id`=?", $p);
       break;
+    case 'locations_data_by_habit_id':
+      return makeQuery($c, "SELECT * FROM 
+        `track_locations` l 
+        LEFT JOIN `track_habits` h 
+        ON h.id=l.habit_id 
+        WHERE `habit_id`=? 
+        AND NOT l.lat=0"
+      , $p);
+      break;
 
     case "check_signin":
       return makeQuery($c,"SELECT * FROM `track_users` WHERE `username`=? AND `password`=md5(?)",$p);
@@ -140,6 +149,7 @@ function makeStatement($data) {
         RIGHT JOIN `track_locations` l
         ON h.id = l.habit_id
         WHERE h.id=?
+        AND NOT l.lat=0
         ORDER BY l.date_create DESC
         LIMIT 1
         ", $p);
@@ -179,6 +189,7 @@ function makeStatement($data) {
         ) l
         ON h.id = l.habit_id
         WHERE h.user_id=?
+        AND NOT l.lat=0 
         GROUP BY l.habit_id
         ", $p);
 
@@ -201,9 +212,9 @@ function makeStatement($data) {
       case "insert_habit":
         $r = makeQuery($c,"INSERT INTO
            `track_habits`
-           (`user_id`,`name`, `description`,`icon`,`img`,`date_create`)
+           (`user_id`,`name`, `description`,`color`,`img`,`date_create`)
            VALUES
-           (?, ?, ?, 'fas fa-bullhorn', '', NOW())
+           (?, ?, ?, ?, ?, NOW())
            ",$p);
           return ["id"=>$c->lastInsertId()];
       

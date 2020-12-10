@@ -240,9 +240,9 @@
       <div class="modal" id="add-habit-drawer">
         <div class="modal-back" data-deactivate="#add-habit-drawer"></div>
         <div class="modal-drawer bottom">
-          <div class="floating-img-container">
+          <!-- <div class="floating-img-container">
             <img src="imgs/spectacles-simple.png" alt="mad" />
-          </div>
+          </div> -->
           <div class="modal-body">
             <h1>Add Bad Habit</h1>
             <form id="add-habit-form" class="no-padding" data-ajax="false">
@@ -277,13 +277,13 @@
                   </label>
                   <div class="color-container">
                     <input data-role="none" checked class="color-input" type="radio" id="red" name="habit-color" value="red">
-                    <label for="red" class="color-input red"><i class="fas fa-circle"></i></label>
+                    <label for="red" class="color-input red-color"><i class="fas fa-circle"></i></label>
                     <input data-role="none" class="color-input" type="radio" id="blue" name="habit-color" value="blue">
-                    <label for="blue" class="color-input blue"><i class="fas fa-circle"></i></label>
+                    <label for="blue" class="color-input blue-color"><i class="fas fa-circle"></i></label>
                     <input data-role="none" class="color-input" type="radio" id="green" name="habit-color" value="green">
-                    <label for="green" class="color-input green"><i class="fas fa-circle"></i></label>
+                    <label for="green" class="color-input green-color"><i class="fas fa-circle"></i></label>
                     <input data-role="none" class="color-input" type="radio" id="yellow" name="habit-color" value="yellow">
-                    <label for="yellow" class="color-input yellow"><i class="fas fa-circle"></i></label>
+                    <label for="yellow" class="color-input yellow-color"><i class="fas fa-circle"></i></label>
                   </div>
                 </div>
               </div>
@@ -315,9 +315,7 @@
           <div class="map"></div>
         </div>
         <div class="fixed-img-container flex-none">
-          <div class="image">
-            <div class="habit-img"></div>
-          </div>
+          <div class="habit-img"></div>
         </div>
         <div class="habit-content-header display-flex">
           <div class="title-container"></div>
@@ -604,7 +602,7 @@
                       <label for="smile" class="emotion-input"><i class="far fa-smile"></i></label>
                       <input data-role="none" class="emotion-input" type="radio" id="meh" name="spotted-emotion" value="2">
                       <label for="meh" class="emotion-input"><i class="far fa-meh"></i></label>
-                      <input data-role="none" class="emotion-input" type="radio" id="blank" name="spotted-emotion" value="3">
+                      <input data-role="none" class="emotion-input" checked type="radio" id="blank" name="spotted-emotion" value="3">
                       <label for="blank" class="emotion-input"><i class="far fa-meh-blank"></i></label>
                       <input data-role="none" class="emotion-input" type="radio" id="frown-open" name="spotted-emotion" value="4">
                       <label for="frown-open" class="emotion-input"><i class="far fa-frown-open"></i></label>
@@ -623,6 +621,31 @@
             </div>
           </div>
         </div>
+        <div class="modal" id="location-marker-error">
+            <div class="modal-back" data-deactivate="#location-marker-error"></div>
+            <div class="modal-popup">
+              <div class="modal-body">
+                <h1>Location Missing</h1>
+                <p>Tap the map to place your marker</p>
+                <p>Please try again.</p>
+              </div>
+              <div class="modal-foot">
+                <a href="#" data-deactivate="#location-marker-error">Ok</a>
+              </div>
+            </div>
+          </div>
+        <div class="modal" id="location-habit-error">
+            <div class="modal-back" data-deactivate="#location-habit-error"></div>
+            <div class="modal-popup">
+              <div class="modal-body">
+                <h1>Habit Missing</h1>
+                <p>Please select a habit</p>
+              </div>
+              <div class="modal-foot">
+                <a href="#" data-deactivate="#location-habit-error">Ok</a>
+              </div>
+            </div>
+          </div>
      </section>
   </body>
 </html>

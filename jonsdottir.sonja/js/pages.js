@@ -93,17 +93,23 @@ const UserProfilePage = async () => {
 
 const HabitProfilePage = async () => {
   let d = await query({type:'habit_by_id', params: [sessionStorage.habitId]});
-  
   $("#habit-profile-page .title-container").html(makeHabitTitleContainer(d.result));
-
-  let last = await query({type:'last_encounter_by_habit', params: [sessionStorage.habitId]});
-  let count = await query({type:'habit_total_encounters', params: [sessionStorage.habitId]});
-  let rating = await query({type:'locations_by_habit_id', params: [sessionStorage.habitId]});
   
-  let total = 0;
-  let cntr = rating.result.length;
+  let last = await query({type:'last_encounter_by_habit', params: [sessionStorage.habitId]});
+  let locations = await query({type:'locations_data_by_habit_id', params: [sessionStorage.habitId]});
+  
+  let valid_locations = locations.result.reduce((r,o)=>{
+    // o.icon = o.img;
+    if(o.lat && o.lng) r.push(o);
+    return r;
+  },[])
+  console.log('valid_locations', valid_locations);
+  console.log('locations', locations.result);
 
-  rating.result.forEach(r => {
+  let total = 0;
+  let cntr = valid_locations.length;
+
+  valid_locations.forEach(r => {
     total += r.appalled_rating;
   });
 
@@ -112,23 +118,17 @@ const HabitProfilePage = async () => {
   const stats = {
     last: last.result[0] ? last.result[0].date_create : "No reports available",
     description: last.result[0] ? last.result[0].description : "N/A",
-    count: count.result[0] ? count.result[0].encounters : "N/A",
-    avgAppalled: APPALLED_MEANING[Math.round(appalledAvg)]
-  };
-  let icon = {
+    count: valid_locations ? valid_locations.length : 0,
+    avgAppalled: APPALLED_MEANING[Math.round(appalledAvg)],
     feeling: HABIT_FEELING[Math.round(appalledAvg)]
-  }
-  $("#habit-profile-page .habit-img").html(makeHabitImg(icon));
+  };
+
+  $("#habit-profile-page .habit-img").html(makeHabitImg(d.result[0]));
   $("#habit-profile-page .habit-stats").html(makeHabitStats(stats));
 
-  let valid_habits = rating.result.reduce((r,o)=>{
-    // o.icon = o.img;
-    if(o.lat && o.lng) r.push(o);
-    return r;
-  },[])
 
   let map_el = await makeMap("#habit-profile-page .map", last.result[0]);
-  makeMarkers(map_el, valid_habits);
+  makeMarkers(map_el, valid_locations);
 }
 
 const EditHabitPage = async () => {
@@ -171,6 +171,10 @@ const LocationAddPage = async() => {
   })
 
   let d = await query({type:'habit_by_user_id', params: [sessionStorage.userId]});
+
+
+  // mauretto - https://stackoverflow.com/questions/47824/how-do-you-remove-all-the-options-of-a-select-box-and-then-add-one-option-and-se
+  $("#spotted-habit").find('option:not(:first)').remove();
 
   // dule - https://stackoverflow.com/questions/740195/adding-options-to-a-select-using-jquery
   d.result.forEach((d) => {
