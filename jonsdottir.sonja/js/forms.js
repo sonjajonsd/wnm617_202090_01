@@ -155,3 +155,18 @@ const checkUserUploadForm = () => {
      window.history.back();
   })
 }
+
+const checkHabitDelete = () => {
+  let habitId = sessionStorage.habitId;
+
+  query({
+    type:'delete_habit',
+    params:[habitId]
+  }).then(d=>{
+      if(d.error) {
+        throw d.error;
+      }
+      window.history.go(-2);
+  })
+}
+

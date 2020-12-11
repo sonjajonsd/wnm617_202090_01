@@ -130,5 +130,8 @@
     let target = $(this).data('toggle');
     $(target).toggleClass("active")
   })
+  .on("click",'.js-habit-delete',function(e){
+    checkHabitDelete();
+  })
 
  })

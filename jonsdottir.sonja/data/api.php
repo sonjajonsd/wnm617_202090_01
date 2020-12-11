@@ -281,6 +281,11 @@ function makeStatement($data) {
         AND `user_id` = ?
         ", $p);
 
+      // DELETE
+
+      case "delete_habit":
+        return makeQuery($c,"DELETE FROM `track_habits` WHERE `id`=?",$p,false);
+
     default:
       return ["error"=>"No Matched Type"];
   }
