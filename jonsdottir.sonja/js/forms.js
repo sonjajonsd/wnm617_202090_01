@@ -28,14 +28,16 @@ const checkSignupForm = () => {
 const checkSignupDetailsForm = () => {
   let fullname = $("#signup-details-fullname").val();
   let petpeeve = $("#signup-details-petpeeve").val();
- 
+  let img = $("#signup-details-image").val();
+
   query({
     type:'update_signup',
-    params:[fullname,petpeeve,sessionStorage.userId]
+    params:[fullname,petpeeve,img,sessionStorage.userId]
   }).then(d=>{
     if(d.error) {
        throw d.error;
     }
+    $("#signup-details-form")[0].reset();
     $.mobile.navigate("#list-page");
  })
 }
@@ -44,17 +46,18 @@ const checkUserEditForm = () => {
   let username = $("#edit-user-username").val();
   let fullname = $("#edit-user-fullname").val();
   let petpeeve = $("#edit-user-petpeeve").val();
+  let img = $("#user-edit-image").val() || `https://via.placeholder.com/400/bbb/fff/?text=${username}`;
+
+  console.log('userimg',img,username,fullname,petpeeve);
  
   query({
     type:'update_user',
-    params:[username,fullname,petpeeve,sessionStorage.userId]
+    params:[username,fullname,petpeeve,img,sessionStorage.userId]
   }).then(d=>{
     if(d.error) {
        throw d.error;
     }
-
-    console.log('User updated', d);
-    window.history.back();
+    window.history.go(-2);
  })
 }
 
@@ -62,8 +65,8 @@ const checkHabitAddForm = () => {
   let name = $("#add-habit-name").val();
   let description = $("#add-habit-description").val();
   let color = $("input[name='habit-color']:checked").val();
+  let img = $("#habit-add-image").val() || `https://via.placeholder.com/400/bbb/fff/?text=${name}`
 
-  let img = `https://via.placeholder.com/400/bbb/fff/?text=${name}`
 
   query({type:'insert_habit', params:[sessionStorage.userId, name, description, color, img]})
     .then(d => {

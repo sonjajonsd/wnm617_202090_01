@@ -38,7 +38,7 @@
       case 'map-page': MapPage(); break;
       case 'user-profile-page': UserProfilePage(); break;
       case 'edit-user-page': EditUserPage(); break;
-      case "user-upload-page": UserUploadPage(); break;
+      case 'edit-password-page': EditPasswordPage(); break;
       case 'habit-profile-page': HabitProfilePage(); break;
       case 'edit-habit-page': EditHabitPage(); break;
       case 'signin-page': SignInPage(); break;
@@ -98,13 +98,9 @@
   .on("change",".image-uploader input",function(){
     checkUpload(this.files[0])
     .then(d=>{
-       console.log(d)
-       makeUploaderImage({
-          namespace:'user-upload',
-          folder:'uploads/',
-          name:d.result
-       })
-    })
+      console.log(d)
+      makeUploaderImage(this,d.result,'uploads/')
+   })
  })
 
 

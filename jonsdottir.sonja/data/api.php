@@ -234,7 +234,8 @@ function makeStatement($data) {
             `track_users`
             SET
             `name` = ?,
-            `pet_peeve` = ?
+            `pet_peeve` = ?,
+            `img` = ?
             WHERE `id` = ?
             ",$p,false);
          return ["result"=>"success"];
@@ -245,7 +246,8 @@ function makeStatement($data) {
             SET
             `username` = ?,
             `name` = ?,
-            `pet_peeve` = ?
+            `pet_peeve` = ?,
+            `img` = ?
             WHERE `id` = ?
             ",$p,false);
          return ["result"=>"success"];

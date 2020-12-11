@@ -1,6 +1,7 @@
 
 const APPALLED_MEANING = ["Not sure..","All good","Okay","Mehh","Not good","Gross"];
 const HABIT_FEELING = ["far fa-question-circle","far fa-smile","far fa-meh","far fa-meh-blank","far fa-frown-open","far fa-tired"];
+const DEFAULT_PLACEHOLDER_IMG = "placeholder";
 
 const ListPage = async () => {
   let d = await query({type:'habit_by_user_id', params: [sessionStorage.userId]});
@@ -15,14 +16,13 @@ const ListPage = async () => {
   let userData = await query({type:'user_by_id', params: [sessionStorage.userId]});
   // https://stackoverflow.com/questions/8279859/get-first-letter-of-each-word-in-a-string-in-javascript
   userData.result[0].initials = userData.result[0].name ? userData.result[0].name.split(' ').map(i => i.charAt(0)).join('') : userData.result[0].username[0];
-  $("#list-page .user-initials").html(makeUserInitials(userData.result));
+  userData.result[0].img.includes(DEFAULT_PLACEHOLDER_IMG) ? $("#list-page .user-initials").html(makeUserInitials(userData.result)) : $("#list-page .user-initials").html(makeUserInitialsPic(userData.result));
 }
 
 const MapPage = async () => {
   let userData = await query({type:'user_by_id', params: [sessionStorage.userId]});
-  console.log(userData);
   userData.result[0].initials = userData.result[0].name ? userData.result[0].name.split(' ').map(i => i.charAt(0)).join('') : userData.result[0].username[0];
-  $("#map-page .user-initials").html(makeUserInitials(userData.result));
+  userData.result[0].img.includes(DEFAULT_PLACEHOLDER_IMG) ? $("#map-page .user-initials").html(makeUserInitials(userData.result)) : $("#map-page .user-initials").html(makeUserInitialsPic(userData.result));
 
   let recent = await query({type:'recent_locations', params: [sessionStorage.userId]});
   console.log("RECENT", recent);
@@ -134,12 +134,17 @@ const HabitProfilePage = async () => {
 const EditHabitPage = async () => {
   let d = await query({type:'habit_by_id', params: [sessionStorage.habitId]});
   console.log('Data', d);
+
+  let img = d.result[0].img.includes(DEFAULT_PLACEHOLDER_IMG) ? '' : d.result[0].img;
+  $("#edit-habit-page .img-container").html(makeHabitImgInput(img));
   $("#edit-habit-page .input-container").html(makeHabitUpdateForm(d.result[0]));
 }
 
 const EditUserPage = async () => {
   let d = await query({type:'user_by_id', params: [sessionStorage.userId]});
   console.log('Data', d);
+  let img = d.result[0].img.includes(DEFAULT_PLACEHOLDER_IMG) ? '' : d.result[0].img;
+  $("#edit-user-page .img-container").html(makeUserImgInput(img));
   $("#edit-user-page .input-container").html(makeUserUpdateForm(d.result[0]));
 }
 
@@ -185,15 +190,6 @@ const LocationAddPage = async() => {
   });
 }
 
-const UserUploadPage = async() => {
-  query({
-     type:'user_by_id',
-     params:[sessionStorage.userId]
-  }).then(d=>{
-     makeUploaderImage({
-        namespace:'user-upload',
-        folder:'',
-        name:d.result[0].img
-     })
-  })
+const EditPasswordPage = () => {
+  $("#edit-password-page .form-content").html(makePasswordForm());
 }

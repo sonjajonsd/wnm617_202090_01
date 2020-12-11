@@ -125,6 +125,10 @@ a:hover {
   visibility: hidden;
 }
 
+.column {
+  flex-direction: column;
+}
+
 .display-flex {
   display: flex;
 }
@@ -302,7 +306,6 @@ form {
 }
 .signup-header {
   flex-direction: column;
-  padding: 0 1em;
 }
 .signup-header h4 {
   margin: 0;
@@ -491,16 +494,8 @@ form {
 
 /* FLOATING IMG - MODAL DRAWER */
 .floating-img-container {
-  padding: 0 0 2em;
-  text-align: center;
-  height: 20vh;
-  width: 20vh;
-  border: 4px solid var(--color-main-dark);
-  border-radius: 100%;
-  padding-top: 6.5vh;
-  background: var(--color-sub-dark);
-  margin: auto;
-  margin-bottom: 3em;
+  margin: 2.5em auto;
+  pointer-events: initial;
 }
 .floating-img-container img {
   height: 6vh;
@@ -510,6 +505,7 @@ form {
 /* SUB PAGES */
 #location-add-page [data-role="header"],
 #edit-habit-page [data-role="header"],
+#user-settings [data-role="header"],
 #edit-user-page [data-role="header"],
 #edit-password-page [data-role="header"],
 #user-profile-page [data-role="header"],
@@ -518,9 +514,6 @@ form {
   overflow: initial;
 }
 
-#edit-habit-page .ui-header::after,
-#edit-user-page .ui-header::after,
-#edit-password-page .ui-header::after,
 #user-profile-page .ui-header::after{
   content: '';
   height: 25vmax;
@@ -564,8 +557,14 @@ form {
 }
 .fixed-img-container .image img {
   width: 100%;
+  height: 100%;
   vertical-align: text-bottom;
   object-fit: cover;
+}
+
+.fixed-img-container .image img.fallback {
+  width: 60%;
+  height: 60%;
 }
 
 .img-container {
@@ -591,9 +590,9 @@ form {
   width: 20vh;
   border-radius: 100%;
   box-shadow: var(--box-shadow-dark);
-  border: 4px solid var(--color-main-dark);
+  border: 6px solid var(--color-main-dark);
   background-color: var(--color-main-dark);
-
+  object-fit: cover;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -636,6 +635,17 @@ form {
   padding: 0 0 1em;
   margin: 3.5em 1em 0;
   border-bottom: 1px solid var(--color-main-medium);
+}
+
+/* SETTINGS */
+
+.settings-container .item {
+  padding: 1em;
+  margin: 1em;
+  box-shadow: var(--box-shadow);
+  border-radius: 0.5em;
+  display: flex;
+  justify-content: space-between;
 }
 
 
@@ -741,6 +751,14 @@ input[type="radio"] {
   text-transform: uppercase;
 }
 
+.profile-btn-pic > img {
+  height: 2.6rem;
+  width: 2.6rem;
+  border-radius: 50%;
+  object-fit: cover;
+  display: flex;
+}
+
 /* stretches main between header and footer */
 [data-role="main"] {
   flex: 1 1 100%;
@@ -829,6 +847,7 @@ ul.habit-list {
 }
 .habitlist-icon img.fallback {
   width: 60%;
+  height: auto;
 }
 
 .habitlist-icon .image {
@@ -975,6 +994,10 @@ a.emp-link {
   display: flex;
   flex-direction: column;
 }
+#user-settings [data-role="main"] {
+  display: flex;
+  flex-direction: column;
+}
 #edit-user-page [data-role="main"] {
   display: flex;
   flex-direction: column;
@@ -1010,6 +1033,7 @@ a.emp-link {
   margin-left: auto;
   margin-right: auto;
   margin-top: 1em;
+  margin-bottom: 2em;
 }
 #edit-user-page [data-role="main"] .img-container .image{
   margin-left: auto;
@@ -1052,6 +1076,9 @@ a.emp-link {
 .image-uploader input {
   display: none;
 }
+input.image-uploader  {
+  display: none;
+}
 
 .image-uploader.full {
   position:absolute;
@@ -1064,19 +1091,40 @@ a.emp-link {
   background-repeat:no-repeat;
 }
 
+.image-uploader.thumbnail {
+  width: 20vh;
+  height: 20vh;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  background-color: var(--color-main-dark);
+  position: relative;
+  border: 6px solid var(--color-main-dark);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  margin: auto;
+}
+.image-uploader.thumbnail::before {
+  color:white;
+  font-family: "Font Awesome 5 Free"; 
+  font-weight: 900; 
+  content: "\f030";
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  vertical-align:middle;
+  font-size:4.5em;
+}
+.image-uploader.thumbnail.picked::before {
+  content:'';
+}
+
 /* MAP PAGE */
 
 #signin-page [data-role="main"] {
   background-color: var(--color-neutral-light);
 }
 #signin-page .form-input {
-  box-shadow: var(--box-shadow-bottom);
-  background-color: var(--color-white);
-}
-#signup-page [data-role="main"] {
-  background-color: var(--color-neutral-light);
-}
-#signup-page .form-input {
   box-shadow: var(--box-shadow-bottom);
   background-color: var(--color-white);
 }

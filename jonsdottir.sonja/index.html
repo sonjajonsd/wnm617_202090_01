@@ -86,11 +86,11 @@
         <div class="flex-stretch">
             <div class="pattern grayscale"></div>
         </div>
+        <form id="signup-form" data-ajax="false">
         <div class="signup-header">
           <h1>Create account</h1>
           <h4>There's no time like the present to start tracking bad habits!</h4>
         </div>
-        <form id="signup-form" data-ajax="false">
           <div class="input-container">
             <div class="form-content"></div>
           </div>
@@ -150,13 +150,17 @@
         <div class="flex-stretch">
             <div class="pattern grayscale"></div>
         </div>
-        <div class="signup-header">
-          <h1>Create account</h1>
-          <h4>Please fill in the form below</h4>
-        </div>
         <form id="signup-details-form" data-ajax="false">
+          <input type="hidden" id="signup-details-image">
+          <label class="image-uploader thumbnail">
+            <input type="file" data-role="none" id="user-add-upload">
+          </label>
+          <br/>
+          <div class="signup-header">
+            <h1>Create account</h1>
+            <h4>Please fill in the form below</h4>
+          </div>
           <div class="input-container">
-            <!-- IMAGE FORM -->
             <div class="form-content"></div>
           </div>
           <div class="form-control">
@@ -218,13 +222,7 @@
         <div class="overscroll">
           <form id="search-habit-form" data-ajax="false">
             <div class="form-control">
-              <input
-                id="search-input"
-                type="search"
-                class="form-input search"
-                data-role="none"
-                placeholder="Search for a habit"
-              />
+              <input id="search-input" type="search" class="form-input search" data-role="none" placeholder="Search for a habit"/>
             </div>
           </form>
           <ul class="habit-list"></ul>
@@ -237,15 +235,19 @@
             </a>
           </div>
       </div>
+      <form id="add-habit-form" class="no-padding" data-ajax="false">
       <div class="modal" id="add-habit-drawer">
         <div class="modal-back" data-deactivate="#add-habit-drawer"></div>
         <div class="modal-drawer bottom">
-          <!-- <div class="floating-img-container">
-            <img src="imgs/spectacles-simple.png" alt="mad" />
-          </div> -->
+          <div class="floating-img-container">
+            <input type="hidden" id="habit-add-image">
+            <label class="image-uploader thumbnail">
+              <input type="file" data-role="none" id="habit-add-upload">
+            </label>
+          </div>
+
           <div class="modal-body">
             <h1>Add Bad Habit</h1>
-            <form id="add-habit-form" class="no-padding" data-ajax="false">
               <div class="input-container">
                 <div class="form-control">
                   <label for="add-habit-name" class="form-label">
@@ -339,30 +341,27 @@
           <li>
             <h3 class="nav-page-title">Edit Bad Habit</h3>
           </li>
-          <li>
-            <i class="no-visibility fas fa-chevron-left"></i>
+          <li class="back-button">
+            <i class="fa fa-trash-o"></i>
           </li>
         </ul>
       </header>
       <div data-role="main">
-        <div class="flex-stretch img-container">
-          <div class="image">
-            <i class="fas fa-camera"></i>
+        <div class="flex-stretch"></div>
+        <form id="edit-habit-form" class="no-padding" data-ajax="false">
+          <div class="img-container"></div>
+          <div class="form-container">
+            <h1>Habit Details</h1>
+            <div class="input-container">
+            </div>
+            <div class="form-control">
+              <input type="submit" class="form-button" value="Update" data-role="none" />
+            </div>
+            <div class="form-control text-center sm-font">
+              <a href="#" data-rel="back" class="emp-link">Cancel</a>
+            </div>
           </div>
-        </div>
-        <div class="form-container">
-            <h1>Edit Bad Habit</h1>
-            <form id="edit-habit-form" class="no-padding" data-ajax="false">
-              <div class="input-container">
-              </div>
-              <div class="form-control">
-                <input type="submit" class="form-button" value="Update" data-role="none" />
-              </div>
-              <div class="form-control text-center sm-font">
-                <a href="#" data-rel="back" class="emp-link">Cancel</a>
-              </div>
-            </form>
-          </div>
+        </form>
       </div>
     </section>
 
@@ -389,7 +388,7 @@
           <div class="content-header flex-stretch  display-flex">
             <div class="user-titleContainer"></div>
             <div class="flex-stretch"></div>
-            <div class="edit-button"><a href="#edit-user-page"><i class="fa fa-cog"></i></a></div>
+            <div class="edit-button"><a href="#user-settings"><i class="fa fa-cog"></i></a></div>
           </div>
           <div class="overscroll">
             <div class="user-stats"></div>
@@ -399,14 +398,14 @@
     </section>
 
     
-    <!-- Edit User Profile Page -->
-    <section data-role="page" id="edit-user-page">
+    <!-- User Settings Page -->
+    <section data-role="page" id="user-settings">
       <header data-role="header">
         <ul>
           <li>
             <a href="#" class="back-button" data-rel="back"><i class="fas fa-chevron-left"></i></a>
           <li>
-            <h3 class="nav-page-title">Edit User Profile</h3>
+            <h3 class="nav-page-title">User Settings</h3>
           </li>
           <li>
             <i class="no-visibility fas fa-chevron-left"></i>
@@ -414,47 +413,60 @@
         </ul>
       </header>
       <div data-role="main">
-        <div class="flex-stretch img-container">
-          <div class="image">
-            <i class="fas fa-camera"></i>
-          </div>
+        <div class="settings-container">
+          <a href="#edit-user-page">
+            <div class="item">
+              <div> Update Profile </div>
+              <i class="fa fa-angle-right"></i>
+            </div>
+          </a>
+          <a href="#edit-password-page">
+          <div class="item">
+            <div> Change Password </div>
+              <i class="fa fa-angle-right"></i>
+            </div>
+          </a>
         </div>
-        <!-- <div>
+        <div class="flex-stretch"></div>
+        <div class="form-control center" >
+          <a href="#" class="js-logout emp-link">Logout</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Edit User Profile Page -->
+    <section data-role="page" id="edit-user-page">
+      <header data-role="header">
+        <ul>
+          <li>
+            <a href="#" class="back-button" data-rel="back"><i class="fas fa-chevron-left"></i></a>
+          <li>
+            <h3 class="nav-page-title">Update Profile</h3>
+          </li>
+          <li>
+            <i class="no-visibility fas fa-chevron-left"></i>
+          </li>
+        </ul>
+      </header>
+      <div data-role="main">
+
+        <div class="flex-stretch"></div>
+        <form id="edit-user-form" class="no-padding" data-ajax="false">
+          <div class="img-container"></div>
           <div class="form-container">
-            <div class="edit-button"><a href="#edit-profile-image-page">
-              <i class="fas fa-user"></i></a></div>
-            </div>
-            <br>
-          </div>
-        </div> -->
-        <div>
-          <!-- <form id="user-upload-form" data-ajax="false">
-              <label class="image-uploader full">
-                <input type="file" data-role="none" id="user-upload-input">
-              </label>
-            </form> -->
-        </div>
-        <div class="form-container">
-          <div class="display-flex">
-            <div class="title-container">
-              <h1>Edit Profile</h1>
-            </div>
+            <h1>User Details</h1>
+            <div class="input-container"></div>
+
             <div class="flex-stretch"></div>
-            <div class="edit-button"><a href="#user-upload-page">
-              <i class="fas fa-user-lock"></i></a></div>
-          </div>
-          <div class="title-container"></div>
-          <form id="edit-user-form" class="no-padding" data-ajax="false">
-            <div class="input-container">
-            </div>
             <div class="form-control">
               <input type="submit" class="form-button" value="Update" data-role="none" />
             </div>
             <div class="form-control center" >
-              <a href="#" class="js-logout emp-link">Logout</a>
+              <a href="#" data-rel="back" class="emp-link">Cancel</a>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </section>
 
@@ -473,76 +485,27 @@
         </ul>
       </header>
       <div data-role="main">
-        <div class="flex-stretch img-container">
+        <div class="flex-stretch"></div>
+        <div class="img-container">
           <div class="image">
             <i class="fas fa-user-lock"></i>
           </div>
         </div>
         <div class="form-container">
-          <h1>Edit Password</h1>
           <form id="edit-password-form" class="no-padding" data-ajax="false">
             <div class="input-container">
-              <div class="form-control">
-                <label for="edit-current-password" class="form-label">
-                  Current Password
-                </label>
-                <input
-                  id="edit-current-password"
-                  type="text"
-                  class="form-input"
-                  data-role="none"
-                  placeholder="Type your current password"
-                />
-              </div>
-              <div class="form-control">
-                <label for="edit-new-password" class="form-label">New Password</label>
-                <input
-                  id="edit-new-password"
-                  type="text"
-                  class="form-input"
-                  data-role="none"
-                  placeholder="Type your new password"
-                />
-              </div>
-              <div class="form-control">
-                <label for="edit-again-password" class="form-label">Confirm Password</label>
-                <input
-                  id="edit-again-password"
-                  type="text"
-                  class="form-input"
-                  data-role="none"
-                  placeholder="Re-enter your new password"
-                />
-              </div>
+              <div class="form-content"></div>
             </div>
             <div class="form-control">
-              <a href="#" class="form-button">Update</a>
+              <a href="#" data-rel="back" class="form-button">Update</a>
+            </div>
+            <div class="form-control center" >
+              <a href="#" data-rel="back" class="emp-link">Cancel</a>
             </div>
           </form>
         </div>
       </div>
     </section>
-
-    <section data-role="page" id="user-upload-page">
-        <header data-role="header">
-           <h1>Upload Photo</h1>
-           <ul>
-              <li><a href="#" data-rel="back">Back</a></li>
-              <li class="flex-stretch"></li>
-              <li><a href="#" class="js-user-upload">Save</a></li>
-           </ul>
-        </header>
-        <div data-role="main">
-           <form id="user-upload-form" data-ajax="false">
-              <input type="hidden" id="user-upload-image">
-              <label class="image-uploader full">
-                 <input type="file" data-role="none" id="user-upload-input">
-              </label>
-           </form>
-           <!-- <label for="user-upload-input" class="form-button">Choose Image</label> -->
-        </div>
-     </section>
-  
 
     <!-- ADD LOCATION PAGE -->
     <section data-role="page" id="location-add-page">

@@ -8,7 +8,7 @@ const makeHabitList = templater(o => `<li>
       </div>
       <div class="habitlist-icon">
         <div class="image ${o.color}">
-        ${o.img ?  `<img src="${o.img}" alt="Habit Image" />` : `<img class="fallback" src="imgs/glass.png" alt="Broken glass" />`}
+        ${o.img.includes("placeholder") ? `<img class="fallback" src="imgs/br-glass.png" alt="Broken glass" />` : `<img src="${o.img}" alt="Habit Image" />`}
         </div>
       </div>
     </div>
@@ -76,17 +76,21 @@ const makeUserInitials = templater(o => `
   <li><a href="#user-profile-page" class="profile-btn"> ${o.initials} </a></li>
 `)
 
+const makeUserInitialsPic = templater(o => `
+  <li><a href="#user-profile-page" class="profile-btn-pic"> <img class="image" src="${o.img}" alt="Profile Picture" /> </a></li>
+`)
+
 const makeHabitImg = o => `
+  <div class="image ${o.color}">
+    ${o.img.includes("placeholder") ? `<img class="fallback" src="imgs/br-glass.png" alt="Broken glass" />` : `<img src="${o.img}" alt="Habit Image" />`}
+  </div>
+`;
+
+const makeHabitPlaceholderImg = o => `
   <div class="image">
     <img src="${o.img}" alt="Habit Image" />
   </div>
 `;
-// const makeHabitImg = o => `
-//   <i class="${o.feeling}"></i>
-// `;
-// const makeHabitImg = templater(o => `
-//   <i class="${o.icon}"></i>
-// `);
 
 const makeHabitTitleContainer = templater(o => `
   <h1>${o.name}</h1>
@@ -110,6 +114,22 @@ const makeHabitStats = (o) =>  `
     <div class="stats-name">Incident Report</div>
     <div class="stats-value">${o.description}</div>
   </div>
+`;
+
+const makeUserImgInput = img => `
+<input type="hidden" id="user-edit-image" value="${img}">
+<label class="image-uploader thumbnail ${img ? 'picked' : ''}" style="background-image:url('${img}')">
+   <input type="file" data-role="none" id="user-edit-input">
+  </label>
+  <p>Edit Image</p>
+`;
+
+const makeHabitImgInput = img => `
+<input type="hidden" id="habit-edit-image" value="${img}">
+<label class="image-uploader thumbnail ${img ? 'picked' : ''}" style="background-image:url('${img}')">
+   <input type="file" data-role="none" id="habit-edit-input">
+  </label>
+  <p>Edit Image</p>
 `;
 
 const makeHabitPopup = o => `
@@ -259,15 +279,40 @@ const makeSignUpDetailsForm = () => `
   })}
 `
 
+const makePasswordForm = () => `
+  ${FormControl({
+    displayName: 'Current Password',
+    name: 'current',
+    namespace: 'edit-password',
+    type: 'password',
+    placeholder: 'Type your current password',
+    value: ''
+  })}
+  ${FormControl({
+    displayName: 'New Password',
+    name: 'new',
+    namespace: 'edit-password',
+    type: 'password',
+    placeholder: 'Type your new password',
+    value: ''
+  })}
+  ${FormControl({
+    displayName: 'Confirm Password',
+    name: 'repeat',
+    namespace: 'edit-password',
+    type: 'password',
+    placeholder: 'Re-enter your new password',
+    value: ''
+  })}
+`
+
 const drawHabitList = (a,empty_phrase="You're not trackin any bad habits yet! Try clicking the big red plus to add a new bad habit to track.") => {
   $("#list-page .habit-list").html(
     a.length ? makeHabitList(a) : empty_phrase
  )
 }
 
-const makeUploaderImage = ({namespace,folder,name}) => {
-  console.log(namespace,folder,name)
-  $(`#${namespace}-image`).val(folder+name);
-  $(`#${namespace}-page .image-uploader`)
-     .css({'background-image':`url(${folder+name}`})
+const makeUploaderImage = (el, name, folder='') => {
+  $(el).parent().css({'background-image':`url(${folder+name}`}).addClass('picked')
+     .prev().val(folder+name);
 }
