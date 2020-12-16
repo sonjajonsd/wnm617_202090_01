@@ -269,7 +269,8 @@ function makeStatement($data) {
             SET
             `name` = ?,
             `description` = ?,
-            `img` = ?
+            `img` = ?,
+            `color` = ?
             WHERE `id` = ?
             ",$p,false);
          return ["result"=>"success"];

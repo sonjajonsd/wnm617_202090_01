@@ -118,13 +118,13 @@ const makeHabitImgInput = img => `
   <p>Edit Image</p>
 `;
 
-const makeHabitPopup = o => { console.log('o', o); return `
+const makeHabitPopup = o => `
   <div>
     <h1>${o.name}</h1>
     <p class="location-addr"><i class="fas fa-map-marker-alt"></i>${o.date_create}</p>
     <p class="location-desc">${o.description}</p>
   </div>
-`};
+`;
 
 const makeHabitSelections = o => `
   <option value="${o.id}">${o.name}</option>
@@ -170,6 +170,21 @@ const makeHabitUpdateForm = o => `
     placeholder: 'Do tell..',
     value: o.description
   })}
+  <div class="form-control">
+    <label for="add-habit-description" class="form-label">
+      Pick habit color
+    </label>
+    <div class="color-container">
+      <input data-role="none" ${o.color == 'red' ? 'checked' : ''} class="color-input" type="radio" id="red-edit" name="habit-color-edit" value="red">
+      <label for="red-edit" class="color-input red-color"><i class="fas fa-circle"></i></label>
+      <input data-role="none" ${o.color == 'blue' ? 'checked' : ''}  class="color-input" type="radio" id="blue-edit" name="habit-color-edit" value="blue">
+      <label for="blue-edit" class="color-input blue-color"><i class="fas fa-circle"></i></label>
+      <input data-role="none" ${o.color == 'green' ? 'checked' : ''} class="color-input" type="radio" id="green-edit" name="habit-color-edit" value="green">
+      <label for="green-edit" class="color-input green-color"><i class="fas fa-circle"></i></label>
+      <input data-role="none" ${o.color == 'yellow' ? 'checked' : ''} class="color-input" type="radio" id="yellow-edit" name="habit-color-edit" value="yellow">
+      <label for="yellow-edit" class="color-input yellow-color"><i class="fas fa-circle"></i></label>
+    </div>
+  </div>
 `
 
 const makeUserUpdateForm = o => `

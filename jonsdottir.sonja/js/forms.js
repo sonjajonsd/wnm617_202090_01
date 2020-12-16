@@ -18,7 +18,6 @@ const checkSignupForm = () => {
         throw d.error;
       }
 
-      console.log('signup', d);
       sessionStorage.userId = d.id;
       $.mobile.navigate("#signup-details-page");
     })
@@ -48,8 +47,6 @@ const checkUserEditForm = () => {
   let petpeeve = $("#edit-user-petpeeve").val();
   let img = $("#user-edit-image").val();
 
-  console.log('userimg',img,username,fullname,petpeeve);
- 
   query({
     type:'update_user',
     params:[username,fullname,petpeeve,img,sessionStorage.userId]
@@ -86,8 +83,9 @@ const checkHabitEditForm = () => {
   let name = $("#edit-habit-name").val();
   let description = $("#edit-habit-description").val();
   let img = $("#habit-edit-image").val();
+  let color = $("input[name='habit-color-edit']:checked").val();
 
-  query({type:'update_habit', params:[name, description, img, sessionStorage.habitId]})
+  query({type:'update_habit', params:[name, description, img, color, sessionStorage.habitId]})
     .then(d => {
       if (d.error) {
         throw d.error;
@@ -133,7 +131,6 @@ const checkSearchForm = async() => {
   let s = $("#search-input").val();
 
   let r = await query({type:"search_habits", params:[s, sessionStorage.userId]});
-  console.log("Result", r);
   drawHabitList(r.result, "Search produced no results.");
 }
 

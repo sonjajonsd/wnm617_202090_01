@@ -19,7 +19,6 @@ const MapPage = async () => {
   userData.result[0].img ? $("#map-page .user-initials").html(makeUserThumbnail(userData.result)) : $("#map-page .user-initials").html(makeUserInitials(userData.result));
 
   let recent = await query({type:'recent_locations', params: [sessionStorage.userId]});
-  console.log("RECENT", recent);
 
   let valid_habits = recent.result.reduce((r,o)=>{
     if(o.lat && o.lng) r.push(o);
@@ -52,7 +51,6 @@ const makeInitials = (d) => {
 
 const UserProfilePage = async () => {
   let d = await query({type:'user_by_id', params: [sessionStorage.userId]});
-  console.log('User', d);
 
   d.result[0].initials = makeInitials(d.result[0]);
   
@@ -79,12 +77,11 @@ const UserProfilePage = async () => {
   const appalledAvg = cntr ? total / cntr : 0;
   
   let stats = {
-    latest: totalEncounters ? latestEncounter.result[0].date_create : "N/A",
+    latest: totalEncounters ? latestEncounter.result[0].date_create : "No reports",
     appalledAvg: APPALLED_MEANING[Math.round(appalledAvg)],
-    mostCommon: totalEncounters ? `${common.result[0].name} (${common.result[0].encounters})`: "N/A",
+    mostCommon: totalEncounters ? `${common.result[0].name} (${common.result[0].encounters})`: "Unknown",
     encounters: count.result[0].encounters
   };
-  console.log('stats', stats);
   $("#user-profile-page .user-stats").html(makeUserStats(stats));
 }
 
@@ -101,8 +98,6 @@ const HabitProfilePage = async () => {
     if(o.lat && o.lng) r.push(o);
     return r;
   },[])
-  console.log('valid_locations', markerData.result);
-  console.log('locations', locations.result);
 
   let total = 0;
   let cntr = valid_locations.length;
@@ -172,8 +167,7 @@ const LocationAddPage = async() => {
   let map = map_el.data('map');
   map.addListener("click", (e) => {
     let posFromClick = {lat: e.latLng.lat(), lng: e.latLng.lng()};
-    let posFromCenter = {lat: map.getCenter().lat(), lng: map.getCenter().lng()};
-    console.log(posFromCenter, posFromClick);
+    
     $("#location-add-lat").val(posFromClick.lat);
     $("#location-add-lng").val(posFromClick.lng);
 

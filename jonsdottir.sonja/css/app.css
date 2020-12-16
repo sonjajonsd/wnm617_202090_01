@@ -1089,7 +1089,7 @@ input.image-uploader  {
 
 #user-profile-page [data-role="main"] {
   margin-top: -2px;
-  background-color: var(--color-sub-dark);
+  background: linear-gradient(var(--color-sub-dark), #00141e);
 }
 #signin-page [data-role="main"] {
   background-color: var(--color-neutral-light);

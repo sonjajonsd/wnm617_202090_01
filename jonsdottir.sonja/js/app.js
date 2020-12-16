@@ -29,9 +29,6 @@
   $(document)
 
   .on("pagecontainerbeforeshow", function( e, ui ) {
-    // console.log('e', e);
-    // console.log('ui', ui.toPage[0].id);
-
     // Page routing
     switch(ui.toPage[0].id) {
       case 'list-page': ListPage(); break;
