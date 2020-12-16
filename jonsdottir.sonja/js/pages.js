@@ -1,34 +1,27 @@
 
 const APPALLED_MEANING = ["Not sure..","All good","Okay","Mehh","Not good","Gross"];
 const HABIT_FEELING = ["far fa-question-circle","far fa-smile","far fa-meh","far fa-meh-blank","far fa-frown-open","far fa-tired"];
-const DEFAULT_PLACEHOLDER_IMG = "placeholder";
 
 const ListPage = async () => {
   let d = await query({type:'habit_by_user_id', params: [sessionStorage.userId]});
-  console.log("LIST", d);
   drawHabitList(d.result);
-  // if(d.result.length) {
-  //   $("#list-page .habit-list").html(makeHabitList(d.result));
-  // } else {
-  //   $("#list-page .habit-list").html(makeEmptyList());
-  // }
+
   
   let userData = await query({type:'user_by_id', params: [sessionStorage.userId]});
   // https://stackoverflow.com/questions/8279859/get-first-letter-of-each-word-in-a-string-in-javascript
-  userData.result[0].initials = userData.result[0].name ? userData.result[0].name.split(' ').map(i => i.charAt(0)).join('') : userData.result[0].username[0];
-  userData.result[0].img.includes(DEFAULT_PLACEHOLDER_IMG) ? $("#list-page .user-initials").html(makeUserInitials(userData.result)) : $("#list-page .user-initials").html(makeUserInitialsPic(userData.result));
+  userData.result[0].initials = makeInitials(userData.result[0]);
+  userData.result[0].img ? $("#list-page .user-initials").html(makeUserThumbnail(userData.result)) : $("#list-page .user-initials").html(makeUserInitials(userData.result));
 }
 
 const MapPage = async () => {
   let userData = await query({type:'user_by_id', params: [sessionStorage.userId]});
-  userData.result[0].initials = userData.result[0].name ? userData.result[0].name.split(' ').map(i => i.charAt(0)).join('') : userData.result[0].username[0];
-  userData.result[0].img.includes(DEFAULT_PLACEHOLDER_IMG) ? $("#map-page .user-initials").html(makeUserInitials(userData.result)) : $("#map-page .user-initials").html(makeUserInitialsPic(userData.result));
+  userData.result[0].initials = makeInitials(userData.result[0]);
+  userData.result[0].img ? $("#map-page .user-initials").html(makeUserThumbnail(userData.result)) : $("#map-page .user-initials").html(makeUserInitials(userData.result));
 
   let recent = await query({type:'recent_locations', params: [sessionStorage.userId]});
   console.log("RECENT", recent);
 
   let valid_habits = recent.result.reduce((r,o)=>{
-    // o.icon = o.img;
     if(o.lat && o.lng) r.push(o);
     return r;
   },[]);
@@ -38,10 +31,6 @@ const MapPage = async () => {
 
   map_el.data("markers").forEach((o,i,a)=>{
     o.addListener("click", function() {
-      // map_el.data("infoWindow")
-      //   .open(map_el.data("map"),o);
-      // map_el.data("infoWindow")
-      //   .setContent(makeHabitPopup(valid_habits[i]));
       $("#location-info").addClass("active");
          $("#location-info .modal-body.location")
             .html(makeHabitPopup(valid_habits[i]))
@@ -56,10 +45,18 @@ const MapPage = async () => {
   }
 }
 
+const makeInitials = (d) => {
+  const tmp =  d.name ? d.name.split(' ').map(i => i.charAt(0)).join('') : d.username[0];
+  return tmp.substring(0,3);
+}
+
 const UserProfilePage = async () => {
   let d = await query({type:'user_by_id', params: [sessionStorage.userId]});
   console.log('User', d);
-  $("#user-profile-page .user-img").html(makeUserImg(d.result));
+
+  d.result[0].initials = makeInitials(d.result[0]);
+  
+  $("#user-profile-page .user-img").html(d.result[0].img ? makeUserImg(d.result) : makeUserInitialsImg(d.result));
   $("#user-profile-page .user-imgContainer").html(makeUserImgContainer(d.result));
   $("#user-profile-page .user-titleContainer").html(makeUserTitleContainer(d.result));
   
@@ -97,13 +94,14 @@ const HabitProfilePage = async () => {
   
   let last = await query({type:'last_encounter_by_habit', params: [sessionStorage.habitId]});
   let locations = await query({type:'locations_data_by_habit_id', params: [sessionStorage.habitId]});
+  let markerData = await query({type:'locations_by_habit_id', params: [sessionStorage.habitId]});
   
   let valid_locations = locations.result.reduce((r,o)=>{
     // o.icon = o.img;
     if(o.lat && o.lng) r.push(o);
     return r;
   },[])
-  console.log('valid_locations', valid_locations);
+  console.log('valid_locations', markerData.result);
   console.log('locations', locations.result);
 
   let total = 0;
@@ -129,22 +127,29 @@ const HabitProfilePage = async () => {
 
   let map_el = await makeMap("#habit-profile-page .map", last.result[0]);
   makeMarkers(map_el, valid_locations);
+  
+  map_el.data("markers").forEach((o,i,a)=>{
+    const marker = markerData.result[i];
+    marker.name = d.result[0].name;
+    o.addListener("click", function() {
+      $("#location-info-habit").addClass("active");
+         $("#location-info-habit .modal-body.location")
+            .html(makeHabitPopup(marker))
+    })
+  });
 }
 
 const EditHabitPage = async () => {
   let d = await query({type:'habit_by_id', params: [sessionStorage.habitId]});
-  console.log('Data', d);
 
-  let img = d.result[0].img.includes(DEFAULT_PLACEHOLDER_IMG) ? '' : d.result[0].img;
-  $("#edit-habit-page .img-container").html(makeHabitImgInput(img));
+  $("#edit-habit-page .img-container").html(makeHabitImgInput(d.result[0].img));
   $("#edit-habit-page .input-container").html(makeHabitUpdateForm(d.result[0]));
 }
 
 const EditUserPage = async () => {
   let d = await query({type:'user_by_id', params: [sessionStorage.userId]});
-  console.log('Data', d);
-  let img = d.result[0].img.includes(DEFAULT_PLACEHOLDER_IMG) ? '' : d.result[0].img;
-  $("#edit-user-page .img-container").html(makeUserImgInput(img));
+  
+  $("#edit-user-page .img-container").html(makeUserImgInput(d.result[0].img));
   $("#edit-user-page .input-container").html(makeUserUpdateForm(d.result[0]));
 }
 

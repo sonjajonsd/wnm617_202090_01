@@ -20,17 +20,15 @@
   --header-height: 3rem;
 
   --box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  --box-shadow-minimal: 0 1px 3px rgba(0,0,0,0.2);
   --box-shadow-dark: 0 0 18px rgba(0, 0, 0, 0.25);
   --box-shadow-bottom: 0 8px 16px -8px rgba(0, 0, 0, 0.15);
   --box-shadow-inset-top: inset 0 8px 16px -8px rgba(0, 0, 0, 0.25);
   --box-shadow-subtle: 0px 8px 16px 6px #dcdcdcd6;
 
   --color-main-light: #ff8880;
-  /* --color-main-light: #f28177; */
   --color-main-medium: #e60f00;
-  /* --color-main-medium: #c44e4e; */
   --color-main-dark: #ff574a;
-  /* --color-main-dark: #e54c4c; */
 
   --color-neutral-light: #f2f2f2;
   --color-neutral-medium: #cccccc;
@@ -39,41 +37,11 @@
   --color-sub-light: #e3f1f2;
   --color-sub-medium: #939ca6;
   --color-sub-dark: #013b57;
-  /* --color-sub-dark: #00324a; */
-  /* --color-sub-dark: #304057; */
-/* pretty blue - 032B43 */
-  /* --color-red: #ff574a; */
-
-
-
-  /* --color-red: #fe5f55;
-  --color-blue: #777da7;
-  --color-green: #94c9a9;
-  --color-yellow: #FF574A; */
 
   --color-red: #fe5f55;
   --color-blue: #579cb2;
   --color-green: #A1CCA5;
   --color-yellow: #FFC271;
-
-
-
-
-
-  /* --color-red: #ff574a;
-  --color-blue: #407cf9;
-  --color-green: #8ec73f;
-  --color-yellow: #ffc73a; */
-  /* --color-red: #ff574a;
-  --color-blue: #5f9cd4;
-  --color-green: #b6d551;
-  --color-yellow: #efbe52; */
-  /* --color-purple: #6776b9; */
-  /* --color-red: #ff574a;
-  --color-blue: #013b57;
-  --color-green: #8ec73f;
-  --color-yellow: #ffc73a;
-  --color-purple: #6776b9; */
 }
 
 body {
@@ -307,9 +275,12 @@ form {
 .signup-header {
   flex-direction: column;
 }
+.signup-header h1 {
+  margin-bottom: 0.5em;
+} 
 .signup-header h4 {
   margin: 0;
-  color: var(--color-main-dark);
+  color: var(--color-main-light);
 } 
 .ui-mobile .ui-page-active {
   display: flex;
@@ -492,6 +463,10 @@ form {
   transform: translateY(100%);
 }
 
+.modal-drawer .image-uploader.thumbnail {
+  box-shadow: var(--box-shadow-dark);
+}
+
 /* FLOATING IMG - MODAL DRAWER */
 .floating-img-container {
   margin: 2.5em auto;
@@ -512,19 +487,6 @@ form {
 #habit-profile-page [data-role="header"] {
   background-color: var(--color-sub-dark);
   overflow: initial;
-}
-
-#user-profile-page .ui-header::after{
-  content: '';
-  height: 25vmax;
-  width: 105%;
-  background: #304057;
-  position: absolute;
-  border-radius: 0 0 100% 100%;
-  top: 0;
-  left: -4%;
-  margin: auto;
-  box-shadow: var(--box-shadow-dark);
 }
 
 .fixed-img-container {
@@ -589,7 +551,7 @@ form {
   height: 20vh;
   width: 20vh;
   border-radius: 100%;
-  box-shadow: var(--box-shadow-dark);
+  box-shadow: var(--box-shadow-minimal);
   border: 6px solid var(--color-main-dark);
   background-color: var(--color-main-dark);
   object-fit: cover;
@@ -597,6 +559,21 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.img-container .initials-img {
+  height: 20vh;
+  width: 20vh;
+  border-radius: 100%;
+  box-shadow: var(--box-shadow-minimal);
+  background-color: var(--color-main-dark);
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.5em;
+  color: var(--color-white);
+  font-weight: var(--font-weight-normal);
+  text-transform: uppercase;
 }
 
 .img-container .image i {
@@ -608,11 +585,15 @@ form {
   padding: 0 1em;
 }
 
+.content-container.round {
+  padding: 2em 1em;
+}
+
 .content-container {
   padding: 0 1em;
   border-radius: 2em 2em 0 0;
   height: 100%;
-  color: var(--color-sub-dark);
+  background-color: var(--color-white);
 }
 .title-container h1 {
   margin: 0 0 0.2em 0;
@@ -707,16 +688,16 @@ input[type="radio"] {
 }
 
 .red-bg {
-  background: var(--color-red);
+  background: var(--color-red) !important;
 }
 .blue-bg {
-  background: var(--color-blue);
+  background: var(--color-blue) !important;
 }
 .green-bg {
-  background: var(--color-green);
+  background: var(--color-green) !important;
 }
 .yellow-bg {
-  background: var(--color-yellow);
+  background: var(--color-yellow) !important;
 }
 
 .red-br {
@@ -749,6 +730,7 @@ input[type="radio"] {
   color: white;
   border-radius: 50%;
   text-transform: uppercase;
+  font-size: 0.9em;
 }
 
 .profile-btn-pic > img {
@@ -764,6 +746,9 @@ input[type="radio"] {
   flex: 1 1 100%;
   overflow: hidden;
   position: relative;
+
+  display: flex;
+  flex-direction: column;
 }
 .ui-header,
 .ui-footer {
@@ -800,6 +785,17 @@ ul.habit-list {
   list-style-type: none;
   padding: 0 1em 2em;
   margin: 0;
+}
+ul.habit-list .empty-list {
+  text-align: center;
+  padding: 2em 1em;
+}
+ul.habit-list .empty-list h1 {
+  margin-top: -1em;
+}
+ul.habit-list .empty-list img {
+  width: 80%;
+  height: auto;
 }
 
 .habitlist-item {
@@ -846,7 +842,8 @@ ul.habit-list {
   object-fit: cover;
 }
 .habitlist-icon img.fallback {
-  width: 60%;
+  /* width: 60%; */
+  width: 15vmin;
   height: auto;
 }
 
@@ -982,38 +979,7 @@ a.emp-link {
 }
 
 /* PAGE SPECIFICS */
-#signin-page [data-role="main"] {
-  display: flex;
-  flex-direction: column;
-}
-#signup-page [data-role="main"] {
-  display: flex;
-  flex-direction: column;
-}
-#signup-details-page [data-role="main"] {
-  display: flex;
-  flex-direction: column;
-}
-#user-settings [data-role="main"] {
-  display: flex;
-  flex-direction: column;
-}
-#edit-user-page [data-role="main"] {
-  display: flex;
-  flex-direction: column;
-}
-#edit-habit-page [data-role="main"] {
-  display: flex;
-  flex-direction: column;
-}
-#edit-password-page [data-role="main"] {
-  display: flex;
-  flex-direction: column;
-}
-#habit-profile-page [data-role="main"] {
-  display: flex;
-  flex-direction: column;
-}
+
 
 #edit-password-page [data-role="main"] .img-container {
   padding: 0;
@@ -1121,6 +1087,10 @@ input.image-uploader  {
 
 /* MAP PAGE */
 
+#user-profile-page [data-role="main"] {
+  margin-top: -2px;
+  background-color: var(--color-sub-dark);
+}
 #signin-page [data-role="main"] {
   background-color: var(--color-neutral-light);
 }
@@ -1128,10 +1098,21 @@ input.image-uploader  {
   box-shadow: var(--box-shadow-bottom);
   background-color: var(--color-white);
 }
+#signup-page [data-role="main"] {
+  background-color: var(--color-neutral-light);
+}
+#signup-page .form-input {
+  box-shadow: var(--box-shadow-bottom);
+  background-color: var(--color-white);
+}
+#signup-details-page [data-role="main"] {
+  background-color: var(--color-neutral-light);
+}
+#signup-details-page .form-input {
+  box-shadow: var(--box-shadow-bottom);
+  background-color: var(--color-white);
+}
 #map-page [data-role="main"] {
-  /* background-image: url(../imgs/map-image.png);
-  background-position: center;
-  background-size: cover; */
   box-shadow: var(--box-shadow-inset-top);
 }
 #map-page .primary-button-container {

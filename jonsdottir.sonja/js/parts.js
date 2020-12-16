@@ -1,5 +1,4 @@
-{/* <a href="#habit-profile-page" class="habitlist-item" > */}
-const makeHabitList = templater(o => `<li>
+const makeHabitList = templater(o => `
   <li>
     <div class="habitlist-item js-habit-jump" data-id="${o.id}">
       <div class="habitlist-description ${o.color}">
@@ -8,37 +7,25 @@ const makeHabitList = templater(o => `<li>
       </div>
       <div class="habitlist-icon">
         <div class="image ${o.color}">
-        ${o.img.includes("placeholder") ? `<img class="fallback" src="imgs/br-glass.png" alt="Broken glass" />` : `<img src="${o.img}" alt="Habit Image" />`}
+        ${o.img ? `<img src="${o.img}" alt="Habit Image" />` : `<img class="fallback" src="imgs/br-glass.png" alt="Broken glass" />` }
         </div>
       </div>
     </div>
   </li>`);
 
-  // ${o.img ?  `<img src="${o.img}" alt="Habit Image" />` : `<i class="fas fa-bullhorn"></i>`}
-  // ${o.img ?  `<img src="https://placeimg.com/400/400/any" alt="Habit Image" />` : `<img class="fallback" src="imgs/glass.png" alt="Broken glass" />`}
-// const makeHabitList = templater(o => `<li>
-//   <li>
-//     <div class="habitlist-item js-habit-jump" data-id="${o.id}">
-//       <div class="habitlist-description">
-//         <div class="habit-name">${o.name}</div>
-//         <div class="habit-meta">${o.description}</div>
-//       </div>
-//       <div class="habitlist-icon">
-//         <div class="image">
-//           <i class="${o.icon}"></i>
-//         </div>
-//       </div>
-//     </div>
-//   </li>`);
-
-const makeEmptyList = () => `
-  <li>
-    You're not trackin any bad habits yet!
-    Try clicking the big red plus to add a new bad habit to track.
-  </li>`;
+const makeEmptyList = (phrase) => `
+  <div class="empty-list">
+    <img src="imgs/missing-data.png"/>
+    <h1>No habits</h1>
+    <div>${phrase}</div>
+  </div>
+  `;
 
 const makeUserImg = templater(o => `
-<img class="image" src="${o.img}" alt="Profile Picture" />
+  <img class="image" src="${o.img}" alt="Profile Picture" />
+`);
+const makeUserInitialsImg = templater(o => `
+  <div class="initials-img">${o.initials}</div>
 `);
 
 const makeUserImgContainer = templater(o => `
@@ -52,8 +39,7 @@ const makeUserTitleContainer = templater(o => `
   </div>
 `);
 
-const makeUserStats = (o) => {
-  return `
+const makeUserStats = (o) => `
     <div class="stats-item">
       <div class="stats-name">Current World View</div>
       <div class="stats-value">${o.appalledAvg}</div>
@@ -70,19 +56,19 @@ const makeUserStats = (o) => {
       <div class="stats-name">Last incident report</div>
       <div class="stats-value">${o.latest}</div>
     </div>
-`;}
+`;
 
 const makeUserInitials = templater(o => `
   <li><a href="#user-profile-page" class="profile-btn"> ${o.initials} </a></li>
 `)
 
-const makeUserInitialsPic = templater(o => `
+const makeUserThumbnail = templater(o => `
   <li><a href="#user-profile-page" class="profile-btn-pic"> <img class="image" src="${o.img}" alt="Profile Picture" /> </a></li>
 `)
 
 const makeHabitImg = o => `
-  <div class="image ${o.color}">
-    ${o.img.includes("placeholder") ? `<img class="fallback" src="imgs/br-glass.png" alt="Broken glass" />` : `<img src="${o.img}" alt="Habit Image" />`}
+  <div class="image ${o.color}-bg">
+    ${o.img ? `<img src="${o.img}" alt="Habit Image" />` : `<img class="fallback" src="imgs/br-glass.png" alt="Broken glass" />`}
   </div>
 `;
 
@@ -132,14 +118,13 @@ const makeHabitImgInput = img => `
   <p>Edit Image</p>
 `;
 
-const makeHabitPopup = o => `
+const makeHabitPopup = o => { console.log('o', o); return `
   <div>
     <h1>${o.name}</h1>
     <p class="location-addr"><i class="fas fa-map-marker-alt"></i>${o.date_create}</p>
     <p class="location-desc">${o.description}</p>
   </div>
-`;
-  // <div class="form-button js-habit-jump" data-id="${o.habit_id}" style="width:100%">Go to habit page</div>
+`};
 
 const makeHabitSelections = o => `
   <option value="${o.id}">${o.name}</option>
@@ -306,9 +291,9 @@ const makePasswordForm = () => `
   })}
 `
 
-const drawHabitList = (a,empty_phrase="You're not trackin any bad habits yet! Try clicking the big red plus to add a new bad habit to track.") => {
+const drawHabitList = (a,empty_phrase="You're not trackin any bad habits yet! <br/> Try clicking the big red plus to add a new bad habit to track.") => {
   $("#list-page .habit-list").html(
-    a.length ? makeHabitList(a) : empty_phrase
+    a.length ? makeHabitList(a) : makeEmptyList(empty_phrase)
  )
 }
 

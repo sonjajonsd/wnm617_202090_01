@@ -46,7 +46,7 @@ const checkUserEditForm = () => {
   let username = $("#edit-user-username").val();
   let fullname = $("#edit-user-fullname").val();
   let petpeeve = $("#edit-user-petpeeve").val();
-  let img = $("#user-edit-image").val() || `https://via.placeholder.com/400/bbb/fff/?text=${username}`;
+  let img = $("#user-edit-image").val();
 
   console.log('userimg',img,username,fullname,petpeeve);
  
@@ -65,16 +65,19 @@ const checkHabitAddForm = () => {
   let name = $("#add-habit-name").val();
   let description = $("#add-habit-description").val();
   let color = $("input[name='habit-color']:checked").val();
-  let img = $("#habit-add-image").val() || `https://via.placeholder.com/400/bbb/fff/?text=${name}`
+  let img = $("#habit-add-image").val();
 
 
   query({type:'insert_habit', params:[sessionStorage.userId, name, description, color, img]})
     .then(d => {
-      if (d.error) {
-        throw d.error;
-      }
+        if (d.error) {
+            throw d.error;
+          }
+      
+          $("#add-habit-form")[0].reset();
+          $("#habit-add-image").val('');
+          $("#habit-add-image").siblings('label').css({'background-image':'none'}).removeClass('picked')
 
-      $("#add-habit-form")[0].reset();
       ListPage();
     })
 }
@@ -82,8 +85,9 @@ const checkHabitAddForm = () => {
 const checkHabitEditForm = () => {
   let name = $("#edit-habit-name").val();
   let description = $("#edit-habit-description").val();
+  let img = $("#habit-edit-image").val();
 
-  query({type:'update_habit', params:[name, description, sessionStorage.habitId]})
+  query({type:'update_habit', params:[name, description, img, sessionStorage.habitId]})
     .then(d => {
       if (d.error) {
         throw d.error;
@@ -119,6 +123,8 @@ const checkLocationAddForm = () => {
       }
 
       $("#spotted-form")[0].reset();
+      $("#location-add-lat").val('');
+      $("#location-add-lng").val('');
       $.mobile.navigate('#map-page');
     })
 }

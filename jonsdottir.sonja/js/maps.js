@@ -35,29 +35,11 @@ const makeMap = async(target, center={lat:37.786505,lng:-122.399374}) => {
 
   return map_el;
 }
-// const makeMap = async(target, center={lat:37.786505,lng:-122.399374}) => {
-//   await checkData(()=>window.google);
-
-//   let map_el = $(target);
-
-//   if(!map_el.data("map"))
-//      map_el.data(
-//         "map",
-//         new google.maps.Map(map_el[0], {
-//            center: center,
-//            zoom: 12,
-//           //  styles:mapStyles,
-//            disableDefaultUI: true
-//         })
-//      );
-
-//   return map_el;
-// }
 
 // https://stackoverflow.com/questions/24413766/how-to-use-svg-markers-in-google-maps-api-v3
 const template = `<?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196 320.91"><defs><style>.cls-1{fill:{{ color }};stroke:#fff;stroke-miterlimit:10;stroke-width:12px;}.cls-2{fill:#00324a;}</style></defs><path class="cls-1" d="M280.83,146.76c0,47.86-78.2,191.81-93.44,219.4a2.91,2.91,0,0,1-5.11,0C167,338.57,88.83,194.62,88.83,146.76a96,96,0,1,1,192,0Z" transform="translate(-86.83 -48.76)"/><circle class="cls-2" cx="98" cy="101.24" r="50"/></svg>`;
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196 320.91"><defs><style>.cls-1{fill:{{ color }};stroke:#fff;stroke-miterlimit:10;stroke-width:12px;}.cls-2{fill:#013b57;}</style></defs><path class="cls-1" d="M280.83,146.76c0,47.86-78.2,191.81-93.44,219.4a2.91,2.91,0,0,1-5.11,0C167,338.57,88.83,194.62,88.83,146.76a96,96,0,1,1,192,0Z" transform="translate(-86.83 -48.76)"/><circle class="cls-2" cx="98" cy="101.24" r="50"/></svg>`;
 
 const makeMarkers = (map_el, map_locs,setBounds=true) => {
   let map = map_el.data("map");

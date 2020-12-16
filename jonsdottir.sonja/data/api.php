@@ -88,9 +88,11 @@ function makeStatement($data) {
     case 'habit_by_user_id':
       return makeQuery($c, "SELECT * FROM `track_habits` WHERE `user_id`=?", $p);
       break;
+      
     case 'locations_by_habit_id':
       return makeQuery($c, "SELECT * FROM `track_locations` WHERE `habit_id`=?", $p);
       break;
+
     case 'locations_data_by_habit_id':
       return makeQuery($c, "SELECT * FROM 
         `track_locations` l 
@@ -266,7 +268,8 @@ function makeStatement($data) {
             `track_habits`
             SET
             `name` = ?,
-            `description` = ?
+            `description` = ?,
+            `img` = ?
             WHERE `id` = ?
             ",$p,false);
          return ["result"=>"success"];
